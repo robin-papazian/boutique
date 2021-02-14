@@ -1,8 +1,8 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
 
-use Model\Model;
+use App\Model\Model;
 
 class Controller extends Model
 {
@@ -18,7 +18,7 @@ class Controller extends Model
 
     }
 
-    public function inscriptio()
+    public function inscription()
     {
         
         if(isset($_POST['submit']))

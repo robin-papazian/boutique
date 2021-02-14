@@ -2,13 +2,12 @@
 
 <?php
 
-require('Model/Autoload.php');
+require('App/Libraries/Autoload.php');
 
 spl_autoload_register('autoload');
 
 
-//require('Controller/controller.php');
-$model = new Controller\Controller;
+$control = new App\Controller\Controller;
 
 
 
@@ -19,35 +18,34 @@ if(isset($_GET['view']))
     $view = $_GET['view'];
     if($view == "index")
     { 
-        $model->render('index');
+        $control->render($view);
     }
-
     elseif($view == "inscription")
     {   
-        $data = $model->inscriptio();
-        $model->render('inscription',['data' => $data]);
+        $data = $control->inscription();
+        $control->render($view,['data' => $data]);
         
     }
     elseif($view == "connexion")
     {
-        $model->render('connexion');
+        $control->render($view);
     }
     elseif($view == "account")
     {
-        $model->render('account');
+        $control->render($view);
     }
     elseif($view == "categories")
     {
-        $model->render('categorie');
+        $control->render($view);
     }
     else
     {
-        $model->render('404');
+        $control->render('404');
     }
 }
 else
 {
-    $model->render('index');
+    $control->render('index');
 
 }
 

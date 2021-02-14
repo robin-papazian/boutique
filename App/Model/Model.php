@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace App\Model;
 use \PDO;
 
     Class Model
@@ -20,7 +20,7 @@ use \PDO;
 
         public function setDb() :PDO
         {
-            require('Conf.php');
+            require('Conf/Conf.php');
 
             $this->db = new PDO($link,$username,$password,array(
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
