@@ -28,7 +28,8 @@ if(isset($_GET['view']))
     }
     elseif($view == "connexion")
     {
-        $control->render($view);
+        $value = $control->connexion();
+        $control->render($view,['value' => $value]);
     }
     elseif($view == "account")
     {

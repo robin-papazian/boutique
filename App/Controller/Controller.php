@@ -7,6 +7,7 @@ use App\Model\Model;
 class Controller extends Model
 {
     protected $table = 'users';
+    protected $column = 'login';
 
     public function render(string $page,$variable = [])
     {
@@ -20,30 +21,40 @@ class Controller extends Model
 
     public function inscription()
     {
-        
         if(isset($_POST['submit']))
         {
             $login = $_POST['user'];
             $password = $_POST['user-password'];
-            $data = $this->checkTwin($login);
+            $data = $this->inDb($login);
             if(!$data)
             {
-                $this->add($login,$password);
+                $this->user($login,$password);
             }
             else
             {
                 $data = 'le login existe déja';
                 return $data;
+            }   
+        }    
+    }
+
+    public function connexion()
+    {
+        if(isset($_POST['submit']))
+        {
+            $login = $_POST['user'];
+            $password = $_POST['user-password'];
+            $data = $this->inDb($login);
+            if(!$data)
+            {
+                return 'non';
             }
-            
-            
-            
-        }
-        
-         
-        
-        
-        
+            else
+            {
+                return 'oui';
+            }
+        }    
+
     }
 
 }

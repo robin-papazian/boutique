@@ -6,7 +6,8 @@ use \PDO;
     Class Model
     {
         protected $db;
-        protected $table; 
+        protected $table;
+        protected $column; 
 
         public function __construct()
         {
@@ -28,7 +29,7 @@ use \PDO;
             return $this->db;
         }
 
-        public function add($login,$password)
+        public function user($login,$password)
         {
             $query = $this->db->prepare("INSERT INTO {$this->table}(`login`, `password`) VALUES (:login,:password)");
             $query->execute([
@@ -37,9 +38,9 @@ use \PDO;
             ]);
         }
 
-        public function checkTwin($login)
+        public function inDb($login)
         {
-            $query = $this->db->query("SELECT login FROM {$this->table} WHERE login = '$login'");
+            $query = $this->db->query("SELECT * FROM {$this->table} WHERE {$this->column} = '$login'");
             $indb = $query->fetch();
             return $indb;
         
