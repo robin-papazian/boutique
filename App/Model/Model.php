@@ -43,8 +43,14 @@ use \PDO;
             $query = $this->db->query("SELECT * FROM {$this->table} WHERE {$this->column} = '$login'");
             $indb = $query->fetch();
             return $indb;
-        
+        }
 
+        public function update($login,$password,$id)
+        {
+
+            $query = $this->db->prepare("UPDATE {$this->table} SET login = ?, password = ? WHERE id = ?");
+            $query->execute([$login,$password,$id]);
+            //UPDATE users SET login = 'bonjour', password = 'bonjour' WHERE login = 'salut'
         }
 
 

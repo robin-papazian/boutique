@@ -19,12 +19,24 @@ class Controller extends Model
 
     }
 
-    public function inscription()
+    public function form()
     {
         if(isset($_POST['submit']))
         {
-            $login = $_POST['user'];
-            $password = $_POST['user-password'];
+            return $_POST;  
+        }
+        else
+        {
+            return NULL;
+        }
+        
+    }
+
+    public function inscription($array)
+    {
+        if(isset($array))
+        {
+            extract($array);
             $data = $this->inDb($login);
             if(!$data)
             {
@@ -34,16 +46,17 @@ class Controller extends Model
             {
                 $data = 'le login existe déja';
                 return $data;
-            }   
-        }    
+            }      
+        }
+        
     }
 
     public function connexion()
     {
         if(isset($_POST['submit']))
         {
-            $login = $_POST['user'];
-            $password = $_POST['user-password'];
+            $login = $_POST['login'];
+            $password = $_POST['password'];
             $data = $this->inDb($login);
             if(!$data)
             {
@@ -51,8 +64,25 @@ class Controller extends Model
             }
             else
             {
-                return 'oui';
+                
+                $_SESSION['login'] = $data['login'];
+                $_SESSION['id'] = $data['id'];
+                
+                header('Location:index.php?view=account');
+            
             }
+        }    
+
+    }
+
+    public function account()
+    {
+        if(isset($_POST['submit']))
+        {
+            $login = $_POST['login'];
+            $password = $_POST['password'];
+            $id = $_SESSION['id'];
+            $data = $this->update($login,$password,$id);
         }    
 
     }

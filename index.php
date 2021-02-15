@@ -1,6 +1,7 @@
 
 
 <?php
+session_start();
 
 require('App/Libraries/Autoload.php');
 
@@ -21,10 +22,10 @@ if(isset($_GET['view']))
         $control->render($view);
     }
     elseif($view == "inscription")
-    {   
-        $data = $control->inscription();
-        $control->render($view,['data' => $data]);
-        
+    {  
+        $array = $control->form(); 
+        $data = $control->inscription($array);
+        $control->render($view,['data' => $data]);  
     }
     elseif($view == "connexion")
     {
@@ -33,7 +34,8 @@ if(isset($_GET['view']))
     }
     elseif($view == "account")
     {
-        $control->render($view);
+        $data = $control->account();
+        $control->render($view,['data' => $data]);
     }
     elseif($view == "categories")
     {
