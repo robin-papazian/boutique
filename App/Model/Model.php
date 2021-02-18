@@ -30,13 +30,20 @@ use \PDO;
             return $this->db;
         }
 
-        public function user($users_name,$users_familly_name,$users_login,$users_password,$users_email,$users_town,$users_post_code,$users_street,$users_street_number)
+        public function user($array)
         {
-            $int_post_code = intval($users_post_code);
-            $int_street_number = intval($users_street_number);
+    
+            // $int_post_code = intval($users_post_code);
+            // $int_street_number = intval($users_street_number);
             $query = $this->db->prepare("INSERT INTO {$this->table} {$this->columnsname} VALUES (:users_name,:users_familly_name,:users_login,:users_password,:users_email,:users_town,:users_post_code,:users_street,:users_street_number)");
     
-            
+            foreach($array as $key => $value)
+            {
+                if(is_numeric($value))
+                {
+                    intval($value);
+                }
+            }
             
             // $data = $query->execute([$name,$familly_name,$login,$password,$email,$town,$post_code,$street,$street_number]);
             $query->bindParam(':users_name',$users_name);

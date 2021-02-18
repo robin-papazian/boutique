@@ -32,7 +32,7 @@ class Controller extends Model
             $cible = strlen($this->columnsname) -1 ;
             $this->columnsname = substr_replace($this->columnsname,'', $cible);
             $this->columnsname .= ')';
-            
+            return $array;
             
 
             
@@ -56,13 +56,13 @@ class Controller extends Model
     {
         if(isset($array))
         {
-            $this->SetColumnsName($array);
+            $dataform = $this->SetColumnsName($array);
             extract($array);
        
             $data = $this->inDb($users_login);
             if(!$data)
             {
-                $this->user($users_name,$users_familly_name,$users_login,$users_password,$users_email,$users_town,$users_post_code,$users_street,$users_street_number);
+                $this->user($dataform);
                 
             }
             else
