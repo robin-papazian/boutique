@@ -7,7 +7,8 @@ use \PDO;
     {
         protected $db;
         protected $table;
-        protected $column; 
+        protected $column;
+        protected $columnsname = "("; 
 
         public function __construct()
         {
@@ -29,22 +30,37 @@ use \PDO;
             return $this->db;
         }
 
-        public function user($login,$password,$name,$familly_name,$town,$post_code,$street,$street_number,$email)
+        public function user($users_name,$users_familly_name,$users_login,$users_password,$users_email,$users_town,$users_post_code,$users_street,$users_street_number)
         {
-            $int_post_code = intval($post_code);
-            $int_street_number = intval($street_number);
-            $query = $this->db->prepare("INSERT INTO {$this->table} (`users_login`, `users_password`,`users_name`,`users_familly_name`,`users_town`,`users_post_code`,`users_street`,`users_street_number`,`users_email`) VALUES (:users_login, :users_password, :users_name, :users_familly_name, :users_town, :users_post_code, :users_street, :users_street_number, :users_email)");
-            $query->bindParam(':users_login',$login);
-            $query->bindParam(':users_password',$password);
-            $query->bindParam(':users_name',$name);
-            $query->bindParam(':users_familly_name',$familly_name);
-            $query->bindParam(':users_town',$town);
+            $int_post_code = intval($users_post_code);
+            $int_street_number = intval($users_street_number);
+            $query = $this->db->prepare("INSERT INTO {$this->table} {$this->columnsname} VALUES (:users_name,:users_familly_name,:users_login,:users_password,:users_email,:users_town,:users_post_code,:users_street,:users_street_number)");
+    
+            
+            
+            // $data = $query->execute([$name,$familly_name,$login,$password,$email,$town,$post_code,$street,$street_number]);
+            $query->bindParam(':users_name',$users_name);
+        
+            $query->bindParam(':users_familly_name',$users_familly_name);
+        
+            $query->bindParam(':users_login',$users_login);
+        
+            $query->bindParam(':users_password',$users_password);
+        
+            $query->bindParam(':users_email',$users_email);
+        
+            $query->bindParam(':users_town',$users_town);
+        
             $query->bindParam(':users_post_code',$int_post_code);
-            $query->bindParam(':users_street',$street);
+        
+            $query->bindParam(':users_street',$users_street);
+        
             $query->bindParam(':users_street_number',$int_street_number);
-            $query->bindParam(':users_email',$email);
+        
+        
 
             $query->execute();
+          
         }
 
         public function inDb($login)
