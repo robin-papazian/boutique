@@ -39,23 +39,23 @@ use \PDO;
             
             
             // $data = $query->execute([$name,$familly_name,$login,$password,$email,$town,$post_code,$street,$street_number]);
-            $query->bindParam(':users_name',$users_name);
+            $query->bindParam('users_name',$users_name);
         
-            $query->bindParam(':users_familly_name',$users_familly_name);
+            $query->bindParam('users_familly_name',$users_familly_name);
         
-            $query->bindParam(':users_login',$users_login);
+            $query->bindParam('users_login',$users_login);
         
-            $query->bindParam(':users_password',$users_password);
+            $query->bindParam('users_password',$users_password);
         
-            $query->bindParam(':users_email',$users_email);
+            $query->bindParam('users_email',$users_email);
         
-            $query->bindParam(':users_town',$users_town);
+            $query->bindParam('users_town',$users_town);
         
-            $query->bindParam(':users_post_code',$int_post_code);
+            $query->bindParam('users_post_code',$int_post_code);
         
-            $query->bindParam(':users_street',$users_street);
+            $query->bindParam('users_street',$users_street);
         
-            $query->bindParam(':users_street_number',$int_street_number);
+            $query->bindParam('users_street_number',$int_street_number);
         
         
 
