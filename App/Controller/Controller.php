@@ -7,7 +7,8 @@ use App\Model\Model;
 class Controller extends Model
 {
     protected $table = 'users';
-    protected $column = 'login';
+    protected $column = 'users_login';
+    protected $view;
 
     public function render(string $page,$variable = [])
     {
@@ -37,55 +38,57 @@ class Controller extends Model
         if(isset($array))
         {
             extract($array);
+       
             $data = $this->inDb($login);
             if(!$data)
             {
-                $this->user($login,$password);
+                $this->user($login,$password,$name,$familly_name,$town,$post_code,$street,$street_number,$email);
             }
             else
             {
                 $data = 'le login existe déja';
                 return $data;
-            }      
+             
+            }
         }
         
     }
 
-    public function connexion()
+    public function connexion($array)
     {
-        if(isset($_POST['submit']))
+        if(isset($array))
         {
-            $login = $_POST['login'];
-            $password = $_POST['password'];
+            extract($array);
             $data = $this->inDb($login);
             if(!$data)
             {
-                return 'non';
+                return 'Mauvaise identifiant';
             }
             else
             {
-                
-                $_SESSION['login'] = $data['login'];
-                $_SESSION['id'] = $data['id'];
+                $_SESSION['login'] = $data['users_login'];
+                $_SESSION['id'] = $data['users_id'];
                 
                 header('Location:index.php?view=account');
-            
-            }
-        }    
-
+            }      
+        }
     }
 
-    public function account()
+    public function account($array)
     {
-        if(isset($_POST['submit']))
+        if(isset($array))
         {
-            $login = $_POST['login'];
-            $password = $_POST['password'];
+            extract($array);
             $id = $_SESSION['id'];
-            $data = $this->update($login,$password,$id);
+            $this->update($login,$password,$id);
+            
         }    
 
     }
+
+    
+    
+
 
 }
 

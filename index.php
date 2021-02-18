@@ -17,25 +17,31 @@ $control = new App\Controller\Controller;
 if(isset($_GET['view']))
 {
     $view = $_GET['view'];
+    
     if($view == "index")
-    { 
+    {
         $control->render($view);
     }
     elseif($view == "inscription")
-    {  
-        $array = $control->form(); 
-        $data = $control->inscription($array);
-        $control->render($view,['data' => $data]);  
+    {
+       
+        $data = $control->form();
+        $form = $control->inscription($data);
+        $control->render($view,['form' => $form]);
     }
     elseif($view == "connexion")
     {
-        $value = $control->connexion();
-        $control->render($view,['value' => $value]);
+      
+        $data = $control->form();
+        $form = $control->connexion($data);
+        $control->render($view,['form' => $form]);
+        
     }
     elseif($view == "account")
     {
-        $data = $control->account();
-        $control->render($view,['data' => $data]);
+        $data = $control->form();
+        $form = $control->account($data);
+        $control->render($view);
     }
     elseif($view == "categories")
     {
