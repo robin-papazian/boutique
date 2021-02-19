@@ -25,7 +25,7 @@ if(isset($_GET['view']))
     elseif($view == "inscription")
     {
        
-        $data = $control->form();
+        $data = $control->SetDataForm($_POST);
         $form = $control->inscription($data);
         $control->render($view,['form' => $form]);
     }

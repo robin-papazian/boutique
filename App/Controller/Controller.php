@@ -20,7 +20,18 @@ class Controller extends Model
 
     }
 
-    public function SetColumnsName($array)
+    // public function getTableName()
+    // {
+    //     $classnamespace = get_class($this);
+    //     $classnamespace = explode('\\',$classnamespace);
+    //     $class = end($classnamespace);
+    //     $class = strtolower($class);
+    //     $table = str_replace('controller','',$class);
+    //     return $table;
+
+    // }
+
+    public function SetDataForm($array)
     {
         if(isset($array['submit']))
         {
@@ -28,50 +39,40 @@ class Controller extends Model
             foreach($array as $key => $value)
             {
                 $this->columnsname .= $key.",";
+                $this->valuesname .= "?,"; 
             }
-            $cible = strlen($this->columnsname) -1 ;
-            $this->columnsname = substr_replace($this->columnsname,'', $cible);
+            $ciblecolumn = strlen($this->columnsname) -1 ;
+            $this->columnsname = substr_replace($this->columnsname,'', $ciblecolumn);
             $this->columnsname .= ')';
-            return $array;
             
-
-            
+            $ciblevalue = strlen($this->valuesname) -1 ;
+            $this->valuesname = substr_replace($this->valuesname,'', $ciblevalue);
+            $this->valuesname .= ')';
+            return $array;    
         }
     }
 
-    public function form()
-    {
-        if(isset($_POST['submit']))
-        {
-            return $_POST;  
-        }
-        else
-        {
-            return NULL;
-        }
-        
-    }
 
     public function inscription($array)
     {
+
         if(isset($array))
         {
-            $dataform = $this->SetColumnsName($array);
             extract($array);
        
-            $data = $this->inDb($users_login);
-            if(!$data)
+            $user = $this->inDb($users_login);
+            if(!$user)
             {
-                $this->user($dataform);
+                $this->insertData($array);
                 
             }
             else
             {
-                $data = 'le login existe déja';
-                return $data;
-             
+                return 'le login existe déja';    
             }
+
         }
+        
         
     }
 
