@@ -14,7 +14,7 @@ use \PDO;
         public function __construct()
         {
             $this->setDb();
-            //$this->table = $this->getTableName();
+            
         }
 
         /**

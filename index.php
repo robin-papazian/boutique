@@ -8,7 +8,7 @@ require('App/Libraries/Autoload.php');
 spl_autoload_register('autoload');
 
 
-$control = new App\Controller\Controller;
+$control = new App\Controller\UsersController;
 
 
 
@@ -25,7 +25,7 @@ if(isset($_GET['view']))
     elseif($view == "inscription")
     {
        
-        $data = $control->SetDataForm($_POST);
+        $data = $control->getColumnsName($_POST);
         $form = $control->inscription($data);
         $control->render($view,['form' => $form]);
     }
