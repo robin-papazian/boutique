@@ -7,7 +7,6 @@ use \PDO;
     {
         protected $db;
         protected $table;
-        protected $column;
         protected $columnsname = "(";
         protected $valuesname = "("; 
 
@@ -32,16 +31,6 @@ use \PDO;
             return $this->db;
         }
 
-        // public function getTableName()
-        // {
-        //     $classnamespace = get_class($this);
-        //     $classnamespace = explode('\\',$classnamespace);
-        //     $class = end($classnamespace);
-        //     $class = strtolower($class);
-        //     $table = str_replace('controller','',$class);
-        //     return $table;
-        // }
-
         public function insertData($array)
         {
             $tab = [];
@@ -54,19 +43,17 @@ use \PDO;
             $query->execute(array_values($tab));
         }
 
-        public function inDb($login)
+        public function findMe($column, $data)
         {
-            $query = $this->db->query("SELECT * FROM {$this->table} WHERE {$this->column} = '$login'");
+            $query = $this->db->query("SELECT * FROM {$this->table} WHERE ($column) = '$data'");
             $indb = $query->fetch();
             return $indb;
         }
 
         public function update($login,$password,$id)
         {
-
             $query = $this->db->prepare("UPDATE {$this->table} SET users_login = ?, users_password = ? WHERE users_id = ?");
             $query->execute([$login,$password,$id]);
-            //UPDATE users SET login = 'bonjour', password = 'bonjour' WHERE login = 'salut'
         }
 
 

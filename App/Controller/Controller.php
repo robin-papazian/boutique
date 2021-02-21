@@ -7,9 +7,6 @@ use App\Model\Model;
 class Controller extends Model
 {
 
-    protected $column = 'users_login';
-    protected $view;
-
     public function __construct()
     {
         parent::__construct();

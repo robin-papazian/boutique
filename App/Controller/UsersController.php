@@ -13,7 +13,7 @@ class UsersController extends Controller
         {
             extract($array);
        
-            $user = $this->inDb($users_login);
+            $user = $this->findMe('users_login',$users_login);
             if(!$user)
             {
                 $this->insertData($array);
@@ -34,15 +34,15 @@ class UsersController extends Controller
         if(isset($array))
         {
             extract($array);
-            $data = $this->inDb($login);
-            if(!$data)
+            $user = $this->findMe('users_login',$login);
+            if(!$user)
             {
                 return 'Mauvaise identifiant';
             }
             else
             {
-                $_SESSION['login'] = $data['users_login'];
-                $_SESSION['id'] = $data['users_id'];
+                $_SESSION['login'] = $user['users_login'];
+                $_SESSION['id'] = $user['users_id'];
                 
                 header('Location:index.php?view=account');
             }      
