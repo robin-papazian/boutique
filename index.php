@@ -8,7 +8,7 @@ require('App/Libraries/Autoload.php');
 spl_autoload_register('autoload');
 
 
-$control = new App\Controller\Controller;
+$control = new App\Controller\UsersController;
 
 
 
@@ -25,21 +25,21 @@ if(isset($_GET['view']))
     elseif($view == "inscription")
     {
        
-        $data = $control->form();
+        $data = $control->getColumnsName($_POST);
         $form = $control->inscription($data);
         $control->render($view,['form' => $form]);
     }
     elseif($view == "connexion")
     {
       
-        $data = $control->form();
+        $data = $control->getColumnsName($_POST);
         $form = $control->connexion($data);
         $control->render($view,['form' => $form]);
         
     }
     elseif($view == "account")
     {
-        $data = $control->form();
+        $data = $control->getColumnsName($_POST);
         $form = $control->account($data);
         $control->render($view);
     }

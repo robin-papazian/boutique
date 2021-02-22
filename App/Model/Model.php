@@ -7,12 +7,13 @@ use \PDO;
     {
         protected $db;
         protected $table;
-        protected $column;
-        protected $columnsname = "("; 
+        protected $columnsname;
+        protected $valuesname; 
 
         public function __construct()
         {
             $this->setDb();
+            
         }
 
         /**
@@ -30,54 +31,52 @@ use \PDO;
             return $this->db;
         }
 
-        public function user($users_name,$users_familly_name,$users_login,$users_password,$users_email,$users_town,$users_post_code,$users_street,$users_street_number)
+        public function stickIn($array)
         {
-            $int_post_code = intval($users_post_code);
-            $int_street_number = intval($users_street_number);
-            $query = $this->db->prepare("INSERT INTO {$this->table} {$this->columnsname} VALUES (:users_name,:users_familly_name,:users_login,:users_password,:users_email,:users_town,:users_post_code,:users_street,:users_street_number)");
-    
-            
-            
-            // $data = $query->execute([$name,$familly_name,$login,$password,$email,$town,$post_code,$street,$street_number]);
-            $query->bindParam('users_name',$users_name);
-        
-            $query->bindParam('users_familly_name',$users_familly_name);
-        
-            $query->bindParam('users_login',$users_login);
-        
-            $query->bindParam('users_password',$users_password);
-        
-            $query->bindParam('users_email',$users_email);
-        
-            $query->bindParam('users_town',$users_town);
-        
-            $query->bindParam('users_post_code',$int_post_code);
-        
-            $query->bindParam('users_street',$users_street);
-        
-            $query->bindParam('users_street_number',$int_street_number);
-        
-        
-
-            $query->execute();
-          
+            $tab = [];
+            $query = $this->db->prepare("INSERT INTO {$this->table} {$this->columnsname} VALUES {$this->valuesname}");
+            foreach($array as $key => $value)
+            {
+                //$data = is_numeric($value)?intval($value):$value;
+                array_push($tab,$value);    
+            }
+            $query->execute(array_values($tab));
         }
 
-        public function inDb($login)
+        public function stickOut($column, $data)
         {
-            $query = $this->db->query("SELECT * FROM {$this->table} WHERE {$this->column} = '$login'");
+            $query = $this->db->query("SELECT * FROM {$this->table} WHERE ($column) = '$data'");
             $indb = $query->fetch();
             return $indb;
         }
 
-        public function update($login,$password,$id)
+        public function renew($array,$id)
         {
+            //$id = (int)$id;
+            $columns = [];
+            $result = [];
+            $cible = $this->table.'_id = ?';
+            foreach($array as $key => $value)
+            {
+                if(!empty($value))
+                {
+                    $key .= ' = ?,';     
+                    array_push($columns, $key);
+                    array_push($result, $value);    
+                }
+                
+            }
+            $columns = implode('',$columns);
+            $lastChar = strlen($columns) -1 ;
+            $columns = substr_replace($columns,'', $lastChar);
+            
+            array_push($result, $id);
+            
+            
+            $query = $this->db->prepare("UPDATE {$this->table} SET $columns WHERE $cible");
 
-            $query = $this->db->prepare("UPDATE {$this->table} SET users_login = ?, users_password = ? WHERE users_id = ?");
-            $query->execute([$login,$password,$id]);
-            //UPDATE users SET login = 'bonjour', password = 'bonjour' WHERE login = 'salut'
+            $query->execute(array_values($result));
         }
-
 
     }
 

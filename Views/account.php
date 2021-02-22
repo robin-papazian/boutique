@@ -1,31 +1,31 @@
 <h1>compte</h1>
 <form method='post' action='index.php?view=account'>
-<label for='user'>Login
-    <input type='text' name='login' value=<?=$_SESSION['login']?>>
+<label for='users_name'>prenom
+    <input type='text' name='users_name'>
 <label>
-<label for='password'>mot de passe 
-    <input type='password' name='password'>
+<label for='users_familly_name'>nom
+    <input type='text' name='users_familly_name'>
 <label>
-<label for='name'>prenom
-    <input type='text' name='name'>
+<label for='users_login'>Login
+    <input type='text' name='users_login' value=<?= $_SESSION['login']?>>
 <label>
-<label for='familly_name'>nom
-    <input type='text' name='familly_name'>
+<label for='users_password'>mot de passe 
+    <input type='password' name='users_password'>
 <label>
-<label for='email'>email
-    <input type='email' name='email'>
+<label for='users_email'>email
+    <input type='email' name='users_email'>
 <label>
-<label for='town'>ville
-    <input type='text' name='town'>
+<label for='users_town'>ville
+    <input type='text' name='users_town'>
 <label>
-<label for='post_code'>code postale
-    <input type='number' name='post_code'>
+<label for='users_post_code'>code postale
+    <input type='number' name='users_post_code'>
 <label>
-<label for='street'>rue
-    <input type='text' name='street'>
+<label for='users_street'>rue
+    <input type='text' name='users_street'>
 <label>
-<label for='street_number'>numéro
-    <input type='number' name='street_number'>
+<label for='users_street_number'>numéro
+    <input type='number' name='users_street_number'>
 <label>
 <input type='submit' name='submit'>
 </form>
