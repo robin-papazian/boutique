@@ -13,7 +13,7 @@ class UsersController extends Controller
         {
             extract($array);
        
-            $user = $this->stickOut('users_login',$users_login);
+            $user = $this->stickOut('WHERE users_login =', "'$users_login'");
             if(!$user)
             {
                 $this->stickIn($array);
@@ -33,6 +33,7 @@ class UsersController extends Controller
     {
         if(isset($array))
         {
+
             extract($array);
             $user = $this->stickOut('users_login',$login);
             if(!$user)

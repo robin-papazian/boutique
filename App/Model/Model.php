@@ -43,10 +43,13 @@ use \PDO;
             $query->execute(array_values($tab));
         }
 
-        public function stickOut($column, $data)
+        public function stickOut(...$param)
         {
-            $query = $this->db->query("SELECT * FROM {$this->table} WHERE ($column) = '$data'");
-            $indb = $query->fetch();
+            $param = implode('',$param);
+
+            $query = $this->db->query("SELECT * FROM {$this->table} $param");
+            
+            $indb = $query->fetchAll();
             return $indb;
         }
 
