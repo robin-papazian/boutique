@@ -10,6 +10,7 @@ spl_autoload_register('autoload');
 
 $user = new App\Controller\UsersController;
 $product = new App\Controller\ProductsController;
+$categorie = new App\Controller\CategoriesController;
 
 
 
@@ -19,44 +20,50 @@ if(isset($_GET['view']))
 {
     $view = $_GET['view'];
     
-    if($view == "index")
+    if($view == "acceuil")
     {
-        $data = $product->acceuil();
+        $data = $product->list();
         $user->render($view,['data' => $data]);
     }
     elseif($view == "inscription")
     {
        
-        $data = $user->getColumnsName($_POST);
+        $data = $user->formScrapping($_POST);
         $form = $user->inscription($data);
         $user->render($view,['form' => $form]);
     }
     elseif($view == "connexion")
     {
       
-        $data = $user->getColumnsName($_POST);
+        $data = $user->formScrapping($_POST);
         $form = $user->connexion($data);
         $user->render($view,['form' => $form]);
         
     }
     elseif($view == "account")
     {
-        $data = $user->getColumnsName($_POST);
+        $data = $user->formScrapping($_POST);
         $form = $user->account($data);
         $user->render($view);
     }
+    elseif($view == "products")
+    {
+        $product = new App\Controller\ProductsController;
+        $user->render($view,['product' => $product]);
+    }
     elseif($view == "categories")
     {
-        $control->render($view);
+        $data = $categorie->list();
+        $user->render($view,['data' => $data]);
     }
     else
     {
-        $control->render('404');
+        $user->render('404');
     }
 }
 else
 {
-    $control->render('index');
+    $user->render('index');
 
 }
 

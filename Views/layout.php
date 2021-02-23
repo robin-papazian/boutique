@@ -8,7 +8,7 @@
     <header>
         <nav >
             <ul>
-                <li><a href="index.php?view=index" >Acceuil</a></li>
+                <li><a href="index.php?view=acceuil" >Acceuil</a></li>
                 <li><a href='index.php?view=inscription'>inscription</a></li>
                 <li><a href='index.php?view=connexion'>Connexion</a></li>
                 <li><a href='index.php?view=categories'>Catalogue</a></li>

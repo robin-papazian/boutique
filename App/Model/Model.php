@@ -46,7 +46,6 @@ use \PDO;
         public function stickOut(...$param)
         {
             $param = implode('',$param);
-
             $query = $this->db->query("SELECT * FROM {$this->table} $param");
             
             $indb = $query->fetchAll();

@@ -34,7 +34,7 @@ class Controller extends Model
 
     }
 
-    public function getColumnsName($array)
+    public function formScrapping($array)
     {
         if(isset($array['submit']))
         {
@@ -59,6 +59,20 @@ class Controller extends Model
             
             return $array;    
         }
+
+        
+    }
+
+    public function list()
+    {
+        $items = $this->stickOut();
+        return $items;
+    }
+
+    public function item($id)
+    {
+        $product = $this->stickOut('WHERE ',$this->table.'_id = ',$id);
+        return $product;
     }
 
 
