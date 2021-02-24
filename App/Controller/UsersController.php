@@ -6,53 +6,57 @@ use App\Controller\Controller;
 
 class UsersController extends Controller
 {
-    public function inscription($array)
+
+    private $erreur;
+
+    public function manage($view, $array)
     {
         if(isset($array))
         {
             extract($array);
-       
             $user = $this->stickOut('WHERE users_login =', "'$users_login'");
             if(!$user)
             {
-                $array['users_password'] = password_hash($array['users_password'],PASSWORD_BCRYPT);
-                $this->stickIn($array);
+                if($view == 'inscription')
+                {
+                    $array['users_password'] = password_hash($array['users_password'],PASSWORD_BCRYPT);
+                    $this->stickIn($array);
+                }
+                elseif($view == 'connexion')
+                {
+                    return 'Mauvaise identifiant';
+                }
             }
-            else
+            elseif($user)
             {
-                return 'le login existe déja';    
-            }
-        }       
+                if($view == 'inscription')
+                {
+                    return 'le login existe déja';
+                }
+                elseif($view == 'connexion')
+                {
+                    $m = $this->acces($user,$users_password);
+                    return $m;
+                }
+            }    
+        }
     }
 
-    public function connexion($array)
+    public function acces($array, $data)
     {
-        if(isset($array))
+        foreach($array as $index)
         {
-            extract($array);
-            $user = $this->stickOut('WHERE ',$this->table.'_login = ',"'$login'");
-            if(!$user)
+            if(password_verify($data, $index['users_password']))
             {
-                return 'Mauvaise identifiant';
+                $_SESSION['login'] = $index['users_login'];
+                $_SESSION['id'] = $index['users_id'];
+                header('Location:index.php?view=account');
             }
             else
             {
-                foreach($user as $index)
-                {
-                    if(password_verify($password, $index['users_password']))
-                    {
-                        $_SESSION['login'] = $index['users_login'];
-                        $_SESSION['id'] = $index['users_id'];
-                        header('Location:index.php?view=account');
-                    }
-                    else
-                    {
-                        return 'Mauvais mots de passe';
-                    }
-                }   
+                return 'Mauvais mots de passe';
             }
-           
-        }
+        }   
     }
 
     public function account($array)

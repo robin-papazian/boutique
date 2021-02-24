@@ -1,10 +1,10 @@
 <h1>connexion</h1>
 <form method='post' action='index.php?view=connexion'>
-<label for='login'>Login
-    <input type='text' name='login'>
+<label for='users_login'>Login
+    <input type='text' name='users_login'>
 <label>
-<label for='password'>mot de passe 
-    <input type='password' name='password'>
+<label for='users_password'>mot de passe 
+    <input type='password' name='users_password'>
 <label>
 <input type='submit' name='submit'>
 </form>

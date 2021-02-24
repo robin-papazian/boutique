@@ -29,14 +29,14 @@ if(isset($_GET['view']))
     {
        
         $data = $user->formScrapping($_POST);
-        $form = $user->inscription($data);
+        $form = $user->manage($view,$data);
         $user->render($view,['form' => $form]);
     }
     elseif($view == "connexion")
     {
       
         $data = $user->formScrapping($_POST);
-        $form = $user->connexion($data);
+        $form = $user->manage($view,$data);
         $user->render($view,['form' => $form]);
         
     }
