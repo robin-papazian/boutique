@@ -44,7 +44,7 @@ if(isset($_GET['view']))
     {
         $data = $user->formScrapping($_POST);
         $form = $user->account($data);
-        $user->render($view);
+        $user->render($view,['form' => $form]);
     }
     elseif($view == "products")
     {
