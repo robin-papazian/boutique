@@ -20,7 +20,7 @@ if(isset($_GET['view']))
 {
     $view = $_GET['view'];
     
-    if($view == "acceuil")
+    if($view == "index")
     {
         $data = $product->list();
         $user->render($view,['data' => $data]);
