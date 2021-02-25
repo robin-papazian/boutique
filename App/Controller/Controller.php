@@ -71,7 +71,7 @@ class Controller extends Model
 
     public function item($id)
     {
-        $product = $this->stickOut('WHERE ',$this->table.'_id = ',$id);
+        $product = $this->stickOut('WHERE ',$this->table.'_categorie = ',$id);
         return $product;
     }
 

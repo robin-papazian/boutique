@@ -22,7 +22,7 @@ if(isset($_GET['view']))
     
     if($view == "index")
     {
-        $data = $product->list();
+        $data = $categorie->list();
         $user->render($view,['data' => $data]);
     }
     elseif($view == "inscription")
@@ -43,10 +43,16 @@ if(isset($_GET['view']))
     elseif($view == "account")
     {
         $data = $user->formScrapping($_POST);
-        $form = $user->account($data);
+        $form = $user->manage($view,$data);
         $user->render($view,['form' => $form]);
     }
     elseif($view == "products")
+    {
+        $categorie = new App\Controller\ProductsController;
+        $user->render($view,['categorie' => $categorie]);
+        
+    }
+    elseif($view == "item")
     {
         $product = new App\Controller\ProductsController;
         $user->render($view,['product' => $product]);
@@ -63,7 +69,8 @@ if(isset($_GET['view']))
 }
 else
 {
-    $user->render('index');
+    $data = $product->list();
+    $user->render('index',['data' => $data]);
 
 }
 

@@ -1,15 +1,12 @@
+<p>tout les appareille</p>
 <?php
 
 if(isset($_GET['product']))
 {
     $id = $_GET['product'];
-    $item = $product->item($id);
+    $products = $categorie->item($id);
     echo '<pre>';
-    print_r($item);
+    print_r($products);
     echo '<pre>';
-    foreach($item as $description)
-    {
+}
 ?>
-<h1><?= $description['products_name']?> </h1>
-<?php } }?>
-

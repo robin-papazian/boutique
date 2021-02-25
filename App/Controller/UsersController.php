@@ -7,14 +7,12 @@ use App\Controller\Controller;
 class UsersController extends Controller
 {
 
-    private $erreur;
-
     public function manage($view, $array)
     {
         if(isset($array))
         {
             extract($array);
-            $user = $this->stickOut('WHERE users_login =', "'$users_login'");
+            $user = $this->stickOut('WHERE ',$this->table.'_login = ', "'$users_login'");
             if(!$user)
             {
                 if($view == 'inscription')
@@ -38,6 +36,12 @@ class UsersController extends Controller
                     $m = $this->acces($user,$users_password);
                     return $m;
                 }
+                elseif($view == 'account')
+                {
+                    $id = $_SESSION['id'];
+                    $this->renew($array,$id);
+
+                }
             }    
         }
     }
@@ -59,17 +63,7 @@ class UsersController extends Controller
         }   
     }
 
-    public function account($array)
-    {
-        if(isset($array))
-        {
-            extract($array);
-            $id = $_SESSION['id'];
-            $this->renew($array,$id);
-            
-        }    
-
-    }
+   
 }
 
 ?>
