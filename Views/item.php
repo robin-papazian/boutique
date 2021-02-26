@@ -7,8 +7,6 @@ if(isset($_GET['product']))
     echo '<pre>';
     print_r($item);
     echo '<pre>';
-    foreach($item as $description)
-    {
+    
+}
 ?>
-<h1><?= $description['products_name']?> </h1>
-<?php } };?>

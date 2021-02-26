@@ -48,19 +48,14 @@ if(isset($_GET['view']))
     }
     elseif($view == "products")
     {
-        $categorie = new App\Controller\ProductsController;
-        $user->render($view,['categorie' => $categorie]);
+        $products = new App\Controller\ProductsController;
+        $user->render($view,['products' => $products]);
         
     }
     elseif($view == "item")
     {
         $product = new App\Controller\ProductsController;
         $user->render($view,['product' => $product]);
-    }
-    elseif($view == "categories")
-    {
-        $data = $categorie->list();
-        $user->render($view,['data' => $data]);
     }
     else
     {
@@ -69,7 +64,7 @@ if(isset($_GET['view']))
 }
 else
 {
-    $data = $product->list();
+    $data = $categorie->list();
     $user->render('index',['data' => $data]);
 
 }

@@ -47,6 +47,7 @@ use \PDO;
         {
             $param = implode('',$param);
             
+            
             $query = $this->db->query("SELECT * FROM {$this->table} $param");
            
             $indb = $query->fetchAll();
