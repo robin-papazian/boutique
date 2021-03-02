@@ -54,6 +54,16 @@ use \PDO;
             return $indb;
         }
 
+        public function test($sql, $array=[])
+        {
+            $query = $this->db->prepare($sql);
+            $query->execute($array);
+          
+            var_dump($sql);
+            $result = $query->fetchAll(PDO::FETCH_OBJ);
+            return $result;
+        }
+
         public function renew($array,$id)
         {
             //$id = (int)$id;

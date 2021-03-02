@@ -11,6 +11,7 @@ class Controller extends Model
     {
         parent::__construct();
         $this->table = $this->getTableName();
+        require_once('App/Libraries/Autoprepare.php');
     }
 
     public function render(string $page,$variable = [])
@@ -69,11 +70,7 @@ class Controller extends Model
         return $items;
     }
 
-    // public function item($id)
-    // {
-    //     $product = $this->stickOut('WHERE ',$this->table.'_id = ',$id);
-    //     return $product;
-    // }
+
 
 
 

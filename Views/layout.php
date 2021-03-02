@@ -43,7 +43,7 @@
                             <a class="dropdown-item" href="index.php?view=connexion">Connexion</a>
                             <a class="dropdown-item" href="index.php?view=inscription">Inscription</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="index.php?view=pannier">Pannier</a>
                         </div>
                     </li>
                     <li class="nav-item">

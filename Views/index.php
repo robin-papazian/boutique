@@ -26,13 +26,13 @@
             foreach($data as $categorie)
             {
                 $item = "<div class='carousel-item active'>";
-                $item .= "<a href='index.php?view=products&product=$categorie[0]'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie[1].".jpg'></a></div>";
+                $item .= "<a href='index.php?view=products&product_categorie=$categorie[0]'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie[1].".jpg'></a></div>";
             break;   
             }
             foreach($data as $categorie)
             {
                 $item .= "<div class='carousel-item'>";
-                $item .= "<a href='index.php?view=products&product=$categorie[0]'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie[1].".jpg'></a></div>";
+                $item .= "<a href='index.php?view=products&product_categorie=$categorie[0]'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie[1].".jpg'></a></div>";
             }
             return $item;
 

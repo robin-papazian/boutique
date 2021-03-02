@@ -57,6 +57,11 @@ if(isset($_GET['view']))
         $product = new App\Controller\ProductsController;
         $user->render($view,['product' => $product]);
     }
+    elseif($view == "pannier")
+    {
+        $product = new App\Controller\ProductsController;
+        $user->render($view,['product' => $product]);
+    }
     else
     {
         $user->render('404');
