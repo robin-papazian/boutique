@@ -10,10 +10,6 @@ use \PDO;
         protected $table;
         public function getTable(){return $this->table;}
 
-
-        protected $columnsname;
-        protected $valuesname; 
-
         public function __construct()
         {
             $this->setDb();
@@ -51,69 +47,26 @@ use \PDO;
     
         }
 
-        public function stickIn($array)
+
+        /**
+         * Execute une requet prepare
+         */
+        public function stickIn($sql, $array=[])
         {
-            $tab = [];
-            $query = $this->db->prepare("INSERT INTO {$this->table} {$this->columnsname} VALUES {$this->valuesname}");
-            foreach($array as $key => $value)
-            {
-                //$data = is_numeric($value)?intval($value):$value;
-                array_push($tab,$value);    
-            }
-            $query->execute(array_values($tab));
+            $query = $this->db->prepare($sql);
+            $query->execute($array);
         }
 
-        public function stickOut(...$param)
-        {
-            $param = implode('',$param);
-            
-            
-            $query = $this->db->query("SELECT * FROM {$this->table} $param");
-           
-            $indb = $query->fetchAll();
-            return $indb;
-        }
-
-        public function test($sql, $array=[])
+        /**
+         * Retourne le resulta d'une requete prepare
+         * 
+         */
+        public function stickOut(string $sql, array $array=[])
         {
             $query = $this->db->prepare($sql);
             $query->execute($array);
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
             return $result;
-        }
-
-        public function testA($sql, $array=[])
-        {
-            $query = $this->db->prepare($sql);
-            $query->execute($array);
-        }
-
-        public function renew($array,$id)
-        {
-            //$id = (int)$id;
-            $columns = [];
-            $result = [];
-            $cible = $this->table.'_id = ?';
-            foreach($array as $key => $value)
-            {
-                if(!empty($value))
-                {
-                    $key .= ' = ?,';     
-                    array_push($columns, $key);
-                    array_push($result, $value);    
-                }
-                
-            }
-            $columns = implode('',$columns);
-            $lastChar = strlen($columns) -1 ;
-            $columns = substr_replace($columns,'', $lastChar);
-            
-            array_push($result, $id);
-            
-            
-            $query = $this->db->prepare("UPDATE {$this->table} SET $columns WHERE $cible");
-
-            $query->execute(array_values($result));
         }
 
     }
