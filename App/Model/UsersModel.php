@@ -8,20 +8,30 @@ use App\Model\Model;
     class UsersModel extends Model
     {
 
-        public function inDb($login)
+        /**
+         * Retourne un utilisateur en bdd
+         */
+        public function inDb(string $login)
         {  
-            $user = $this->test("SELECT * FROM {$this->table} WHERE users_login = '$login'");
+            $user = $this->stickOut("SELECT * FROM {$this->table} WHERE users_login = '$login'");
             return $user;
         }
 
-        public function signIn($colonne,$prepare, $execute)
+        /**
+         * Insert un utilisateur en bdd
+         */
+        public function signIn(string $colonne, string $prepare, array $execute)
         {
-            $user = $this->testA("INSERT INTO {$this->table} $colonne VALUES $prepare", $execute);
+            $user = $this->stinckIn("INSERT INTO {$this->table} $colonne VALUES $prepare", $execute);
         }
 
-        public function manageAccount($colonne, $id, $execute)
+
+        /**
+         * Modifie les données d'un utilisateur
+         */
+        public function manageAccount(string $colonne, string $id, array $execute)
         {
-            $this->testA("UPDATE {$this->table} SET $colonne WHERE users_id = $id", $execute);
+            $this->stickIn("UPDATE {$this->table} SET $colonne WHERE users_id = $id", $execute);
         }
     }
 ?>
