@@ -3,66 +3,82 @@
 namespace App\Controller;
 
 use App\Controller\Controller;
+use App\Model\UsersModel;
+
+require_once('App/Libraries/Autoprepare.php');
 
 class UsersController extends Controller
 {
-
-    public function manage($view, $array)
+    public function __construct()
     {
-        if(isset($array))
-        {
-            extract($array);
-            $user = $this->stickOut('WHERE ',$this->table.'_login = ', "'$users_login'");
-            if(!$user)
-            {
-                if($view == 'inscription')
-                {
-                    $array['users_password'] = password_hash($array['users_password'],PASSWORD_BCRYPT);
-                    $this->stickIn($array);
-                }
-                elseif($view == 'connexion')
-                {
-                    return 'Mauvaise identifiant';
-                }
-            }
-            elseif($user)
-            {
-                if($view == 'inscription')
-                {
-                    return 'le login existe déja';
-                }
-                elseif($view == 'connexion')
-                {
-                    $m = $this->acces($user,$users_password);
-                    return $m;
-                }
-                elseif($view == 'account')
-                {
-                    $id = $_SESSION['id'];
-                    $this->renew($array,$id);
-
-                }
-            }    
-        }
+        $this->model = new UsersModel;
     }
 
-    public function acces($array, $data)
+    public function inscription()
     {
-        foreach($array as $index)
+       
+        if(isset($_POST['submit']))
         {
-            if(password_verify($data, $index['users_password']))
+            $data = autoprepare($_POST);
+            extract($data['execute']); 
+            $user = $this->model->inDb($users_login);
+
+            if(!$user)
             {
-                $_SESSION['login'] = $index['users_login'];
-                $_SESSION['id'] = $index['users_id'];
-                header('Location:index.php?view=account');
+                $data['execute']['users_password'] = password_hash($data['execute']['users_password'],PASSWORD_BCRYPT);
+
+                $this->model->signIn($data['colonnes'], $data['prepare'], $data['execute']);
+            }
+        }
+        
+        
+        $this->render('inscription',['data' => $data]);
+
+    }
+
+    public function connexion()
+    {
+        $message = '';
+        if(isset($_POST['submit']))
+        {
+            $data = autoprepare($_POST);
+            extract($data['execute']); 
+            $user = $this->model->inDb($users_login);
+            if($user)
+            {
+                if(password_verify($data['execute']['users_password'],$user[0]['users_password']))
+                {
+                    $_SESSION['login'] = $user[0]['users_login'];
+                    $_SESSION['id'] = $user[0]['users_id'];
+                    header('Location:index.php?view=account');
+                }
+                else
+                {
+                    $message = 'Mauvaise Identifiant';
+
+                }
             }
             else
             {
-                return 'Mauvais mots de passe';
+                $message = 'Utilisateur Inconnue';
             }
-        }   
+        }
+        $this->render('connexion',['message' => $message]);
+
     }
 
+    public function account()
+    {
+        $id = $_SESSION['id'];
+        if(isset($_POST['submit']))
+        {
+            $data = autoprepare($_POST);
+            $this->model->manageAccount($data['set'],$id,$data['execute']);
+        }
+        $this->render('account');
+
+
+    }
    
 }
 

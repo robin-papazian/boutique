@@ -2,17 +2,12 @@
 
 namespace App\Controller;
 
-use App\Model\Model;
 
-class Controller extends Model
+class Controller 
 {
+    protected $model;
+    
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->table = $this->getTableName();
-        require_once('App/Libraries/Autoprepare.php');
-    }
 
     public function render(string $page,$variable = [])
     {
@@ -24,16 +19,6 @@ class Controller extends Model
 
     }
 
-    public function getTableName()
-    {
-        $classnamespace = get_class($this);
-        $classnamespace = explode('\\',$classnamespace);
-        $class = end($classnamespace);
-        $class = strtolower($class);
-        $table = str_replace('controller','',$class);
-        return $table;
-
-    }
 
     public function formScrapping($array)
     {

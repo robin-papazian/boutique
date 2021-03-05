@@ -8,9 +8,11 @@ require('App/Libraries/Autoload.php');
 spl_autoload_register('autoload');
 
 
-$user = new App\Controller\UsersController;
+
 $product = new App\Controller\ProductsController;
 $categorie = new App\Controller\CategoriesController;
+
+$controler = new App\Controller\UsersController;
 
 
 
@@ -27,24 +29,18 @@ if(isset($_GET['view']))
     }
     elseif($view == "inscription")
     {
-       
-        $data = $user->formScrapping($_POST);
-        $form = $user->manage($view,$data);
-        $user->render($view,['form' => $form]);
+       $controler->inscription();
     }
     elseif($view == "connexion")
     {
       
-        $data = $user->formScrapping($_POST);
-        $form = $user->manage($view,$data);
-        $user->render($view,['form' => $form]);
+        $controler->connexion();
         
     }
     elseif($view == "account")
     {
-        $data = $user->formScrapping($_POST);
-        $form = $user->manage($view,$data);
-        $user->render($view,['form' => $form]);
+        
+        $controler->account();
     }
     elseif($view == "products")
     {

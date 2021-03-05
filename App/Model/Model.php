@@ -6,14 +6,18 @@ use \PDO;
     Class Model
     {
         protected $db;
+        
         protected $table;
+        public function getTable(){return $this->table;}
+
+
         protected $columnsname;
         protected $valuesname; 
 
         public function __construct()
         {
             $this->setDb();
-            
+            $this->table = $this->SetTable();    
         }
 
         /**
@@ -29,6 +33,22 @@ use \PDO;
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
             return $this->db;
+        }
+
+        /**
+         * Retourne le nom d'une table en bdd en se basant
+         * sur le nom de la class utilisé 
+         * @return string */
+        
+        public function SetTable() :string
+        {
+            $classnamespace = get_class($this);
+            $classnamespace = explode('\\',$classnamespace);
+            $class = end($classnamespace);
+            $class = strtolower($class);
+            $table = str_replace('model','',$class);
+            return $table;
+    
         }
 
         public function stickIn($array)
@@ -58,10 +78,14 @@ use \PDO;
         {
             $query = $this->db->prepare($sql);
             $query->execute($array);
-          
-            var_dump($sql);
-            $result = $query->fetchAll(PDO::FETCH_OBJ);
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
             return $result;
+        }
+
+        public function testA($sql, $array=[])
+        {
+            $query = $this->db->prepare($sql);
+            $query->execute($array);
         }
 
         public function renew($array,$id)

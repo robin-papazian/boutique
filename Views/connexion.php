@@ -9,4 +9,4 @@
 <input type='submit' name='submit'>
 </form>
 
-<?= $form?>
+<?= $message ?>
