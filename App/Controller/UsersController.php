@@ -3,20 +3,25 @@
 namespace App\Controller;
 
 use App\Controller\Controller;
+
 use App\Model\UsersModel;
+
 
 require_once('App/Libraries/Autoprepare.php');
 
 class UsersController extends Controller
 {
+    
     public function __construct()
     {
         $this->model = new UsersModel;
+       
     }
+    
 
     public function inscription()
     {
-       
+        $data = '';
         if(isset($_POST['submit']))
         {
             $data = autoprepare($_POST);
@@ -31,8 +36,8 @@ class UsersController extends Controller
             }
         }
         
-        
         $this->render('inscription',['data' => $data]);
+        
 
     }
 
@@ -79,6 +84,18 @@ class UsersController extends Controller
 
 
     }
+
+    public function testation()
+    {
+        $class = get_class($this);
+        $class = str_replace('Controller','Model',$class);
+        $model = explode('\\',$class);
+        $model = end($model);
+        $model = 'new '.$model;
+        //$model = $class."\\".$model.";";
+        $this->render('index',['class' => $class,'model'=>$model]);
+    }
+    
    
 }
 

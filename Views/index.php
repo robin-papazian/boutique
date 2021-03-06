@@ -60,7 +60,8 @@
 
 
 <?php 
-
+echo $class;
+var_dump($model);
 
 // foreach($data as $product)
 // {

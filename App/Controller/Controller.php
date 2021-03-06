@@ -3,11 +3,10 @@
 namespace App\Controller;
 
 
+
 class Controller 
 {
     protected $model;
-    
-
 
     public function render(string $page,$variable = [])
     {
@@ -16,6 +15,17 @@ class Controller
         require('Views/'.$page.'.php');
         $PageContent = ob_get_clean();
         require('Views/layout.php');
+
+    }
+
+    public function SetModel() 
+    {
+        $class = get_class($this);
+        $class = str_replace('Controller','Model',$class);
+        $model = explode('\\',$class);
+        $model = end($model);
+        
+        return new $model;
 
     }
 
@@ -49,11 +59,7 @@ class Controller
         
     }
 
-    public function list()
-    {
-        $items = $this->stickOut();
-        return $items;
-    }
+
 
 
 

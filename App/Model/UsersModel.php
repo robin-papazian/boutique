@@ -11,7 +11,7 @@ use App\Model\Model;
         /**
          * Retourne un utilisateur en bdd
          */
-        public function inDb(string $login)
+        public function inDb( $login)
         {  
             $user = $this->stickOut("SELECT * FROM {$this->table} WHERE users_login = '$login'");
             return $user;

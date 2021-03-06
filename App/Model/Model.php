@@ -61,7 +61,7 @@ use \PDO;
          * Retourne le resulta d'une requete prepare
          * 
          */
-        public function stickOut(string $sql, array $array=[])
+        public function stickOut( $sql, array $array=[])
         {
             $query = $this->db->prepare($sql);
             $query->execute($array);
