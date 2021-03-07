@@ -11,18 +11,20 @@ use App\Model\Model;
         /**
          * Retourne un utilisateur en bdd
          */
-        public function inDb( $login)
-        {  
-            $user = $this->stickOut("SELECT * FROM {$this->table} WHERE users_login = '$login'");
+        public function inDb($login)
+        {
+            $user = $this->listBy("_login", $login);
             return $user;
         }
+
+        
 
         /**
          * Insert un utilisateur en bdd
          */
         public function signIn(string $colonne, string $prepare, array $execute)
         {
-            $user = $this->stinckIn("INSERT INTO {$this->table} $colonne VALUES $prepare", $execute);
+            $user = $this->insertBy($colonne, $prepare, $execute);
         }
 
 
@@ -31,7 +33,7 @@ use App\Model\Model;
          */
         public function manageAccount(string $colonne, string $id, array $execute)
         {
-            $this->stickIn("UPDATE {$this->table} SET $colonne WHERE users_id = $id", $execute);
+            $this->updateBy($colonne,'_id',$id,$execute);
         }
     }
 ?>

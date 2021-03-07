@@ -1,73 +1,27 @@
 <?php
 
 namespace App\Model;
-use \PDO;
 
-    Class Model
+use App\Core\Core;
+
+    class Model extends Core
     {
-        protected $db;
-        
-        protected $table;
-        public function getTable(){return $this->table;}
-
-        public function __construct()
+        public function listBy($cible, $data)
         {
-            $this->setDb();
-            $this->table = $this->SetTable();    
-        }
-
-        /**
-         * Initialise une connection à la base de donnée
-         * @return PDO
-         */
-
-        public function setDb() :PDO
-        {
-            require('Conf/Conf.php');
-
-            $this->db = new PDO($link,$username,$password,array(
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-            return $this->db;
-        }
-
-        /**
-         * Retourne le nom d'une table en bdd en se basant
-         * sur le nom de la class utilisé 
-         * @return string */
-        
-        public function SetTable() :string
-        {
-            $classnamespace = get_class($this);
-            $classnamespace = explode('\\',$classnamespace);
-            $class = end($classnamespace);
-            $class = strtolower($class);
-            $table = str_replace('model','',$class);
-            return $table;
-    
-        }
-
-
-        /**
-         * Execute une requet prepare
-         */
-        public function stickIn($sql, $array=[])
-        {
-            $query = $this->db->prepare($sql);
-            $query->execute($array);
-        }
-
-        /**
-         * Retourne le resulta d'une requete prepare
-         * 
-         */
-        public function stickOut( $sql, array $array=[])
-        {
-            $query = $this->db->prepare($sql);
-            $query->execute($array);
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $result = $this->stickOut("SELECT * FROM {$this->table} WHERE {$this->table}$cible = '$data'");
             return $result;
         }
+
+        public function insertBy($colonne, $prepare, $execute)
+        {
+            $this->stickIn("INSERT INTO {$this->table} $colonne VALUES $prepare", $execute);
+        }
+
+        public function updateBy(string $colonne, string $cible, string $data, array $array)
+        {
+            $this->stickIn("UPDATE {$this->table} SET $colonne WHERE {$this->table}$cible = '$data'",$array);
+        }
+       
 
     }
 
