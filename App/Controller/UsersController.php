@@ -91,8 +91,8 @@ class UsersController extends Controller
         $class = str_replace('Controller','Model',$class);
         $model = explode('\\',$class);
         $model = end($model);
-        $model = 'new '.$model;
-        //$model = $class."\\".$model.";";
+       
+        $model = $model.";";
         $this->render('index',['class' => $class,'model'=>$model]);
     }
     

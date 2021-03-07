@@ -8,6 +8,7 @@ class Controller
 {
     protected $model;
 
+
     public function render(string $page,$variable = [])
     {
         ob_start();
@@ -24,7 +25,7 @@ class Controller
         $class = str_replace('Controller','Model',$class);
         $model = explode('\\',$class);
         $model = end($model);
-        
+        $model = $model.";";
         return new $model;
 
     }
