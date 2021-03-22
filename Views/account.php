@@ -7,7 +7,7 @@
     <input type='text' name='users_familly_name'>
 </label>
 <label for='users_login'>Login
-    <input type='text' name='users_login' value='<?=$_SESSION['login'] ?>'>
+    <input type='text' name='users_login' placeholder='<?=$_SESSION['login'] ?>'>
 </label>
 <label for='users_password'>mot de passe 
     <input type='password' name='users_password'>

@@ -19,46 +19,46 @@ class Controller
 
     }
 
-    public function SetModel() 
-    {
-        $class = get_class($this);
-        $class = str_replace('Controller','Model',$class);
-        $model = explode('\\',$class);
-        $model = end($model);
-        $model = $model.";";
-        return new $model;
+    // public function SetModel() 
+    // {
+    //     $class = get_class($this);
+    //     $class = str_replace('Controller','Model',$class);
+    //     $model = explode('\\',$class);
+    //     $model = end($model);
+    //     $model = $model.";";
+    //     return new $model;
 
-    }
+    // }
 
 
-    public function formScrapping($array)
-    {
-        if(isset($array['submit']))
-        {
-            unset($array['submit']);
+    // public function formScrapping($array)
+    // {
+    //     if(isset($array['submit']))
+    //     {
+    //         unset($array['submit']);
 
-            $this->columnsname = "(";
-            $this->valuesname = "(";
+    //         $this->columnsname = "(";
+    //         $this->valuesname = "(";
 
-            foreach($array as $key => $value)
-            {
-                $this->columnsname .= $key.",";
-                $this->valuesname .= "?,"; 
-            }
+    //         foreach($array as $key => $value)
+    //         {
+    //             $this->columnsname .= $key.",";
+    //             $this->valuesname .= "?,"; 
+    //         }
             
-            $lastcolumn = strlen($this->columnsname) -1 ;
-            $this->columnsname = substr_replace($this->columnsname,'', $lastcolumn);
-            $this->columnsname .= ')';
+    //         $lastcolumn = strlen($this->columnsname) -1 ;
+    //         $this->columnsname = substr_replace($this->columnsname,'', $lastcolumn);
+    //         $this->columnsname .= ')';
             
-            $lastvalue = strlen($this->valuesname) -1 ;
-            $this->valuesname = substr_replace($this->valuesname,'', $lastvalue);
-            $this->valuesname .= ')';
+    //         $lastvalue = strlen($this->valuesname) -1 ;
+    //         $this->valuesname = substr_replace($this->valuesname,'', $lastvalue);
+    //         $this->valuesname .= ')';
             
-            return $array;    
-        }
+    //         return $array;    
+    //     }
 
         
-    }
+    // }
 
 
 

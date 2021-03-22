@@ -53,8 +53,12 @@ class UsersController extends Controller
             {
                 if(password_verify($data['execute']['users_password'],$user[0]['users_password']))
                 {
-                    $_SESSION['login'] = $user[0]['users_login'];
                     $_SESSION['id'] = $user[0]['users_id'];
+                    $_SESSION['login'] = $user[0]['users_login'];
+                    // $_SESSION['prenom'] = $user[0]['users_name'];
+                    // $_SESSION['nom'] = $user[0]['users_familly_name'];
+                    // $_SESSION['email'] = $user[0]['users_email'];
+                    
                     header('Location:index.php?view=account');
                 }
                 else
