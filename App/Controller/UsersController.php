@@ -32,7 +32,7 @@ class UsersController extends Controller
             {
                 $data['execute']['users_password'] = password_hash($data['execute']['users_password'],PASSWORD_BCRYPT);
 
-                $this->model->signIn($data['colonnes'], $data['prepare'], $data['execute']);
+                $this->model->insertBy($data['colonnes'], $data['prepare'], $data['execute']);
             }
         }
         

@@ -13,20 +13,9 @@ use App\Model\Model;
          */
         public function inDb($login)
         {
-            $user = $this->listBy("_login", $login);
+            $user = $this->listBy("users_login = '$login'");
             return $user;
         }
-
-        
-
-        /**
-         * Insert un utilisateur en bdd
-         */
-        public function signIn(string $colonne, string $prepare, array $execute)
-        {
-            $user = $this->insertBy($colonne, $prepare, $execute);
-        }
-
 
         /**
          * Modifie les données d'un utilisateur

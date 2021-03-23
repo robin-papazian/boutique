@@ -4,7 +4,7 @@
 if(isset($_GET['product_categorie']))
 {
     $id = $_GET['product_categorie'];
-    $items = $product->allByCategorie($id);
+    $items = $product->byCategorie($id);
     echo '<pre>';
     print_r($items);
     echo '<pre>';

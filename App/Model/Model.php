@@ -6,9 +6,9 @@ use App\Core\Core;
 
     class Model extends Core
     {
-        public function listBy($cible, $data)
+        public function listBy($param)
         {
-            $result = $this->stickOut("SELECT * FROM {$this->table} WHERE {$this->table}$cible = '$data'");
+            $result = $this->stickOut("SELECT * FROM {$this->table} WHERE $param");
             return $result;
         }
 
