@@ -55,7 +55,7 @@
     </header>
         <?= $PageContent ?>
     <footer>
-        <p>Copyright © 2021 | Robin | Jarod</p>
+        <p>Copyright © 2021 | Pierro | Robino</p>
     </footer>
 
     

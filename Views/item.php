@@ -3,7 +3,7 @@
 if(isset($_GET['product']))
 {
     $id = $_GET['product'];
-    $item = $product->description($id);
+    $item = $product->byId($id);
     echo '<pre>';
     print_r($item);
     echo '<pre>';
