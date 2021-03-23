@@ -13,7 +13,7 @@ class Controller
     {
         ob_start();
         extract($variable);
-        require('Views/'.$page.'.php');
+        require('Views/Html/'.$page.'.php');
         $PageContent = ob_get_clean();
         require('Views/layout.php');
 

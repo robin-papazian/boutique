@@ -9,13 +9,13 @@ use App\Model\Model;
     {
         public function byCategorie($id)
         {
-            $product = $this->listBy("products_categorie = '$id'");
+            $product = $this->listBy("WHERE products_categorie = '$id'");
             return $product;
         }
 
         public function byId($id)
         {
-            $product = $this->listBy("products_id = '$id'");
+            $product = $this->listBy("WHERE products_id = '$id'");
             return $product;
 
         }

@@ -55,11 +55,18 @@ class UsersController extends Controller
                 {
                     $_SESSION['id'] = $user[0]['users_id'];
                     $_SESSION['login'] = $user[0]['users_login'];
+                    $_SESSION['droit'] = $user[0]['users_droit'];
                     // $_SESSION['prenom'] = $user[0]['users_name'];
                     // $_SESSION['nom'] = $user[0]['users_familly_name'];
                     // $_SESSION['email'] = $user[0]['users_email'];
-                    
-                    header('Location:index.php?view=account');
+                    if($_SESSION['droit'] == 1)
+                    {
+                        header('Location:index.php?view=account');
+                    }
+                    else
+                    {
+                        header('Location:index.php?view=index');
+                    }
                 }
                 else
                 {

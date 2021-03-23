@@ -6,9 +6,9 @@ use App\Core\Core;
 
     class Model extends Core
     {
-        public function listBy($param)
+        public function listBy($param='')
         {
-            $result = $this->stickOut("SELECT * FROM {$this->table} WHERE $param");
+            $result = $this->stickOut("SELECT * FROM {$this->table} $param");
             return $result;
         }
 
@@ -20,6 +20,12 @@ use App\Core\Core;
         public function updateBy(string $colonne, string $cible, string $data, array $array)
         {
             $this->stickIn("UPDATE {$this->table} SET $colonne WHERE {$this->table}$cible = '$data'",$array);
+        }
+
+        public function deleteBy($param='')
+        {
+            $this->stickIn("DELETE FROM {$this->table} $param");
+
         }
        
 

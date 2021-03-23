@@ -61,6 +61,10 @@ if(isset($_GET['view']))
         // $product = new App\Controller\ProductsController;
         $user->render($view);
     }
+    elseif($view == "manage_Categorie")
+    {
+        $user->render($view);
+    }
     else
     {
         $user->render('404');

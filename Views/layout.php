@@ -1,3 +1,16 @@
+<?php 
+    if(isset($_SESSION['droit']) && $_SESSION['droit'] == '42')
+    {
+        $link = '<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Dashbord
+                </a>';
+    }
+    else
+    {
+        $link = '<a class="nav-link" href="#">Contact</a>';
+
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -47,11 +60,18 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link" href="#">Pannier</a>
+                        <?= $link ?>   
                     </li>
                 </ul>
             </div>
         </nav>
+        <div class="collapse" id="collapseExample">
+            <nav class="nav">
+                <a class="nav-link active" aria-current="page" href="index.php?view=manage_Categorie">Categories</a>
+                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Link</a>
+            </nav>
+        </div>
     </header>
         <?= $PageContent ?>
     <footer>
@@ -59,5 +79,6 @@
     </footer>
 
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
 </body>

@@ -13,7 +13,7 @@ use App\Model\Model;
          */
         public function inDb($login)
         {
-            $user = $this->listBy("users_login = '$login'");
+            $user = $this->listBy("WHERE users_login = '$login'");
             return $user;
         }
 

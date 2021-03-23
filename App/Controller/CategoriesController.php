@@ -17,7 +17,7 @@
 
         public function index()
         {
-            $data = $this->model->listAll();
+            $data = $this->model->listby();
             $this->render('index',['data' => $data]);
         }
         
