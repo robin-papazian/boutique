@@ -3,10 +3,10 @@
 if(isset($_GET['product']))
 {
     $id = $_GET['product'];
-    $item = $product->item($id);
-    // echo '<pre>';
-    // print_r($item);
-    // echo '<pre>';
+    $item = $product->description($id);
+    echo '<pre>';
+    print_r($item);
+    echo '<pre>';
     
     foreach($item as $description)
     {?>
@@ -36,6 +36,8 @@ if(isset($_GET['product']))
 };
 ?>
 <?php 
+
+var_dump($description);
 
 if(isset($_POST['nbrproduit']))
 {

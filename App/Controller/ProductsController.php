@@ -3,20 +3,22 @@
 namespace App\Controller;
 
 use App\Controller\Controller;
+use App\Model\ProductsModel;
 
 class ProductsController extends Controller
 {
-    // public function listAll($id)
-    // {
-    //     $product = $this->modelstickOut('WHERE ',$this->table.'_categorie = ',$id);
-    //     return $product;
-    // }
+    public function product()
+    {
+        $product = new ProductsModel;
+        $this->render('products',['product' => $product]);
+    }
 
-    // public function item($id)
-    // {
-    //     $product = $this->stickOut('WHERE ',$this->table.'_id = ',$id);
-    //     return $product;
-    // }
+    public function item()
+    {
+        $product = new ProductsModel;
+        $this->render('item',['product' => $product]);
+    }
+
 
     // public function pannier($array)
     // {

@@ -12,7 +12,9 @@ spl_autoload_register('autoload');
 // $product = new App\Controller\ProductsController;
 // $categorie = new App\Controller\CategoriesController;
 
-$controler = new App\Controller\UsersController;
+$user = new App\Controller\UsersController;
+$categorie = new App\Controller\CategoriesController;
+$products = new App\Controller\ProductsController;
 
 
 
@@ -24,40 +26,40 @@ if(isset($_GET['view']))
     
     if($view == "index")
     {
-        $controler->testation();
+        $categorie->index();
         // $data = $categorie->list();
         // $user->render($view,['data' => $data]);
     }
     elseif($view == "inscription")
     {
-       $controler->inscription();
+       $user->inscription();
     }
     elseif($view == "connexion")
     {
       
-        $controler->connexion();
+        $user->connexion();
         
     }
     elseif($view == "account")
     {
         
-        $controler->account();
+        $user->account();
     }
     elseif($view == "products")
     {
-        // $products = new App\Controller\ProductsController;
-        // $user->render($view,['products' => $products]);
+        $products->product();
+       
         
     }
     elseif($view == "item")
     {
-        // $product = new App\Controller\ProductsController;
-        // $user->render($view,['product' => $product]);
+        $products->item();
+       
     }
     elseif($view == "pannier")
     {
         // $product = new App\Controller\ProductsController;
-        // $user->render($view,['product' => $product]);
+        $user->render($view);
     }
     else
     {
@@ -66,7 +68,7 @@ if(isset($_GET['view']))
 }
 else
 {
-    $controler->testation();
+    $categorie->index();
     // $data = $categorie->list();
     // $user->render('index',['data' => $data]);
 

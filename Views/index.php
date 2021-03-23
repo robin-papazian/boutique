@@ -23,16 +23,18 @@
 
         function carous($data)
         {
-            foreach($data as $categorie)
+            foreach($data as $key => $categorie)
             {
+               
                 $item = "<div class='carousel-item active'>";
-                $item .= "<a href='index.php?view=products&product_categorie=$categorie[0]'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie[1].".jpg'></a></div>";
+                $item .= "<a href='index.php?view=products&product_categorie=".$categorie['categories_id']."'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie['categories_name'].".jpg'></a></div>";
             break;   
             }
-            foreach($data as $categorie)
+            foreach($data as $key => $categorie)
             {
+                
                 $item .= "<div class='carousel-item'>";
-                $item .= "<a href='index.php?view=products&product_categorie=$categorie[0]'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie[1].".jpg'></a></div>";
+                $item .= "<a href='index.php?view=products&product_categorie=".$categorie['categories_id']."'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie['categories_name'].".jpg'></a></div>";
             }
             return $item;
 
@@ -60,12 +62,6 @@
 
 
 <?php 
-echo $class;
-var_dump($model);
 
-// foreach($data as $product)
-// {
-//     echo "<a href='index.php?view=item&product=$product[0]'>".$product[1]."</a></br>";
-// }
 
 ?>

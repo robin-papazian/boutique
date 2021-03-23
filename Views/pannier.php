@@ -7,13 +7,13 @@ if(isset($_SESSION['pannier']))
     var_dump($_SESSION['pannier']);
     echo '<pre>';
     $id = array_keys($_SESSION['pannier']);
-    var_dump($id);
+    echo $id[0];
     
     
     
 
-    $c = $product->pannier($id);
-    var_dump($c);
+    // $c = $product->pannier($id);
+    // var_dump($c);
     
 }
 
