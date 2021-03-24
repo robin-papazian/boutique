@@ -54,6 +54,7 @@ use \PDO;
          */
         public function stickIn($sql, $array=[])
         {
+            var_dump($sql);
             $query = $this->db->prepare($sql);
             $query->execute($array);
         }

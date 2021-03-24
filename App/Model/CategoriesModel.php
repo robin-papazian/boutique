@@ -6,6 +6,7 @@ use App\Model\Model;
 
     class CategoriesModel extends Model
     {
+       
         
     }
 

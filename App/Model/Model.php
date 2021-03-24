@@ -12,7 +12,7 @@ use App\Core\Core;
             return $result;
         }
 
-        public function insertBy($colonne, $prepare, $execute)
+        public function insertBy($colonne, $prepare, $execute=[])
         {
             $this->stickIn("INSERT INTO {$this->table} $colonne VALUES $prepare", $execute);
         }
@@ -22,9 +22,11 @@ use App\Core\Core;
             $this->stickIn("UPDATE {$this->table} SET $colonne WHERE {$this->table}$cible = '$data'",$array);
         }
 
-        public function deleteBy($param='')
+        public function deleteBy($param='',$execute=[])
         {
-            $this->stickIn("DELETE FROM {$this->table} $param");
+            $this->stickIn("DELETE FROM {$this->table} $param",$execute);
+
+
 
         }
        

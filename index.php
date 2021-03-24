@@ -63,7 +63,7 @@ if(isset($_GET['view']))
     }
     elseif($view == "manage_Categorie")
     {
-        $user->render($view);
+        $categorie->manageCategorie();
     }
     else
     {

@@ -16,11 +16,13 @@
         $tableau = array(
             'set'      => '',
             'colonnes' => '',
+            'unknow'   => '',
             'prepare'  => '',
             'execute'  => array());
            
         $set = '';
         $colone = '(';
+        $unknow = '(';
         $prepare = '(';
         $execute = [];
         
@@ -30,7 +32,8 @@
             {
                 $set .= $key." = :$key,";
                 $colone .= $key.',';
-                $prepare .= ":$key,";  
+                $prepare .= ":$key,";
+                $unknow .= "?,";   
             }
             else
             {
@@ -46,6 +49,11 @@
         $colone = substr_replace($colone,'', $lastChar);
         $colone .= ')';
         $tableau['colonnes'] = $colone;
+
+        $lastChar = strlen($unknow) -1 ;
+        $unknow = substr_replace($unknow,'', $lastChar);
+        $unknow .= ')';
+        $tableau['unknow'] = $unknow;
 
         $lastChar = strlen($prepare) -1 ;
         $prepare = substr_replace($prepare,'', $lastChar);
