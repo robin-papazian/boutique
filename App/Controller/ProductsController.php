@@ -7,6 +7,13 @@ use App\Model\ProductsModel;
 
 class ProductsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->model = new productsModel;
+       
+    }
+
     public function product()
     {
         $product = new ProductsModel;
@@ -17,6 +24,13 @@ class ProductsController extends Controller
     {
         $product = new ProductsModel;
         $this->render('item',['product' => $product]);
+    }
+
+    public function manageProduct()
+    {
+        $products = $this->model->listBy(); 
+        $this->render('manage_Products',['products' => $products]);
+
     }
 
 

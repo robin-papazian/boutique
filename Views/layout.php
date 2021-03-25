@@ -67,8 +67,8 @@
         </nav>
         <div class="collapse" id="collapseExample">
             <nav class="nav">
-                <a class="nav-link active" aria-current="page" href="index.php?view=manage_Categorie">Categories</a>
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link active" href="index.php?view=manage_Categorie">Categories</a>
+                <a class="nav-link" href="index.php?view=manage_Products">Products</a>
                 <a class="nav-link" href="#">Link</a>
             </nav>
         </div>

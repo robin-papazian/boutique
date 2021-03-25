@@ -47,9 +47,7 @@ if(isset($_GET['view']))
     }
     elseif($view == "products")
     {
-        $products->product();
-       
-        
+        $products->product();   
     }
     elseif($view == "item")
     {
@@ -64,6 +62,10 @@ if(isset($_GET['view']))
     elseif($view == "manage_Categorie")
     {
         $categorie->manageCategorie();
+    }
+    elseif($view == "manage_Products")
+    {
+        $products->manageProduct();
     }
     else
     {
