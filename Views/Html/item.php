@@ -1,49 +1,37 @@
 <?php
 
-if(isset($_GET['product']))
-{
+if (isset($_GET['product'])) {
     $id = $_GET['product'];
     $item = $product->byId($id);
     echo '<pre>';
     print_r($item);
     echo '<pre>';
-    
-    foreach($item as $description)
-    {?>
-    <div style='border:solid grey 1px; '>
-        Home/<?=$description['products_categorie']?>/<?=$description['products_name']?>
-        <h1 style='border-bottom:solid black 1px;'><?=$description['products_name']?></h1>
-        <div style='border:solid brown; display:flex'>
-            <img style='border:solid blue;' src="Views/Public/Pictures/<?=$description['ref']?>.jpg">
-            <div>
-            <p style='border:solid purple;'>
-                Fiche technique : <br/><?=$description['products_description']?><br/>
-                Prix : <?=$description['products_price']?> € 
-        
-            </p>
-            <form method='post' action='index.php?view=item&product=<?= $description['products_id']?>' >
-            <label for='nbrproduit'>
-                <input type='number' name='nbrproduit'>
-            </label>
-                <input type='submit' name='submit'>
-            </form>
+
+    foreach ($item as $description) { ?>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="Views/Public/Pictures/<?= $description['ref'] ?>.jpg">
+            <div class="card-body">
+                <h5 class="card-title"><?= $description['products_name'] ?></h5>
+                <p class="card-text"><?= $description['products_description'] ?></p>
+                <p class="card-text"><?= $description['products_price'] ?>.00€</p>
+                <form method='post' action='index.php?view=item&product=<?= $description['products_id'] ?>'>
+                    <input type='number' name='nbrproduit'>
+                    <input class="btn btn-primary" type='submit' name='submit'>
+                </form>
             </div>
         </div>
-    </div>
-    <?php 
+    <?php
     }; ?>
 <?php
 };
 ?>
-<?php 
+<?php
 
 var_dump($description);
 
-if(isset($_POST['nbrproduit']))
-{
+if (isset($_POST['nbrproduit'])) {
     $_SESSION['pannier'][$description['products_id']] = $_POST['nbrproduit'];
 }
 
 
 ?>
-
