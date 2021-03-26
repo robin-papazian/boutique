@@ -14,7 +14,6 @@
         public function __construct()
         {
             $this->model = new CategoriesModel;
-           
         }
 
         public function index()
@@ -46,7 +45,7 @@
 
            
             
-            $this->render('manage_Categorie',['allCategories' => $allCategories,'data'=>$data]);
+            $this->render('manage_Categorie',['allCategories' => $allCategories]);
            
         }
         

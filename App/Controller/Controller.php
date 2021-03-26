@@ -8,7 +8,6 @@ class Controller
 {
     protected $model;
 
-
     public function render(string $page,$variable = [])
     {
         ob_start();
@@ -19,57 +18,31 @@ class Controller
 
     }
 
-    // public function SetModel() 
-    // {
-    //     $class = get_class($this);
-    //     $class = str_replace('Controller','Model',$class);
-    //     $model = explode('\\',$class);
-    //     $model = end($model);
-    //     $model = $model.";";
-    //     return new $model;
+    public function Myupload($action)
+    {
+        if($action == 'go')
+        {
+            $dir= "Views/Public/Pictures";
+            $filename = basename($_FILES['fileToUpload']['name']);
+            $place = $_FILES['fileToUpload']['tmp_name'];
+            $type = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
 
-    // }
-
-
-    // public function formScrapping($array)
-    // {
-    //     if(isset($array['submit']))
-    //     {
-    //         unset($array['submit']);
-
-    //         $this->columnsname = "(";
-    //         $this->valuesname = "(";
-
-    //         foreach($array as $key => $value)
-    //         {
-    //             $this->columnsname .= $key.",";
-    //             $this->valuesname .= "?,"; 
-    //         }
-            
-    //         $lastcolumn = strlen($this->columnsname) -1 ;
-    //         $this->columnsname = substr_replace($this->columnsname,'', $lastcolumn);
-    //         $this->columnsname .= ')';
-            
-    //         $lastvalue = strlen($this->valuesname) -1 ;
-    //         $this->valuesname = substr_replace($this->valuesname,'', $lastvalue);
-    //         $this->valuesname .= ')';
-            
-    //         return $array;    
-    //     }
-
-        
-    // }
-
-
-
-
-
-
-
-
-    
-    
-
+            if($type != 'jpg' && $type != 'png' && $type != 'jpeg')
+            {
+                $message = 'format incorrecte !';
+            }
+            elseif(file_exists("$dir/$filename"))
+            {
+                $message = 'Image déja existente';
+            }
+            else
+            {
+                $message = 'Image sauvegarder !';
+                move_uploaded_file($place,"$dir/$filename");
+            }
+            return $message;  
+        }
+    }
 
 }
 

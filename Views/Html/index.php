@@ -27,14 +27,14 @@
             {
                
                 $item = "<div class='carousel-item active'>";
-                $item .= "<a href='index.php?view=products&product_categorie=".$categorie['categories_id']."'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie['categories_name'].".jpg'></a></div>";
+                $item .= "<a href='index.php?view=products&product_categorie=".$categorie['categories_id']."'><img class='d-block' src='Views/Public/Pictures/".mystring($categorie['categories_name']).".jpg'></a></div>";
             break;   
             }
             foreach($data as $key => $categorie)
             {
                 
                 $item .= "<div class='carousel-item'>";
-                $item .= "<a href='index.php?view=products&product_categorie=".$categorie['categories_id']."'><img class='d-block' src='Views/Public/Pictures/Categories/".$categorie['categories_name'].".jpg'></a></div>";
+                $item .= "<a href='index.php?view=products&product_categorie=".$categorie['categories_id']."'><img class='d-block' src='Views/Public/Pictures/".mystring($categorie['categories_name']).".jpg'></a></div>";
             }
             return $item;
 

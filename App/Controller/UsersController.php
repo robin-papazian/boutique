@@ -6,7 +6,6 @@ use App\Controller\Controller;
 
 use App\Model\UsersModel;
 
-
 require_once('App/Libraries/Autoprepare.php');
 
 class UsersController extends Controller
@@ -15,7 +14,6 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->model = new UsersModel;
-       
     }
     
 

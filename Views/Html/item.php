@@ -14,7 +14,7 @@ if(isset($_GET['product']))
         Home/<?=$description['products_categorie']?>/<?=$description['products_name']?>
         <h1 style='border-bottom:solid black 1px;'><?=$description['products_name']?></h1>
         <div style='border:solid brown; display:flex'>
-            <img style='border:solid blue;' src="Views/Public/Pictures/<?=$description['ref']?>.jpg">
+            <img style='border:solid blue;' src="Views/Public/Pictures/<?=mystring($description['products_name'])?>.jpg">
             <div>
             <p style='border:solid purple;'>
                 Fiche technique : <br/><?=$description['products_description']?><br/>

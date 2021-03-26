@@ -4,14 +4,17 @@ namespace App\Controller;
 
 use App\Controller\Controller;
 use App\Model\ProductsModel;
+use App\Model\CategoriesModel;
+
+require_once('App/Libraries/Autoprepare.php');
 
 class ProductsController extends Controller
 {
+    protected $secondModel;
 
     public function __construct()
     {
-        $this->model = new productsModel;
-       
+        $this->model = new ProductsModel; 
     }
 
     public function product()
@@ -28,10 +31,13 @@ class ProductsController extends Controller
 
     public function manageProduct()
     {
-        $products = $this->model->listBy(); 
-        $this->render('manage_Products',['products' => $products]);
+        $products = $this->model;
+        $categorie = new CategoriesModel;
+        $this->render('manage_Products',['products' => $products,'categorie'=>$categorie]);
 
     }
+
+
 
 
     // public function pannier($array)

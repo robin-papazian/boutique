@@ -2,40 +2,63 @@
 
 <div style='width:50%;'>
     <form method='post' action='index.php?view=manage_Products' enctype="multipart/form-data">
-        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name='selected'>
-            <option selected>Choose a Categorie</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <div class='form_group mb-2'>   
-            <label for="add_categorie">Products Name</label>
-            <input class="form-control" type="text" id='add_categorie' name='product_name' aria-describedby='categorie_block'>
+        
+        <div class='form_group mb-2'>
+            <label for="products_categorie">Chose a categorie</label>
+            <select class="form-control mb-3" aria-label=".form-select-lg example" name='products_categorie'>
+                <?php
+                    $items = $categorie->listBy();
+                    foreach($items as $choose)
+                    {
+                        echo "<option value='".$choose['categories_id']."'>".$choose['categories_name'].'</option>';
+                    }
+                ?>
+            </select>
+        </div>     
+        <div class='form_group mb-3'>   
+            <label for="products_name">Products Name</label>
+            <input class="form-control" type="text" id='products_name' name='products_name' aria-describedby='categorie_block'>
             <small id="passwordHelpBlock" class="form-text text-muted">
                 Le nom du produit apparaittra sur le site .
             </small>
         </div>
         <div class='form_group mb-2'>   
-            <label for="add_categorie">Products Price</label>
-            <input class="form-control" type="text" id='add_categorie' name='product_price' aria-describedby='categorie_block'>
+            <label for="products_price">Products Price</label>
+            <input class="form-control" type="text" id='products_price' name='products_price' aria-describedby='categorie_block'>
+        </div>
+        <div class="form-floating">
+            <label for="product_description">Description</label>
+            <textarea class="form-control" placeholder="Leave a comment here" name='products_description' id="product_description"></textarea>
         </div>
         <div class='form_group mb-2'>
-            <label for="fileToUpload">Upload Image</label>
-            <input type="file" name="fileToUpload" id="fileToUpload">
+            <label for="file">Upload Image</label>
+            <input type="file" name="file" id="file">
         </div>
-            <input type="submit" class="btn btn-primary mb-2" name='add'>
+            <input type="submit" class="btn btn-primary mb-2" name='submit' value='done'>
     </from>
 </div>
+<?php 
+
+if(isset($_POST['submit']))
+{
+    //echo Myupload('go');  
+    $data = autoprepare($_POST);
+    //$products->insertBy($data['colonnes'],$data['prepare'],$data['execute']);
+    var_dump($data);
+    //var_dump($_POST);
+}
+?>
 
 <div style='border:solid black; width:50%'>
     <form method='post' action='index.php?view=manage_Products' >
         <?php
+            $items = $products->listBy();
             $a=0;
-            foreach($products as $form)
+            foreach($items as $form)
             { $a++;?>
             <div class="form-check form-check-inline container-fluid d-flex justify-content-around" style='border:solid red;'>
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='<?=$a?>' value='<?=$form['products_name']?>'> 
-                <img src='Views/Public/Pictures/<?=$form['ref']?>.jpg' style='width: 150px'>
+                <img src='Views/Public/Pictures/<?=mystring($form['products_name'])?>.jpg' style='width: 150px'>
                 <label class="form-check-label" for="inlineCheckbox1"><?=$form['products_name']?></label>
                 <a href=''>Editer</a>
             </div>
@@ -45,18 +68,3 @@
         <input type="submit" class="btn btn-primary mb-2" value='Suprimmer' name='suprimer'>
     </from>
 </div>
-
-<?php 
-$dir= "/Views/Public/Pictures";
-if(isset($_POST['add']))
-{
-    $filename = basename($_FILES['fileToUpload']['name']);
-    $place = $_FILES['fileToUpload']['tmp_name'];
-     echo $place;
-   //move_uploaded_file($_FILES['fileToUpload']['name'])
-    //var_dump($_FILES);
-    move_uploaded_file($place,"$dir/$filename");
-    
-   
-}
-?>
