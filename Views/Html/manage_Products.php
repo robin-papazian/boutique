@@ -41,10 +41,10 @@
 
 if(isset($_POST['submit']))
 {
-    //echo Myupload('go');  
+    echo Myupload('go');  
     $data = autoprepare($_POST);
-    //$products->insertBy($data['colonnes'],$data['prepare'],$data['execute']);
-    var_dump($data);
+    $products->insertBy($data['colonnes'],$data['prepare'],$data['execute']);
+    //var_dump($data);
     //var_dump($_POST);
 }
 ?>

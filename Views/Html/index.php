@@ -34,7 +34,7 @@
             {
                 
                 $item .= "<div class='carousel-item'>";
-                $item .= "<a href='index.php?view=products&product_categorie=".$categorie['categories_id']."'><img class='d-block' src='Views/Public/Pictures/".mystring($categorie['categories_name']).".jpg'></a></div>";
+                $item .= "<a href='index.php?view=products&product_categorie=".$categorie['categories_id']."'><img class='d-block' src='Views/Public/Pictures/".mydir("Views/Public/Pictures",$categorie['categories_name'])."'></a></div>";
             }
             return $item;
 

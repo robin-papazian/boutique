@@ -5,7 +5,7 @@ session_start();
 
 require('App/Libraries/Autoload.php');
 require('App/Libraries/Myupload.php');
-require('App/Libraries/Mystring.php');
+require('App/Libraries/Mydir.php');
 require('App/Libraries/Autoprepare.php');
 spl_autoload_register('autoload');
 
