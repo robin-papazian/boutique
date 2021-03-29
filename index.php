@@ -20,54 +20,32 @@ $products = new App\Controller\ProductsController;
 
 
 
-if(isset($_GET['view']))
-{
+if (isset($_GET['view'])) {
     $view = $_GET['view'];
-    
-    if($view == "index")
-    {
+
+    if ($view == "index") {
         $categorie->index();
         // $data = $categorie->list();
         // $user->render($view,['data' => $data]);
-    }
-    elseif($view == "inscription")
-    {
-       $user->inscription();
-    }
-    elseif($view == "connexion")
-    {
-      
+    } elseif ($view == "inscription") {
+        $user->inscription();
+    } elseif ($view == "connexion") {
+
         $user->connexion();
-        
-    }
-    elseif($view == "account")
-    {
-        
+    } elseif ($view == "account") {
+
         $user->account();
-    }
-    elseif($view == "products")
-    {
+    } elseif ($view == "products") {
         $products->product();
-       
-        
-    }
-    elseif($view == "item")
-    {
+    } elseif ($view == "item") {
         $products->item();
-       
-    }
-    elseif($view == "pannier")
-    {
+    } elseif ($view == "panier") {
         // $product = new App\Controller\ProductsController;
         $user->render($view);
-    }
-    else
-    {
+    } else {
         $user->render('404');
     }
-}
-else
-{
+} else {
     $categorie->index();
     // $data = $categorie->list();
     // $user->render('index',['data' => $data]);

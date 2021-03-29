@@ -9,28 +9,27 @@ if (isset($_GET['product'])) {
 
     foreach ($item as $description) { ?>
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="Views/Public/Pictures/<?= $description['ref'] ?>.jpg">
+            <img class="card-img-top image-thumbnail" src="Views/Public/Pictures/<?= $description['ref'] ?>.jpg">
             <div class="card-body">
                 <h5 class="card-title"><?= $description['products_name'] ?></h5>
                 <p class="card-text"><?= $description['products_description'] ?></p>
                 <p class="card-text"><?= $description['products_price'] ?>.00€</p>
-                <form method='post' action='index.php?view=item&product=<?= $description['products_id'] ?>'>
-                    <input type='number' name='nbrproduit'>
-                    <input class="btn btn-primary" type='submit' name='submit'>
-                </form>
+
             </div>
+            <form method='post' action='index.php?view=item&product=<?= $description['products_id'] ?>'>
+                <input type='number' name='nbrproduit' placeholder="Nombre de produits" value="1" min="1">
+                <input class="btn btn-primary" type='submit' name='submit' value="Ajouter au panier">
+            </form>
         </div>
+
     <?php
     }; ?>
 <?php
 };
 ?>
 <?php
-
-var_dump($description);
-
 if (isset($_POST['nbrproduit'])) {
-    $_SESSION['pannier'][$description['products_id']] = $_POST['nbrproduit'];
+    $_SESSION['panier'][$description['products_id']] = $_POST['nbrproduit'];
 }
 
 
