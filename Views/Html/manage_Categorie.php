@@ -1,7 +1,7 @@
 <h1>Manage categorie</h1>
 
 <div style='width:50%;'>
-    <form method='post' action='index.php?view=manage_Categorie'>
+    <form method='post' action='index.php?view=manage_Categorie' enctype="multipart/form-data">
         <div class='form_group mb-2'>   
             <label for="add_categorie">Categorie Name</label>
             <input class="form-control" type="text" id='add_categorie' name='add_categorie' aria-describedby='categorie_block'>
@@ -9,6 +9,11 @@
                 Le nom de la categorie apparaittra sur le site .
             </small>
         </div>
+        <div class='form_group mb-2'>
+            <label for="file">Upload Image</label>
+            <input type="file" name="file" id="file">
+        </div>
+        <?= Myupload($action)?>
         <input type="submit" class="btn btn-primary mb-2" value='Add Categorie' name='add'>
     </from>
 </div>
@@ -20,8 +25,9 @@
             { $a++;?>
             <div class="form-check form-check-inline container-fluid d-flex justify-content-around" style='border:solid red;'>
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='<?=$a?>' value='<?=$form['categories_name']?>'> 
-                <img src='Views/Public/Pictures/<?= mystring($form['categories_name'])?>.jpg' style='width: 150px'>
+                <img src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures",$form['categories_name']) ?>' style='width: 150px'>
                 <label class="form-check-label" for="inlineCheckbox1"><?=$form['categories_name']?></label>
+                <a href=''>Editer</a>
             </div>
             <?php }; ?>
 

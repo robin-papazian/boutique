@@ -25,13 +25,14 @@
         public function manageCategorie()
         {
             $allCategories = $this->model->listby();
+            $action = '';
             
             if(isset($_POST['add']))
             {
                 $newcategorie = $_POST['add_categorie'];
                 $this->model->insertBy('(categories_name)', "('$newcategorie')");
                 $allCategories = $this->model->listby();
-
+                $action ='go';
                 
             }
             elseif( isset($_POST['suprimer'] ) && !empty($_POST['suprimer']) )
@@ -45,7 +46,7 @@
 
            
             
-            $this->render('manage_Categorie',['allCategories' => $allCategories]);
+            $this->render('manage_Categorie',['allCategories' => $allCategories,'action'=>$action]);
            
         }
         

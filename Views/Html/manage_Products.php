@@ -58,7 +58,7 @@ if(isset($_POST['submit']))
             { $a++;?>
             <div class="form-check form-check-inline container-fluid d-flex justify-content-around" style='border:solid red;'>
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='<?=$a?>' value='<?=$form['products_name']?>'> 
-                <img src='Views/Public/Pictures/<?=mystring($form['products_name'])?>.jpg' style='width: 150px'>
+                <img src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures",$form['products_name']) ?>' style='width: 150px'>
                 <label class="form-check-label" for="inlineCheckbox1"><?=$form['products_name']?></label>
                 <a href=''>Editer</a>
             </div>
