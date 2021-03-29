@@ -35,18 +35,23 @@
                 $action ='go';
                 
             }
-            elseif( isset($_POST['suprimer'] ) && !empty($_POST['suprimer']) )
+            elseif( isset($_POST['supprimer']) )
             {   
-
                 $data = autoprepare($_POST);
-                $colone = $data['unknow'];
-                $this->model->deleteBy("WHERE categories_name IN $colone", array_values($data['execute']));
-                $allCategories = $this->model->listby();
+                // $colone = $data['unknow'];
+                // $this->model->deleteBy("WHERE categories_name IN $colone", array_values($data['execute']));
+                // $allCategories = $this->model->listby();
+            }
+            elseif(isset($_POST['edit']))
+            {
+                $data = autoprepare($_POST);
+                //$this->model->updateBy("(categories_name = :categories_name)","_name",'?',);
+                
             }
 
            
             
-            $this->render('manage_Categorie',['allCategories' => $allCategories,'action'=>$action]);
+            $this->render('manage_Categorie',['allCategories' => $allCategories,'action'=>$action,'data'=>$data]);
            
         }
         

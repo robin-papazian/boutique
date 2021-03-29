@@ -8,9 +8,17 @@
 
     function autoprepare(array $array) :array
     {
-        if(isset($array['submit']))
+        // if(isset($array['submit']))
+        // {
+        //     unset($array['submit']);
+        // }
+        foreach($array as $key => $value)
         {
-            unset($array['submit']);
+        
+            if($value == 'submit')
+            {
+                unset($array[$key]);
+            }
         }
 
         $tableau = array(
@@ -28,6 +36,7 @@
         
         foreach($array as $key => $value)
         {
+        
             if(!empty($value))
             {
                 $set .= $key." = :$key,";

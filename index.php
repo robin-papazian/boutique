@@ -61,6 +61,10 @@ if(isset($_GET['view']))
     {
         $products->manageProduct();
     }
+    elseif($view == "edite_categorie")
+    {
+        $user->render($view);
+    }
     else
     {
         $user->render('404');

@@ -65,6 +65,6 @@ if(isset($_POST['submit']))
             <?php }; ?>
 
        
-        <input type="submit" class="btn btn-primary mb-2" value='Suprimmer' name='suprimer'>
+        <input type="submit" class="btn btn-primary mb-2" value='submit' name='supprimer'>
     </from>
 </div>

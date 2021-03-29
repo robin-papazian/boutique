@@ -1,3 +1,9 @@
+<!-- 
+    _Sur tout nos formulaire Nous metton en value pour tout les submit(bouton d'envoi) la value submit
+    _Tout nos imput on comme name le méme nom que la colonne en BDD
+    _Ensuite notre algorithme Autoprepare se charge de nous prépare la réquete SQL de notre choix
+ -->
+
 <h1>Manage categorie</h1>
 
 <div style='width:50%;'>
@@ -14,7 +20,7 @@
             <input type="file" name="file" id="file">
         </div>
         <?= Myupload($action)?>
-        <input type="submit" class="btn btn-primary mb-2" value='Add Categorie' name='add'>
+        <input type="submit" class="btn btn-primary mb-2" value='submit' name='add'>
     </from>
 </div>
 <div style='border:solid black; width:50%'>
@@ -27,11 +33,54 @@
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='<?=$a?>' value='<?=$form['categories_name']?>'> 
                 <img src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures",$form['categories_name']) ?>' style='width: 150px'>
                 <label class="form-check-label" for="inlineCheckbox1"><?=$form['categories_name']?></label>
-                <a href=''>Editer</a>
+                <a href="index.php?view=edite_categorie&categorie_name=<?=$form['categories_name']?>">Editer</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit_categorie<?=$form['categories_name']?>">
+                    Editer
+                </button>
+                
             </div>
-            <?php }; ?>
+        <?php }; ?>
 
        
-        <input type="submit" class="btn btn-primary mb-2" value='Suprimmer' name='suprimer'>
-    </from>
+        <input type="submit" class="btn btn-primary mb-2" value='submit' name='suprrimer'>
+    </form>
 </div>
+
+
+<?php
+
+foreach($allCategories as $form)
+{?>
+    <div class="modal fade" id="edit_categorie<?=$form['categories_name']?>" tabindex="-1" aria-labelledby="edit_categorieLabel<?=$form['categories_name']?>" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edit_categorieLabel<?=$form['categories_name']?>"><?=$form['categories_name']?></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method='post' action='index.php?view=manage_Categorie'>
+                        <input type="text" class="form-control" name="categories_name" value="<?=$form['categories_name']?>"  placeholder='edite name' >
+                        <label for="categories_name"></label>
+                        <input type='submit' name='edit' value='submit'>    
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+                       
+        </div>
+    </div> 
+<?php 
+
+if(isset($_POST['edit']))
+{
+    $_SESSION['cat'] = $form['categories_name'];
+}
+
+
+}; ?>
+
+<?=  $_SESSION['cat']; var_dump($data);?>
+
