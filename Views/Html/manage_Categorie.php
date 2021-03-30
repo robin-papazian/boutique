@@ -1,5 +1,5 @@
 <!-- 
-    _Sur tout nos formulaire Nous metton en value pour tout les submit(bouton d'envoi) la value submit
+    _Sur tout nos formulaire Nous metton l'attribue name en submit pour tout les bouton d'envoi
     _Tout nos imput on comme name le méme nom que la colonne en BDD
     _Ensuite notre algorithme Autoprepare se charge de nous prépare la réquete SQL de notre choix
  -->
@@ -20,7 +20,7 @@
             <input type="file" name="file" id="file">
         </div>
         <?= Myupload($action)?>
-        <input type="submit" class="btn btn-primary mb-2" value='submit' name='add'>
+        <input type="submit" class="btn btn-primary mb-2" value='Add' name='submit'>
     </from>
 </div>
 <div style='border:solid black; width:50%'>
@@ -41,7 +41,7 @@
         <?php }; ?>
 
        
-        <input type="submit" class="btn btn-primary mb-2" value='submit' name='suprrimer'>
+        <input type="submit" class="btn btn-primary mb-2" name='submit' value='Delete'>
     </form>
 </div>
 
@@ -61,7 +61,7 @@ foreach($allCategories as $form)
                     <form method='post' action='index.php?view=manage_Categorie'>
                         <input type="text" class="form-control" name="<?=$form['categories_name']?>"  placeholder='edit' >
                         <label for="<?=$form['categories_name']?>"></label>
-                        <input type='submit' name='edit' value='submit'>     
+                        <input type='submit' name='submit' value='edit'>     
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -72,14 +72,6 @@ foreach($allCategories as $form)
         </div>
     </div> 
 <?php 
-
-if(isset($_POST['edit']))
-{
-    $_SESSION['cat'] = $form['categories_name'];
-}
-
-
 }; ?>
 
-<?=  $_SESSION['cat']; var_dump($data);?>
 

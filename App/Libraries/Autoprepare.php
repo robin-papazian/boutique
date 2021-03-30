@@ -15,7 +15,7 @@
         foreach($array as $key => $value)
         {
         
-            if($value == 'submit')
+            if($key == 'submit')
             {
                 unset($array[$key]);
             }

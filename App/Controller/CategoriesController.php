@@ -27,7 +27,7 @@
             $allCategories = $this->model->listby();
             $action = '';
             
-            if(isset($_POST['add']))
+            if(isset($_POST['submit']) && $_POST['submit'] == 'Add')
             {
                 $newcategorie = $_POST['add_categorie'];
                 $this->model->insertBy('(categories_name)', "('$newcategorie')");
@@ -35,23 +35,25 @@
                 $action ='go';
                 
             }
-            elseif( isset($_POST['supprimer']) )
+            elseif(isset($_POST['submit']) && $_POST['submit'] == 'Delete')
             {   
                 $data = autoprepare($_POST);
-                // $colone = $data['unknow'];
-                // $this->model->deleteBy("WHERE categories_name IN $colone", array_values($data['execute']));
-                // $allCategories = $this->model->listby();
+                $colone = $data['unknow'];
+                $this->model->deleteBy("WHERE categories_name IN $colone", array_values($data['execute']));
+                $allCategories = $this->model->listby();
             }
-            elseif(isset($_POST['edit']))
+            elseif(isset($_POST['submit']) && $_POST['submit'] == 'edit')
             {
                 $data = autoprepare($_POST);
-                //$this->model->updateBy("(categories_name = :categories_name)","_name",'?',);
-                
+                $value = array_values($data['execute']);
+                $update = array_keys($data['execute']);
+                $this->model->updateBy("categories_name = '$value[0]'","_name", $update[0]);
+                $allCategories = $this->model->listby();                
             }
 
            
             
-            $this->render('manage_Categorie',['allCategories' => $allCategories,'action'=>$action,'data'=>$data]);
+            $this->render('manage_Categorie',['allCategories' => $allCategories,'action'=>$action]);
            
         }
         
