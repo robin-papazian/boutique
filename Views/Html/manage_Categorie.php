@@ -33,7 +33,6 @@
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='<?=$a?>' value='<?=$form['categories_name']?>'> 
                 <img src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures",$form['categories_name']) ?>' style='width: 150px'>
                 <label class="form-check-label" for="inlineCheckbox1"><?=$form['categories_name']?></label>
-                <a href="index.php?view=edite_categorie&categorie_name=<?=$form['categories_name']?>">Editer</a>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit_categorie<?=$form['categories_name']?>">
                     Editer
                 </button>
@@ -60,9 +59,9 @@ foreach($allCategories as $form)
                 </div>
                 <div class="modal-body">
                     <form method='post' action='index.php?view=manage_Categorie'>
-                        <input type="text" class="form-control" name="categories_name" value="<?=$form['categories_name']?>"  placeholder='edite name' >
-                        <label for="categories_name"></label>
-                        <input type='submit' name='edit' value='submit'>    
+                        <input type="text" class="form-control" name="<?=$form['categories_name']?>"  placeholder='edit' >
+                        <label for="<?=$form['categories_name']?>"></label>
+                        <input type='submit' name='edit' value='submit'>     
                     </form>
                 </div>
                 <div class="modal-footer">
