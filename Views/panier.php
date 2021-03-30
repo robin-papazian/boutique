@@ -78,19 +78,12 @@ if (isset($_SESSION['panier'])) {
 }
 
 ?>
-<html>
 <form method="POST">
-    <input type="submit" name="delete" value="Vider le panier">
-    <html>
-
-    <head>
-        <title>Buy cool new product</title>
-        <script src="https://js.stripe.com/v3/"></script>
-    </head>
-
-    <body>
-        <button id="checkout-button">Checkout</button>
-    </body>
+    <input type="submit" name="delete" value="Vider mon panier">
 </form>
 
-</html>
+<form method="POST" action="index.php?view=payment">
+    <label for="prix">Prix :<?= $gran_total ?> </label>
+    <input type="hidden" id="prix" name="prix" value="<?= $gran_total ?>">
+    <button>Procéder au paiement</button>
+</form>

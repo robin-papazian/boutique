@@ -42,6 +42,8 @@ if (isset($_GET['view'])) {
     } elseif ($view == "panier") {
         // $product = new App\Controller\ProductsController;
         $user->render($view);
+    } elseif ($view == "payment") {
+        $user->render($view);
     } else {
         $user->render('404');
     }
