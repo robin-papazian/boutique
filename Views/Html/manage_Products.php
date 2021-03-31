@@ -104,13 +104,13 @@ foreach($items as $form)
                         <label for=products_id></label>
                         
                         <label for="products_name">Nom</label>
-                        <input type="text" class="form-control" name="products_name"  placeholder='edit' >
+                        <input type="text" class="form-control" name="products_name"  value='<?=$form['products_name']?>' >
                         
                         <label for="products_price">Prix</label>
-                        <input class="form-control" type="text" id='products_price' name='products_price'>
+                        <input class="form-control" type="text" id='products_price' name='products_price' value='<?=$form['products_price']?> €'>
                        
                         <label for="product_description">Description</label>
-                        <textarea class="form-control" name='products_description' id="product_description"></textarea>
+                        <textarea class="form-control" name='products_description' id="product_description" ><?=$form['products_description']?></textarea>
                         
                         
                         <input type='submit' name='submit' value='Edit'>     
