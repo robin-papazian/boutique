@@ -94,15 +94,13 @@ class UsersController extends Controller
 
     }
 
-    public function testation()
+    public function manageUser()
     {
-        $class = get_class($this);
-        $class = str_replace('Controller','Model',$class);
-        $model = explode('\\',$class);
-        $model = end($model);
-       
-        $model = $model.";";
-        $this->render('index',['class' => $class,'model'=>$model]);
+        if(isset($_POST['submit']) && $_POST['submit'] == 'Ajouter')
+        {
+            $data = autoprepare($_POST);
+        }
+        $this->render('manage_Users',['data'=>$data]);
     }
     
    

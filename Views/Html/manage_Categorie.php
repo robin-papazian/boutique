@@ -21,7 +21,7 @@
         </div>
         <?= Myupload($action)?>
         <input type="submit" class="btn btn-primary mb-2" value='Add' name='submit'>
-    </from>
+    </form>
 </div>
 <div style='border:solid black; width:50%'>
     <form method='post' action='index.php?view=manage_Categorie' >

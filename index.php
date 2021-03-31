@@ -61,9 +61,9 @@ if(isset($_GET['view']))
     {
         $products->manageProduct();
     }
-    elseif($view == "edite_categorie")
+    elseif($view == "manage_Users")
     {
-        $user->render($view);
+        $user->manageUser($view);
     }
     else
     {
