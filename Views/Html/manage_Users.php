@@ -52,6 +52,76 @@
     </form>
 </div>
 
-<pre>
-<?= $data['execute']['users_login']?>
-</pre>
+<div style='width:50%;'>
+    <form method='post' action='index.php?view=manage_Users'>
+        
+        <div class='form_group mb-2'>
+            <label for="users_login">Chose a User</label>
+            <select class="form-control mb-3" aria-label=".form-select-lg example" name='users_login'>
+                <?php
+                    foreach($users as $user)
+                    {
+                        echo "<option value='".$user['users_login']."'>".$user['users_login'].'</option>';
+                    }
+                ?>
+            </select>
+        </div>
+        <input type='submit' name='submit' value='Search'>
+    <form>
+</div>     
+
+<div style='width:50%; border:solid black;'>
+    <table>
+        <form method='post' action='index.php?view=manage_Users'>
+            <div class='form_group mb-2'>
+            <?php if(!empty($userSelected)) : $type = '';?>
+                <?php foreach($userSelected[0] as $colonnes => $value) : 
+                    if($colonnes == "users_password") : 
+                        $type = str_replace('users_','',$colonnes);?>
+                <?php elseif($colonnes == 'users_post_code' || $colonnes == 'users_street_number') : $type = str_replace($colonnes,'number',$colonnes); ?>
+                <?php else: $type = 'text'; ?>
+                <?php endif ;?>
+                        <tr><th><?= $colonnes?></th><td><label for='<?= $colonnes?>'></label><input type='<?=$type?>' name='<?= $colonnes?>' value='<?= $value?>'></td></tr>
+                <?php endforeach; ?>
+                    <tr><th><input type='submit' name='submit' value='Delete' class="btn btn-danger mb-2"></th><th><input type='submit' name='submit' value='Update' class="btn btn-success mb-2"></th></tr>
+            <?php endif ;?>
+            </div>
+        </form>
+    </table>
+</div>
+
+<?php
+
+
+// if(!empty($userSelected))
+// {
+//     $type = '';
+//     foreach($userSelected[0] as $colonnes => $value)
+//     {
+        
+        
+//         if($colonnes == 'users_password')
+//         {
+//             $type = str_replace('users_','',$colonnes);
+            
+//         }
+//         elseif($colonnes == 'users_post_code' || $colonnes == 'users_street_number')
+//         {
+//             $type = str_replace($colonnes,'number',$colonnes);
+           
+
+//         }
+//         else
+//         {
+//             $type = 'text';
+//         }
+
+//         echo $type.'</br>';
+
+//     }
+
+// }
+
+
+
+?>
