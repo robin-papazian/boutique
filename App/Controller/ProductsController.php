@@ -37,6 +37,21 @@ class ProductsController extends Controller
 
     }
 
+    public function autocompletion()
+    {
+        $arrays = $this->model->listBy();
+        $list = "";
+        
+        foreach($arrays as $product )
+        {
+            $nameItem = $product['products_name'];
+            $idItem = $product['products_id'];
+            $list .= "<option value='$nameItem'>$nameItem</option>" ;
+            
+        }
+        return $list;
+    }
+
 
 
 
