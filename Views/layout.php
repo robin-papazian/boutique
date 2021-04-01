@@ -37,11 +37,11 @@
                             <a class="dropdown-item" href="index.php?view=connexion">Connexion</a>
                             <a class="dropdown-item" href="index.php?view=inscription">Inscription</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="index.php?view=panier">Pannier</a>
+                            <a class="dropdown-item" href="index.php?view=panier">Panier</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pannier</a>
+                        <a class="nav-link" href="#">Panier</a>
                     </li>
                 </ul>
             </div>
