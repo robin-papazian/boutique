@@ -19,6 +19,13 @@ use App\Model\Model;
             return $product;
 
         }
+
+        public function byName($name)
+        {
+            $product = $this->listBy("WHERE products_name = '$name'");
+            return $product;
+
+        }
     }
 
 

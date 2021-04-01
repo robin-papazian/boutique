@@ -3,7 +3,16 @@
 if(isset($_GET['product']))
 {
     $id = $_GET['product'];
-    $item = $product->byId($id);
+    $name = $_GET['product'];
+    if(is_numeric($id))
+    {
+        $item = $product->byId($id);
+    }
+    else
+    {
+        $item = $product->byName($name);
+    }
+   
     echo '<pre>';
     print_r($item);
     echo '<pre>';
