@@ -17,7 +17,7 @@ use App\Core\Core;
             $this->stickIn("INSERT INTO {$this->table} $colonne VALUES $prepare", $execute);
         }
 
-        public function updateBy(string $colonne, string $cible, string $data, array $array)
+        public function updateBy(string $colonne, string $cible, string $data, array $array=[])
         {
             $this->stickIn("UPDATE {$this->table} SET $colonne WHERE {$this->table}$cible = '$data'",$array);
         }

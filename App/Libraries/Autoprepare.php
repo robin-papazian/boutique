@@ -8,11 +8,16 @@
 
     function autoprepare(array $array) :array
     {
-        if(isset($array['submit']))
+        
+        foreach($array as $key => $value)
         {
-            unset($array['submit']);
+            $array[$key] = htmlspecialchars($value);
+            if($key == 'submit')
+            {
+                unset($array[$key]);
+            }
         }
-
+       
         $tableau = array(
             'set'      => '',
             'colonnes' => '',
@@ -28,6 +33,7 @@
         
         foreach($array as $key => $value)
         {
+        
             if(!empty($value))
             {
                 $set .= $key." = :$key,";

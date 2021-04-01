@@ -11,6 +11,14 @@ class ProductsModel extends Model
     {
         $product = $this->listBy("WHERE products_categorie = '$id'");
         return $product;
+        }
+
+        public function byName($name)
+        {
+            $product = $this->listBy("WHERE products_name = '$name'");
+            return $product;
+
+        }
     }
 
     public function byId($id)

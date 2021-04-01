@@ -6,7 +6,6 @@ use App\Controller\Controller;
 
 use App\Model\UsersModel;
 
-
 require_once('App/Libraries/Autoprepare.php');
 
 class UsersController extends Controller
@@ -15,7 +14,6 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->model = new UsersModel;
-       
     }
     
 
@@ -96,15 +94,47 @@ class UsersController extends Controller
 
     }
 
-    public function testation()
+    public function manageUser()
     {
-        $class = get_class($this);
-        $class = str_replace('Controller','Model',$class);
-        $model = explode('\\',$class);
-        $model = end($model);
-       
-        $model = $model.";";
-        $this->render('index',['class' => $class,'model'=>$model]);
+        $userSelected = '';
+        $id_user = $_SESSION['update_user'];
+        $users = $this->model->listBy();
+        if(isset($_POST['submit']) && $_POST['submit'] == 'Ajouter')
+        {
+            $data = autoprepare($_POST);
+            extract($data['execute']); 
+            $user = $this->model->inDb($users_login);
+
+            if(!$user)
+            {
+                $data['execute']['users_password'] = password_hash($data['execute']['users_password'],PASSWORD_BCRYPT);
+
+                $this->model->insertBy($data['colonnes'], $data['prepare'], $data['execute']);
+                $users = $this->model->listBy();
+            }
+        }
+        elseif(isset($_POST['submit']) && $_POST['submit'] == 'Search')
+        {
+            $data = autoprepare($_POST);
+            $login = $data['execute']['users_login'];
+            $userSelected = $this->model->inDb($login);
+            $_SESSION['update_user'] = $userSelected[0]['users_id'];
+           
+        }
+        elseif(isset($_POST['submit']) && $_POST['submit'] == 'Update')
+        {
+            $data = autoprepare($_POST);
+            $this->model->manageAccount($data['set'],$id_user,$data['execute']);
+            $users = $this->model->listBy();
+
+        }
+        elseif(isset($_POST['submit']) && $_POST['submit'] == 'Delete')
+        {
+            $this->model->deleteBy("WHERE users_id = $id_user");
+            $users = $this->model->listBy();
+        }
+        
+        $this->render('manage_Users',['users'=>$users,'userSelected'=>$userSelected]);
     }
     
    

@@ -4,20 +4,14 @@
 session_start();
 
 require('App/Libraries/Autoload.php');
-
+require('App/Libraries/Myupload.php');
+require('App/Libraries/Mydir.php');
+require('App/Libraries/Autoprepare.php');
 spl_autoload_register('autoload');
-
-
-
-// $product = new App\Controller\ProductsController;
-// $categorie = new App\Controller\CategoriesController;
 
 $user = new App\Controller\UsersController;
 $categorie = new App\Controller\CategoriesController;
 $products = new App\Controller\ProductsController;
-
-
-
 
 
 if(isset($_GET['view']))
@@ -66,6 +60,10 @@ if(isset($_GET['view']))
     elseif($view == "manage_Products")
     {
         $products->manageProduct();
+    }
+    elseif($view == "manage_Users")
+    {
+        $user->manageUser($view);
     }
     else
     {

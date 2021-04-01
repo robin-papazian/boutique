@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     $link = '<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -6,6 +7,23 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
 } else {
     $link = '<a class="nav-link" href="#">Contact</a>';
 }
+=======
+<?php 
+    $products = new App\Controller\ProductsController;
+    if(isset($_SESSION['droit']) && $_SESSION['droit'] == '42')
+    {
+        $link = '<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Dashbord
+                </a>';
+    }
+    else
+    {
+        $link = '<a class="nav-link" href="#">Contact</a>';
+
+    }
+
+   
+>>>>>>> b0fbe8445298a6e46ff5eb86194d8e9d06f47b6d
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -33,10 +51,16 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                 <ul class="navbar-nav mr-auto justify-content-around" style=' width: 100%;'>
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php?view=index">Home</a>
-                    </li>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </li>             
+                    <form class="form-inline my-2 my-lg-0" method='get' action='#'>
+                        <input type='hidden' name='view' value='item'>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" list='products' name='product'  >
+                        <datalist id="products" >
+                           <?= $products->autocompletion()?>
+                           
+                        </datalist>
+                        
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  >Envoyer</button>
                     </form>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,7 +83,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
             <nav class="nav">
                 <a class="nav-link active" href="index.php?view=manage_Categorie">Categories</a>
                 <a class="nav-link" href="index.php?view=manage_Products">Products</a>
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="index.php?view=manage_Users">Users</a>
             </nav>
         </div>
     </header>
