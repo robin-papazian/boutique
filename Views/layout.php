@@ -1,5 +1,5 @@
-<<<<<<< HEAD
 <?php
+$products = new App\Controller\ProductsController;
 if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     $link = '<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Dashbord
@@ -7,23 +7,8 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
 } else {
     $link = '<a class="nav-link" href="#">Contact</a>';
 }
-=======
-<?php 
-    $products = new App\Controller\ProductsController;
-    if(isset($_SESSION['droit']) && $_SESSION['droit'] == '42')
-    {
-        $link = '<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Dashbord
-                </a>';
-    }
-    else
-    {
-        $link = '<a class="nav-link" href="#">Contact</a>';
 
-    }
 
-   
->>>>>>> b0fbe8445298a6e46ff5eb86194d8e9d06f47b6d
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,8 +17,8 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="Views/Public/js/scripts.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -46,21 +31,27 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto justify-content-around" style=' width: 100%;'>
-                    <li class="nav-item active">
+                    <li class="nav-item active ">
                         <a class="nav-link" href="index.php?view=index">Home</a>
-                    </li>             
-                    <form class="form-inline my-2 my-lg-0" method='get' action='#'>
-                        <input type='hidden' name='view' value='item'>
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" list='products' name='product'  >
-                        <datalist id="products" >
-                           <?= $products->autocompletion()?>
-                           
-                        </datalist>
-                        
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  >Envoyer</button>
+                        <<<<<<< HEAD </li>
+                            <form class="form-inline my-2 my-lg-0" method='get' action='#'>
+                                <input type='hidden' name='view' value='item'>
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" list='products' name='product'>
+                                <datalist id="products">
+                                    <?= $products->autocompletion() ?>
+
+                                </datalist>
+
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Envoyer</button>
+                                =======
+                    </li>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search" value="Rechercher">
+                        >>>>>>> pierre
                     </form>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,11 +61,12 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                             <a class="dropdown-item" href="index.php?view=connexion">Connexion</a>
                             <a class="dropdown-item" href="index.php?view=inscription">Inscription</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="index.php?view=pannier">Pannier</a>
+                            <a class="dropdown-item" href="index.php?view=panier">Panier</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <?= $link ?>
+                        <<<<<<< HEAD <?= $link ?>=======<a class="nav-link" href="#">Panier</a>
+                            >>>>>>> pierre
                     </li>
                 </ul>
             </div>
@@ -91,8 +83,9 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     <footer>
         <p>Copyright © 2021 | Pierro | Robino</p>
     </footer>
+    <<<<<<< HEAD <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
+        =======
+        >>>>>>> pierre
 </body>
