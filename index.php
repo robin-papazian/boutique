@@ -22,22 +22,17 @@ if (isset($_GET['view'])) {
 
     if ($view == "index") {
         $categorie->index();
-        // $data = $categorie->list();
-        // $user->render($view,['data' => $data]);
     } elseif ($view == "inscription") {
         $user->inscription();
     } elseif ($view == "connexion") {
-
         $user->connexion();
     } elseif ($view == "account") {
-
         $user->account();
     } elseif ($view == "products") {
         $products->product();
     } elseif ($view == "item") {
         $products->item();
     } elseif ($view == "panier") {
-        // $product = new App\Controller\ProductsController;
         $user->render($view);
     } elseif ($view == "manage_Categorie") {
         $categorie->manageCategorie();
@@ -52,9 +47,6 @@ if (isset($_GET['view'])) {
     }
 } else {
     $categorie->index();
-    // $data = $categorie->list();
-    // $user->render('index',['data' => $data]);
-
 }
 
 

@@ -17,9 +17,9 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="Views/Public/js/scripts.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -31,27 +31,21 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto justify-content-around" style=' width: 100%;'>
-                    <li class="nav-item active ">
+                    <li class="nav-item active">
                         <a class="nav-link" href="index.php?view=index">Home</a>
-                        <<<<<<< HEAD </li>
-                            <form class="form-inline my-2 my-lg-0" method='get' action='#'>
-                                <input type='hidden' name='view' value='item'>
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" list='products' name='product'>
-                                <datalist id="products">
-                                    <?= $products->autocompletion() ?>
-
-                                </datalist>
-
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Envoyer</button>
-                                =======
                     </li>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search" value="Rechercher">
-                        >>>>>>> pierre
+                    <form class="form-inline my-2 my-lg-0" method='get' action='#'>
+                        <input type='hidden' name='view' value='item'>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" list='products' name='product'>
+                        <datalist id="products">
+                            <?= $products->autocompletion() ?>
+
+                        </datalist>
+
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Envoyer</button>
                     </form>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,8 +59,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                         </div>
                     </li>
                     <li class="nav-item">
-                        <<<<<<< HEAD <?= $link ?>=======<a class="nav-link" href="#">Panier</a>
-                            >>>>>>> pierre
+                        <?= $link ?>
                     </li>
                 </ul>
             </div>
@@ -83,9 +76,8 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     <footer>
         <p>Copyright © 2021 | Pierro | Robino</p>
     </footer>
-    <<<<<<< HEAD <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-        </script>
 
-        =======
-        >>>>>>> pierre
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
 </body>
