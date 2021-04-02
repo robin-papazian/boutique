@@ -41,4 +41,3 @@ if (isset($_GET['product'])) {
         $_SESSION['panier']['products_quantity'] = $_POST['nbrproduit'];
     }
     ?>
-

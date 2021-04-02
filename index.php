@@ -14,6 +14,9 @@ $categorie = new App\Controller\CategoriesController;
 $products = new App\Controller\ProductsController;
 
 
+
+
+
 if (isset($_GET['view'])) {
     $view = $_GET['view'];
 
@@ -25,25 +28,19 @@ if (isset($_GET['view'])) {
         $user->connexion();
     } elseif ($view == "account") {
         $user->account();
-    }
-    elseif($view == "products"){
-        $products->product();   
-    }
-    elseif($view == "item"){
+    } elseif ($view == "products") {
+        $products->product();
+    } elseif ($view == "item") {
         $products->item();
     } elseif ($view == "panier") {
         $user->render($view);
-    }
-    elseif($view == "manage_Categorie"){
+    } elseif ($view == "manage_Categorie") {
         $categorie->manageCategorie();
-    }
-    elseif($view == "manage_Products"){
+    } elseif ($view == "manage_Products") {
         $products->manageProduct();
-    }
-    elseif($view == "manage_Users"){
+    } elseif ($view == "manage_Users") {
         $user->manageUser($view);
-    }
-    elseif ($view == "payment") {
+    } elseif ($view == "payment") {
         $user->render($view);
     } else {
         $user->render('404');
