@@ -97,7 +97,7 @@ class UsersController extends Controller
     public function manageUser()
     {
         $userSelected = '';
-        $id_user = $_SESSION['update_user'];
+        $id_user = '';
         $users = $this->model->listBy();
         if(isset($_POST['submit']) && $_POST['submit'] == 'Ajouter')
         {
@@ -119,18 +119,20 @@ class UsersController extends Controller
             $login = $data['execute']['users_login'];
             $userSelected = $this->model->inDb($login);
             $_SESSION['update_user'] = $userSelected[0]['users_id'];
+          
            
         }
         elseif(isset($_POST['submit']) && $_POST['submit'] == 'Update')
         {
             $data = autoprepare($_POST);
-            $this->model->manageAccount($data['set'],$id_user,$data['execute']);
+            $this->model->manageAccount($data['set'],$_SESSION['update_user'],$data['execute']);
             $users = $this->model->listBy();
 
         }
         elseif(isset($_POST['submit']) && $_POST['submit'] == 'Delete')
         {
-            $this->model->deleteBy("WHERE users_id = $id_user");
+            $id = $_SESSION['update_user'];
+            $this->model->deleteBy("WHERE users_id = $id ");
             $users = $this->model->listBy();
         }
         
