@@ -24,9 +24,5 @@ use App\Model\Model;
         {
             $product = $this->listBy("WHERE products_name = '$name'");
             return $product;
-
         }
-    }
-
-
-?>
+}

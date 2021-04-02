@@ -1,7 +1,6 @@
 <?php
 
-if(isset($_GET['product']))
-{
+if (isset($_GET['product'])) {
     $id = $_GET['product'];
     $name = $_GET['product'];
     if(is_numeric($id))
@@ -16,6 +15,7 @@ if(isset($_GET['product']))
     echo '<pre>';
     print_r($item);
     echo '<pre>';
+<<<<<<< HEAD:Views/Html/item.php
     
     foreach($item as $description)
     {?>
@@ -36,23 +36,33 @@ if(isset($_GET['product']))
             </label>
                 <input type='submit' name='submit'>
             </form>
+=======
+
+    foreach ($item as $description) { ?>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top image-thumbnail" src="Views/Public/Pictures/<?= $description['ref'] ?>.jpg">
+            <div class="card-body">
+                <h5 class="card-title"><?= $description['products_name'] ?></h5>
+                <p class="card-text"><?= $description['products_description'] ?></p>
+                <p class="card-text"><?= $description['products_price'] ?>.00€</p>
+
+>>>>>>> 1a8bb9fdcdb4e25eb132a72474e02279445319bb:Views/item.php
             </div>
+            <form method='post' action='index.php?view=item&product=<?= $description['products_id'] ?>'>
+                <input type='number' name='nbrproduit' placeholder="Nombre de produits" value="1" min="1">
+                <input class="btn btn-primary" type='submit' name='submit' value="Ajouter au panier">
+            </form>
         </div>
-    </div>
-    <?php 
+
+    <?php
     }; ?>
 <?php
 };
 ?>
-<?php 
-
-var_dump($description);
-
-if(isset($_POST['nbrproduit']))
-{
-    $_SESSION['pannier'][$description['products_id']] = $_POST['nbrproduit'];
+<?php
+if (isset($_POST['nbrproduit'])) {
+    $_SESSION['panier'][$description['products_id']] = $_POST['nbrproduit'];
 }
 
 
 ?>
-
