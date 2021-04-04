@@ -52,6 +52,19 @@ class ProductsController extends Controller
         return $list;
     }
 
+    public function panier()
+    {
+        if(isset($_SESSION['panier']))
+        {
+            $ids = implode(',',array_keys($_SESSION['panier']));
+            $panier = $this->model->listBy("WHERE products_id IN ($ids)");
+
+        }
+        
+        $this->render('panier',['panier' => $panier]);
+        
+    }
+
 
 
 
