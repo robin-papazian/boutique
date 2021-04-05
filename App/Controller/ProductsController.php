@@ -60,6 +60,12 @@ class ProductsController extends Controller
             $panier = $this->model->listBy("WHERE products_id IN ($ids)");
 
         }
+        if(isset($_POST['delete']))
+        {
+            unset($_SESSION['panier'][$_POST['product']]);
+            $ids = implode(',',array_keys($_SESSION['panier']));
+            $panier = $this->model->listBy("WHERE products_id IN ($ids)");
+        }
         
         $this->render('panier',['panier' => $panier]);
         

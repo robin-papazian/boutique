@@ -1,5 +1,7 @@
 <p>pannier</p>
 
+    
+
     <table class="table">
         <thead>
             <tr>
@@ -12,6 +14,16 @@
             </tr>
         </thead>
         <tbody>
+        <?php
+        echo '<pre>';
+        var_dump($_SESSION['panier']);
+        $gran_total = 0;
+        echo '</pre>';
+        if(isset($_POST['delete']))
+        {
+            var_dump($_POST);
+        }
+        ?>
             <tr>
                 <?php foreach($panier as $product) : ?>
                 <th scope="row"><img class="card-img-top img-fluid" src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures/",$product['products_name'])?>'  ></th>
@@ -20,7 +32,7 @@
                 <td><?= $product['products_price'] ?>.00€</td>
                 <td><?= $_SESSION['panier'][$product['products_id']] ?></td>
                 <td>
-                    <?php 
+                    <?php
                         $total = $_SESSION['panier'][$product['products_id']] * $product['products_price'];
                         $gran_total += $total;
                         echo $total;
@@ -28,6 +40,7 @@
                     .00€</td>
                 <td>
                     <form method='post'>
+                        <input type='hidden' name='product' value='<?= $product['products_id']?>'>
                         <input type="submit" name="delete" value="delete">
                     </form>
                 </td>
