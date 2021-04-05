@@ -2,12 +2,20 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    margin-bottom: 5%;
+
+}
+.bg-image{
+    background-image: url("../Pictures/orchid.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 #carouselProduct {
-    width: 50%;
+    width: 35%;
     margin: 0 auto;
-    margin-top: 120px;
+    
 }
 
 .carousel-item img {

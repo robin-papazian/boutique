@@ -1,7 +1,7 @@
 <?php
 
-    $host = 'localhost';
-    $dbname = 'boutique';
-    $username = 'phpmyadmin';
-    $password ='lecam';
-    $link = "mysql:host=$host;dbname=$dbname";
+$host = 'localhost';
+$dbname = 'boutique';
+$username = 'root';
+$password = '';
+$link = "mysql:host=$host;dbname=$dbname";
