@@ -71,10 +71,10 @@ class ProductsController extends Controller
         else
         {
             $this->render('404');
-        }
-
-        
+        }    
     }    
+
+
 }
 
 ?>

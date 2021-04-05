@@ -30,6 +30,7 @@
                         $total = $_SESSION['panier'][$product['products_id']] * $product['products_price'];
                         $gran_total += $total;
                         echo $total;
+                        $_SESSION['order'] = $total;
                     ?>
                     .00€</td>
                 <td>
@@ -59,7 +60,7 @@
                     <form method="POST" action="index.php?view=payment">
                         <label for="prix"></label>
                             <input type="hidden" id="prix" name="prix" value="<?= $gran_total ?>">
-                            <button>Procéder au paiement</button>
+                            <button>Commander</button>
                     </form>
                 </td>
                    

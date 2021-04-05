@@ -12,6 +12,15 @@ if (isset($_POST['prix']) && !empty($_POST['prix'])) {
         'amount' => $prix * 100,
         'currency' => 'eur'
     ]);
+    echo '<pre>';
+    var_dump($_POST);
+    echo '</pre>';
+    echo '<pre>';
+    var_dump($_SESSION['panier']);
+    echo '</pre>';
+    echo '<pre>';
+    var_dump($_SESSION['order']);
+    echo '</pre>';
 } else {
     header('Location: index.php');
 }
@@ -26,5 +35,8 @@ if (isset($_POST['prix']) && !empty($_POST['prix'])) {
     <input type="text" id="cardholder-name" placeholder="Titulaire de la carte">
     <div id="cards-elements"></div>
     <div id="cards-errors" role="alert"></div>
-    <button id="card-button" type="button" data-secret="<?= $intent['client_secret'] ?>">Procéder au paiment</button>
+    <button name='button' id="card-button" type="button" data-secret="<?= $intent['client_secret'] ?>">Procéder au paiment</button>
 </form>
+
+
+
