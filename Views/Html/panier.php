@@ -15,14 +15,8 @@
         </thead>
         <tbody>
         <?php
-        echo '<pre>';
-        var_dump($_SESSION['panier']);
         $gran_total = 0;
-        echo '</pre>';
-        if(isset($_POST['delete']))
-        {
-            var_dump($_POST);
-        }
+        var_dump($_SESSION['login']);
         ?>
             <tr>
                 <?php foreach($panier as $product) : ?>

@@ -15,7 +15,12 @@ if (isset($_POST['prix']) && !empty($_POST['prix'])) {
 } else {
     header('Location: index.php');
 }
+
+
 ?>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="js/scripts_paiement.js"></script>
+
 <form method="POST">
     <div id="errors"></div>
     <input type="text" id="cardholder-name" placeholder="Titulaire de la carte">
