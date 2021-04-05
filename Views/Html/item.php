@@ -9,21 +9,20 @@ if (isset($_GET['product'])) {
         $item = $product->byName($name);
     }
 
-
-
-    foreach ($item as $_SESSION['panier']) { ?>
-        <div class="m-5 bg-dark">
-
-            <div class="d-flex">
-                <img class="m-2" src="Views/Public/Pictures/<?= mydir("Views/Public/Pictures", $_SESSION['panier']['products_name']) ?>">
+    foreach ($item as $product) { ?>
+        <div style='border:solid grey 1px; '>
+            Home/<?= $product['products_categorie'] ?>/<?= $product['products_name'] ?>
+            <h1 style='border-bottom:solid black 1px;'><?= $product['products_name'] ?></h1>
+            <div style='border:solid brown; display:flex'>
+                <img style='border:solid blue;' src="Views/Public/Pictures/<?= mydir("Views/Public/Pictures", $product['products_name']) ?>">
                 <div>
-                    <h1 class="d-flex justify-content-center text-light"><?= $_SESSION['panier']['products_name'] ?></h1>
-                    <p class="text-light">
-                        Description : <br /><?= $_SESSION['panier']['products_description'] ?><br />
-                        Prix : <?= $_SESSION['panier']['products_price'] ?> €
+                    <p style='border:solid purple;'>
+                        Fiche technique : <br /><?= $product['products_description'] ?><br />
+                        Prix : <?= $product['products_price'] ?> €
 
                     </p>
-                    <form method='post' action='index.php?view=item&product=<?= $_SESSION['panier']['products_id'] ?>'>
+                    <form method='post' action='index.php?view=item&product=<?= $product['products_id'] ?>'>
+                        <input type='hidden' name='produit' placeholder="Nombre de produits" value="<?= $product['products_id'] ?>">
                         <input type='number' name='nbrproduit' placeholder="Nombre de produits" value="1" min="1">
                         <input class="btn btn-primary" type='submit' name='addtocart' value="Ajouter au panier">
                     </form>
@@ -36,6 +35,13 @@ if (isset($_GET['product'])) {
     ?>
     <?php
     if (isset($_POST['addtocart'])) {
-        $_SESSION['panier']['products_quantity'] = $_POST['nbrproduit'];
+        $_SESSION['panier'][$_POST['produit']] = $_POST['nbrproduit'];
+
+        echo '<pre>';
+        var_dump($_SESSION['panier']);
+
+        echo '</pre>';
     }
+
+
     ?>

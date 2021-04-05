@@ -65,6 +65,7 @@ use \PDO;
          */
         public function stickOut( $sql, array $array=[])
         {
+            var_dump($sql);
             $query = $this->db->prepare($sql);
             $query->execute($array);
             $result = $query->fetchAll(PDO::FETCH_ASSOC);

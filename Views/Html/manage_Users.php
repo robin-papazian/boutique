@@ -90,38 +90,3 @@
     </table>
 </div>
 
-<?php
-
-
-// if(!empty($userSelected))
-// {
-//     $type = '';
-//     foreach($userSelected[0] as $colonnes => $value)
-//     {
-        
-        
-//         if($colonnes == 'users_password')
-//         {
-//             $type = str_replace('users_','',$colonnes);
-            
-//         }
-//         elseif($colonnes == 'users_post_code' || $colonnes == 'users_street_number')
-//         {
-//             $type = str_replace($colonnes,'number',$colonnes);
-           
-
-//         }
-//         else
-//         {
-//             $type = 'text';
-//         }
-
-//         echo $type.'</br>';
-
-//     }
-
-// }
-
-
-
-?>
