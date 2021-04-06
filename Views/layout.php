@@ -34,7 +34,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-            <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse d-flex" id="navbarToggleExternalContent">
                 <ul class="navbar-nav mr-auto justify-content-around " style=' width: 100%;'>
                     <li class="nav-item active">
                         <a class="nav-link text-light" href="index.php?view=index"><i class="bi bi-house-door-fill"> Tout Pour La Maison</i></a>
