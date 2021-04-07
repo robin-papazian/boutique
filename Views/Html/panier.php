@@ -1,4 +1,4 @@
-<p>pannier</p>
+<h5 class="d-flex justify-content-center">Panier</h5>
 
     <?php 
         if(!isset($_SESSION['login']))
@@ -8,15 +8,16 @@
     
     ?>
 
-    <table class="table">
+<div class="d-flex m-5">
+    <table class="table bg-dark">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nom du produit</th>
-                <th scope="col">Description</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Quantité</th>
-                <th scope="col">Prix total</th>
+                <th class="text-light" scope="col">#</th>
+                <th class="text-light" scope="col">Nom du produit</th>
+                <th class="text-light" scope="col">Description</th>
+                <th class="text-light" scope="col">Prix</th>
+                <th class="text-light" scope="col">Quantité</th>
+                <th class="text-light" scope="col">Prix total</th>
             </tr>
         </thead>
         <tbody>
@@ -24,14 +25,14 @@
         $gran_total = 0;
         ?>
             <tr>
-                <?php foreach($panier as $product) : ?>
-                <th scope="row"><img class="card-img-top img-fluid" src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures/",$product['products_name'])?>'  ></th>
-                <td><?= $product['products_name'] ?></td>
-                <td><?= $product['products_description'] ?></td>
-                <td><?= $product['products_price'] ?>.00€</td>
-                <td><?= $_SESSION['panier'][$product['products_id']] ?></td>
-                <td>
-                    <?php
+                <?php foreach ($panier as $product) : ?>
+                    <th scope="row"><img style="width: 20%;" class="card-img-top img-fluid" src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures/", $product['products_name']) ?>'></th>
+                    <td class="text-light"><?= $product['products_name'] ?></td>
+                    <td class="text-light"><?= $product['products_description'] ?></td>
+                    <td class="text-light"><?= $product['products_price'] ?>.00€</td>
+                    <td class="text-light"><?= $_SESSION['panier'][$product['products_id']] ?></td>
+                    <td class="text-light">
+                        <?php
                         $total = $_SESSION['panier'][$product['products_id']] * $product['products_price'];
                         $gran_total += $total;
                         echo $total;
@@ -111,6 +112,5 @@
                        
                    
             </tr>
-        </tbody>
-       
     </table>
+</div>

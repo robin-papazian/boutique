@@ -34,7 +34,7 @@ if (isset($_GET['view'])) {
     } elseif ($view == "item") {
         $products->item();
     } elseif ($view == "panier") {
-        $products->panier();
+        $orders->panier();
     } elseif ($view == "manage_Categorie") {
         $categorie->manageCategorie();
     } elseif ($view == "manage_Products") {

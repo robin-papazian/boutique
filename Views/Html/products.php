@@ -4,12 +4,14 @@
 if (isset($_GET['product_categorie'])) {
     $id = $_GET['product_categorie'];
     $items = $product->byCategorie($id);
-
+    $count = 0;
 ?>
-    <div class="d-flex justify-content-around">
+    <div class="justify-content-around row">
         <?php
-        foreach ($items as $description) {  ?>
-            <div class='card bg-dark' style='width: 18rem;'>
+
+        foreach ($items as $description) {
+        ?>
+            <div class='card bg-dark col-sm-3 m-2 ' style='width: 18rem;'>
                 <img src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures", $description['products_name']) ?>' class='card-img-top' alt='product jpg'>
                 <div class='card-body'>
                     <h5 class='card-title text-light'><?= $description['products_name'] ?></h5>

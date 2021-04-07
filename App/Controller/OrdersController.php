@@ -4,6 +4,7 @@
 
     use App\Controller\Controller;
     use App\Model\OrdersModel;
+    use App\Model\ProductsModel;
 
 
     class OrdersController extends Controller
@@ -19,7 +20,8 @@
             if(isset($_SESSION['panier']) && !empty($_SESSION['panier']))
             {
                 $ids = implode(',',array_keys($_SESSION['panier']));
-                $panier = $this->model->listBy("WHERE products_id IN ($ids)");
+                $products = new ProductsModel;
+                $panier = $products->listBy("WHERE products_id IN ($ids)");
     
                 if(isset($_POST['delete']))
                 {

@@ -1,43 +1,70 @@
-<p>inscription</p>
-<form method='post' action='index.php?view=inscription'>
-<label for='users_name'>prenom
-    <input type='text' name='users_name'>
-</label>
-<label for='users_familly_name'>nom
-    <input type='text' name='users_familly_name'>
-</label>
-<label for='users_login'>Login
-    <input type='text' name='users_login'>
-</label>
-<label for='users_password'>mot de passe 
-    <input type='password' name='users_password'>
-</label>
-<label for='users_email'>email
-    <input type='email' name='users_email'>
-</label>
-<label for='users_town'>ville
-    <input type='text' name='users_town'>
-</label>
-<label for='users_post_code'>code postale
-    <input type='number' name='users_post_code'>
-</label>
-<label for='users_street'>rue
-    <input type='text' name='users_street'>
-</label>
-<label for='users_street_number'>numéro
-    <input type='number' name='users_street_number'>
-</label>
-<input type='submit' name='submit'>
-</form>
+<h5 class="d-flex justify-content-center">Inscription</h5>
+<div class="d-flex rounded m-5 bg-dark justify-content-center">
+    <form class="text-light" method='post' action='index.php?view=inscription'>
+        <div class="row m-2">
+            <div class="mb-3 ml-3">
+                <label for='users_name'>Prénom
+                    <input type='text' name='users_name'>
+                </label>
+            </div>
+            <div class="mb-3 ml-3">
+                <label for='users_familly_name'>Nom
+                    <input type='text' name='users_familly_name'>
+                </label>
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="mb-3 ml-3">
+                <label for='users_login'>Login
+                    <input type='text' name='users_login'>
+                </label>
+            </div>
+            <div class="mb-3 ml-3">
+                <label for='users_password'>Mot de passe
+                    <input type='password' name='users_password'>
+                </label>
+            </div>
+            <div class="mb-3 ml-3">
+                <label for='users_email'>Email
+                    <input type='email' name='users_email'>
+                </label>
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="mb-3 ml-3">
+                <label for='users_street_number'>Numéro
+                    <input type='number' name='users_street_number'>
+                </label>
+            </div>
+            <div class="mb-3 ml-3">
+                <label for='users_street'>Rue
+                    <input type='text' name='users_street'>
+                </label>
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="mb-3 ml-3">
+                <label for='users_post_code'>Code postale
+                    <input type='number' name='users_post_code'>
+                </label>
+            </div>
+            <div class="mb-3 ml-3">
+                <label for='users_town'>Ville
+                    <input type='text' name='users_town'>
+                </label>
+            </div>
+        </div>
+        <input type='submit' name='submit' class="btn btn-primary m-3">
+    </form>
+</div>
 
 
-    
-    
 
-<?php 
+
+
+<?php
 echo '<pre>';
 var_dump($data);
 echo '</pre>';
 
 ?>
-
