@@ -5,7 +5,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                     Dashbord
                 </a>';
 } else {
-    $link = '<a class="nav-link text-light" href="#"><i class="bi bi-envelope-fill"> Contact</i></a>';
+    $link = '<a class="nav-link text-light" href="mailto:pierre.malardier@laplateforme.io"><i class="bi bi-envelope-fill"> Contact</i></a>';
 }
 
 
@@ -63,6 +63,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                     </form>
                     <li class="nav-item active"><a class="nav-link text-light" href="index.php?view=panier"><i class="bi bi-basket"> Panier</i></a></li>
                 </ul>
+
             </div>
         </nav>
         <div class="collapse" id="collapseExample">
@@ -72,10 +73,17 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                 <a class="nav-link" href="index.php?view=manage_Users">Users</a>
             </nav>
         </div>
+
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        </nav>
     </header>
     <?= $PageContent ?>
-    <footer class=" d-flex bg-secondary justify-content-center fixed-bottom">
-        <p>Copyright © 2021 | Pierro | Robino</p>
+    <footer class=" footer bg-secondary fixed-bottom">
+        <p class="text-light">Copyright © 2021 | Pierro | Robino</p>
     </footer>
 
 
