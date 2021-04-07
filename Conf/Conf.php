@@ -2,6 +2,6 @@
 
 $host = 'localhost';
 $dbname = 'boutique';
-$username = 'root';
-$password = '';
+$username = 'phpmyadmin';
+$password = 'lecam';
 $link = "mysql:host=$host;dbname=$dbname";
