@@ -3,16 +3,16 @@
     namespace App\Controller;
 
     use App\Controller\Controller;
-    use App\Model\OrdersModel;
+    use App\Model\PaniersModel;
     use App\Model\ProductsModel;
 
 
-    class OrdersController extends Controller
+    class PaniersController extends Controller
     {
 
         public function __construct()
         {
-            $this->model = new OrdersModel; 
+            $this->model = new PaniersModel; 
         }
 
         public function panier()
@@ -38,7 +38,7 @@
                     {
                         $itemsId = $commande['products_id'];
                         $qt = $_SESSION['panier'][$itemsId];
-                        $this->model->insertBy('(orders_from, orders_product, orders_quantity)',"('$user','$itemsId','$qt')");
+                        $this->model->insertBy('(paniers_from, paniers_product, paniers_quantity)',"('$user','$itemsId','$qt')");
 
                     }
                 }

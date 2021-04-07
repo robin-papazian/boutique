@@ -1,6 +1,6 @@
 <?php
 $products = new App\Controller\ProductsController;
-$orders = new App\Controller\OrdersController;
+$orders = new App\Controller\PaniersController;
 if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     $link = '<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Dashbord

@@ -4,7 +4,7 @@ namespace App\Model;
 
 use App\Model\Model;
 
-    class OrdersModel extends Model
+    class PaniersModel extends Model
     {
        
         

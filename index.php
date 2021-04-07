@@ -12,7 +12,7 @@ spl_autoload_register('autoload');
 $user = new App\Controller\UsersController;
 $categorie = new App\Controller\CategoriesController;
 $products = new App\Controller\ProductsController;
-$orders = new App\Controller\OrdersController;
+$orders = new App\Controller\PaniersController;
 
 
 
