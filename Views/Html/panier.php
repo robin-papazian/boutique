@@ -41,7 +41,7 @@
                 <td>
                     <form method='post'>
                         <input type='hidden' name='product' value='<?= $product['products_id']?>'>
-                        <input type="submit" name="delete" value="delete">
+                        <input class='btn btn-danger' type="submit" name="delete" value="delete">
                     </form>
                 </td>
             </tr>
@@ -64,7 +64,7 @@
                 <td>
                     <form method="post" >
                         
-                        <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commander">
+                        <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#commander">
                             commander
                         </button>
                         <div class="modal fade" id="commander" tabindex="-1" aria-labelledby="commanderLabel" aria-hidden="true">
@@ -97,11 +97,11 @@
                                             <label for='prix'>Prix  
                                                 <input type="text" class="form-control" name="prix" value="<?=$gran_total?>.00€" data-stripe='prix'>
                                             </label>
-                                                <input type='submit' name='prix' value='Confirmer' id='confirmation_payment'>
+                                                <input class="btn btn-success" type='submit' name='prix' value='Confirmer' id='confirmation_payment'>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Plus Tard</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Plus Tard</button>
                                     </div>
                                 </div>
                             </div>

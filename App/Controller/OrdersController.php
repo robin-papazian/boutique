@@ -27,19 +27,18 @@
                 {
                     unset($_SESSION['panier'][$_POST['product']]);
                     $ids = implode(',',array_keys($_SESSION['panier']));
-                    $panier = $this->model->listBy("WHERE products_id IN ($ids)");
+                    $panier = $products->listBy("WHERE products_id IN ($ids)");
                 }
                 elseif(isset($_POST['prix']) && !empty($_POST['prix']))
                 {
                     $user = $_SESSION['id'];
                     $ids = implode(',',array_keys($_SESSION['panier']));
-                    $products = $this->model->listBy("WHERE products_id IN ($ids)");
-                    $orders = new OrdersModel;
-                    foreach($products as $commande)
+                    $panier = $products->listBy("WHERE products_id IN ($ids)");
+                    foreach($panier as $commande)
                     {
                         $itemsId = $commande['products_id'];
                         $qt = $_SESSION['panier'][$itemsId];
-                        $orders->insertBy('(orders_from, orders_product, orders_quantity)',"('$user','$itemsId','$qt')");
+                        $this->model->insertBy('(orders_from, orders_product, orders_quantity)',"('$user','$itemsId','$qt')");
 
                     }
                 }
