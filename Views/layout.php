@@ -1,5 +1,6 @@
 <?php
 $products = new App\Controller\ProductsController;
+$orders = new App\Controller\OrdersController;
 if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     $link = '<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Dashbord
@@ -25,6 +26,8 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
 
     <link rel="stylesheet" href="Views/Public/Css/style.css" type="text/css">
 
@@ -61,7 +64,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                         </datalist>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
                     </form>
-                    <li class="nav-item active"><a class="nav-link text-light" href="index.php?view=panier"><i class="bi bi-basket"> Panier</i></a></li>
+                    <li class="nav-item active"><a class="nav-link text-light" href="index.php?view=panier"><span><?= $orders->itemSelected() ?></span> <i class="bi bi-basket"> Panier</i></a></li>
                 </ul>
             </div>
         </nav>
@@ -79,7 +82,9 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     </footer>
 
 
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="Views/Public/Js/scripts.js"></script>
+    <!-- <script type="text/javascript" src="Views/Public/Js/scripts.js"></script> -->
+    <script type='text/javascript' src="Views/Public/Js/testscript.js"></script>
 
 </body>
