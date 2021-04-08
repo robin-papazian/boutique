@@ -87,6 +87,12 @@ class UsersController extends Controller
         if(isset($_POST['submit']))
         {
             $data = autoprepare($_POST);
+            if(in_array($_POST['users_password'],$data['execute']))
+            {
+                $data['execute']['users_password'] = password_hash($data['execute']['users_password'],PASSWORD_BCRYPT);
+
+            }
+            
             $this->model->manageAccount($data['set'],$id,$data['execute']);
         }
         $this->render('account');
