@@ -70,7 +70,7 @@
 </div>
 
 <div class="m-5 d-flex justify-content-center">
-    <table>
+    <table class="mb-5">
         <form method='post' action='index.php?view=manage_Users'>
             <div class='form_group mb-2'>
                 <?php if (!empty($userSelected)) : $type = ''; ?>

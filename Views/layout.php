@@ -7,10 +7,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                 </a>';
 } else {
     $link = '<a class="nav-link text-light" href="mailto:pierre.malardier@laplateforme.io"><i class="bi bi-envelope-fill"> Contact</i></a>';
-}
-
-
-?>
+} ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -48,8 +45,13 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                             <i class="bi bi-person-circle"> Mon Compte</i>
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-light" href="index.php?view=connexion">Connexion</a>
-                            <a class="dropdown-item text-light" href="index.php?view=inscription">Inscription</a>
+                            <?php if (isset($_SESSION['login'])) : ?>
+                                <a class="dropdown-item text-light" href="index.php?view=account">Profil</a>
+                                <a class="dropdown-item text-light" href="index.php?view=inscription">Historique d'achat</a>
+                            <?php else : ?>
+                                <a class="dropdown-item text-light" href="index.php?view=connexion">Connexion</a>
+                                <a class="dropdown-item text-light" href="index.php?view=inscription">Inscription</a>
+                            <?php endif; ?>
                         </div>
                     </li>
                     <li class="nav-item text-light">
@@ -85,12 +87,11 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
         </nav>
     </header>
     <?= $PageContent ?>
-    <footer class=" footer bg-secondary fixed-bottom">
-        <p class="text-light">Copyright © 2021 | Pierro | Robino</p>
+    <footer class="footer bg-secondary d-flex justify-content-center fixed-bottom">
+        <p class="text-light ">Copyright © 2021 | Pierro | Robino</p>
     </footer>
 
 
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <!-- <script type="text/javascript" src="Views/Public/Js/scripts.js"></script> -->
     <script type='text/javascript' src="Views/Public/Js/testscript.js"></script>

@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    
 }
 .bg-image{
     background-image: url("../Pictures/orchid.jpg");
@@ -20,4 +21,3 @@ body {
     width: 100%;
     height: auto;
 } 
-

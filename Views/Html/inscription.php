@@ -1,67 +1,32 @@
-<h5 class="d-flex justify-content-center">Inscription</h5>
-<div class="d-flex rounded m-5 bg-dark justify-content-center">
-    <form class="text-light" method='post' action='index.php?view=inscription'>
-        <div class="row m-2">
-            <div class="mb-3 ml-3">
-                <label for='users_name'>Prénom
-                    <input type='text' name='users_name'>
-                </label>
+<div class="bg-image">
+    <div class="d-flex justify-content-center">
+        <form method="POST" action="index.php?view=connexion">
+            <div class="card bg-dark text-light" style=" width: 18rem;">
+                <img class="rounded" src="Views/Public/Pictures/sign_up.jpg" alt="we want you">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title">S'inscrire</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col"> <label for='users_name' class="form-control-label text-muted"></label> <input type="text" name="users_name" placeholder="Prénom" class="form-control"> </div>
+                        <div class="col"> <label for='users_familly_name' class="form-control-label text-muted"></label> <input type="text" name="users_familly_name" placeholder="Nom" class="form-control"> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"> <label for='users_login' class="form-control-label text-muted"></label> <input type="text" name="users_login" placeholder="Login" class="form-control"> </div>
+                        <div class="col"> <label for='users_password' class="form-control-label text-muted"></label> <input type="password" name="users_password" placeholder="Mot de passe" class="form-control"> </div>
+                    </div>
+                    <div class="form-group"> <label for='users_email' class="form-control-label text-muted"></label> <input type="mail" name="users_email" placeholder="Email" class="form-control"> </div>
+                    <div class="form-group"> <label for='users_street' class="form-control-label text-muted"></label> <input type="text" name="users_street" placeholder="Rue" class="form-control"> </div>
+                    <div class="row">
+                        <div class="col"> <label for='users_post_code' class="form-control-label text-muted"></label> <input type="number" name="users_post_code" placeholder="Code Postale" class="form-control"> </div>
+                        <div class="col"> <label for='users_town' class="form-control-label text-muted"></label> <input type="text" name="users_town" placeholder="Ville" class="form-control"> </div>
+                    </div>
+                    <div class="d-flex justify-content-center"><input value=" S'inscrire" type='submit' name='submit' class="d-flex justify-content-center btn btn-primary m-3"></div>
+                </div>
             </div>
-            <div class="mb-3 ml-3">
-                <label for='users_familly_name'>Nom
-                    <input type='text' name='users_familly_name'>
-                </label>
-            </div>
-        </div>
-        <div class="row m-2">
-            <div class="mb-3 ml-3">
-                <label for='users_login'>Login
-                    <input type='text' name='users_login'>
-                </label>
-            </div>
-            <div class="mb-3 ml-3">
-                <label for='users_password'>Mot de passe
-                    <input type='password' name='users_password'>
-                </label>
-            </div>
-            <div class="mb-3 ml-3">
-                <label for='users_email'>Email
-                    <input type='email' name='users_email'>
-                </label>
-            </div>
-        </div>
-        <div class="row m-2">
-            <div class="mb-3 ml-3">
-                <label for='users_street_number'>Numéro
-                    <input type='number' name='users_street_number'>
-                </label>
-            </div>
-            <div class="mb-3 ml-3">
-                <label for='users_street'>Rue
-                    <input type='text' name='users_street'>
-                </label>
-            </div>
-        </div>
-        <div class="row m-2">
-            <div class="mb-3 ml-3">
-                <label for='users_post_code'>Code postale
-                    <input type='number' name='users_post_code'>
-                </label>
-            </div>
-            <div class="mb-3 ml-3">
-                <label for='users_town'>Ville
-                    <input type='text' name='users_town'>
-                </label>
-            </div>
-        </div>
-        <input type='submit' name='submit' class="btn btn-primary m-3">
-    </form>
+        </form>
+    </div>
 </div>
-
-
-
-
-
 <?php
 echo '<pre>';
 var_dump($data);
