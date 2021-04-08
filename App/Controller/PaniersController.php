@@ -5,6 +5,7 @@
     use App\Controller\Controller;
     use App\Model\PaniersModel;
     use App\Model\ProductsModel;
+    use App\Model\FacturesModel;
 
 
     class PaniersController extends Controller
@@ -29,18 +30,27 @@
                     $ids = implode(',',array_keys($_SESSION['panier']));
                     $panier = $products->listBy("WHERE products_id IN ($ids)");
                 }
-                elseif(isset($_POST['prix']) && !empty($_POST['prix']))
+                elseif(isset($_POST['paiment']) && !empty($_POST['paiment']))
                 {
+                    $user = $_SESSION['id'];
+                    $total_price = htmlspecialchars($_POST['prix']);
                     $user = $_SESSION['id'];
                     $ids = implode(',',array_keys($_SESSION['panier']));
                     $panier = $products->listBy("WHERE products_id IN ($ids)");
+                    $facture = new FacturesModel;
+                    $facture->insertBy('(factures_price,factures_user)', "($total_price,$user) ");
+                    $ref = $facture->listBy("WHERE factures_date=( SELECT MAX(factures_date) FROM factures WHERE factures_user=$user)");
+                    $ref = $ref[0]['factures_id'];
+                   
                     foreach($panier as $commande)
                     {
                         $itemsId = $commande['products_id'];
                         $qt = $_SESSION['panier'][$itemsId];
-                        $this->model->insertBy('(paniers_from, paniers_product, paniers_quantity)',"('$user','$itemsId','$qt')");
+                        $this->model->insertBy('(paniers_from, paniers_product, paniers_quantity, paniers_ref)',"('$user','$itemsId','$qt','$ref')");
 
                     }
+                    unset($_SESSION['panier']);
+                    header('Location: index.php');
                 }
                 
                 $this->render('panier',['panier' => $panier]);

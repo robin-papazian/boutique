@@ -13,6 +13,7 @@ $user = new App\Controller\UsersController;
 $categorie = new App\Controller\CategoriesController;
 $products = new App\Controller\ProductsController;
 $orders = new App\Controller\PaniersController;
+$factures = new App\Controller\FacturesController;
 
 
 

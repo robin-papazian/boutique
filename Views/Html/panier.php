@@ -95,9 +95,9 @@
                                                 <input type="text" class="form-control" name="card_cvc" value="101" data-stripe='cvc'>
                                             </label>
                                             <label for='prix'>Prix  
-                                                <input type="text" class="form-control" name="prix" value="<?=$gran_total?>.00€" data-stripe='prix'>
+                                                <input type="text" class="form-control" name="prix" value="<?=$gran_total?>" data-stripe='prix'>
                                             </label>
-                                                <input class="btn btn-success" type='submit' name='prix' value='Confirmer' id='confirmation_payment'>
+                                                <input class="btn btn-success" type='submit' name='paiment'  value='Confirmer' id='confirmation_payment'>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
