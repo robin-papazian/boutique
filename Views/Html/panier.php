@@ -43,7 +43,7 @@ if (!isset($_SESSION['login'])) {
                         </form>
                     </td>
             </tr>
-        <?php endforeach; ?>
+                <?php endforeach; ?>
         <tr>
             <td></td>
             <td></td>
