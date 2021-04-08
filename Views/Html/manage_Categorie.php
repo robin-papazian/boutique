@@ -41,7 +41,7 @@
         <?php }; ?>
 
 
-        <input type="submit" class="btn btn-primary mb-2" name='submit' value='Delete'>
+        <input type="submit" class="btn btn-primary mb-5" name='submit' value='Delete'>
     </form>
 </div>
 

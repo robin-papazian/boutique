@@ -23,19 +23,17 @@
             <input class="form-control" type="password" id='users_password' name='users_password' aria-describedby='categorie_block'>
         </div>
         <div class='form_group mb-2'>
+            <label for="users_street">Rue
+                <input class="form-control" type="text" id='users_street' name='users_street' aria-describedby='categorie_block'>
+            </label>
+            
+        </div>
+        <div class='form_group mb-2'>
             <label for="users_town">Ville
                 <input class="form-control" type="text" id='users_town' name='users_town' aria-describedby='categorie_block'>
             </label>
             <label for="users_post_code">Code Postale
                 <input class="form-control" type="number" id='users_post_code' name='users_post_code' aria-describedby='categorie_block'>
-            </label>
-        </div>
-        <div class='form_group mb-2'>
-            <label for="users_street">Rue
-                <input class="form-control" type="text" id='users_street' name='users_street' aria-describedby='categorie_block'>
-            </label>
-            <label for="users_street_number">Numéro
-                <input class="form-control" type="number" id='users_street_number' name='users_street_number' aria-describedby='categorie_block'>
             </label>
         </div>
         <div class='form_group mb-2'>
@@ -70,7 +68,7 @@
 </div>
 
 <div class="m-5 d-flex justify-content-center">
-    <table>
+    <table class="mb-5">
         <form method='post' action='index.php?view=manage_Users'>
             <div class='form_group mb-2'>
                 <?php if (!empty($userSelected)) : $type = ''; ?>

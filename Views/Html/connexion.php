@@ -1,16 +1,19 @@
-<h1 class="d-flex justify-content-center">Tout pour la Maison</h1>
-<h2 class="d-flex justify-content-center">Connexion</h2>
-<div class="d-flex rounded m-5 bg-dark justify-content-center">
-    <form class="m-5" method='post' action='index.php?view=connexion'>
-        <div class="form-group">
-            <label class="text-light" for="users_login">Login</label>
-            <input type="text" class="form-control " name="users_login" aria-describedby="login" placeholder="Entrer Login">
-        </div>
-        <div class="form-group">
-            <label class="text-light" for="exampleInputPassword1">Mot de Passe</label>
-            <input type="password" name="users_password" class="form-control " id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <input type="submit" name="submit" class="btn btn-primary m-3" value="Se Connecter">
-    </form>
+<div class="bg-image">
+    <div class="d-flex justify-content-center">
+        <form method="POST" action="index.php?view=connexion">
+            <div class="card bg-dark text-light" style=" width: 18rem;">
+                <img class="rounded" src="Views/Public/Pictures/comein.png" alt="we want you">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title">Se connecter</h5>
+                    </div>
+                    <div class="col"> <label for='users_login' class="form-control-label text-muted"></label> <input type="text" name="users_login" placeholder="Login" class="form-control"> </div>
+                    <div class="col"> <label for='users_password' class="form-control-label text-muted"></label> <input type="password" name="users_password" placeholder="Mot de passe" class="form-control"> </div>
+
+                    <div class="d-flex justify-content-center"><input value=" S'inscrire" type='submit' name='submit' class="d-flex justify-content-center btn btn-primary m-3"></div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 <?= $message ?>
