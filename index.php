@@ -41,8 +41,12 @@ if (isset($_GET['view'])) {
     } elseif ($view == "manage_Products") {
         $products->manageProduct();
     } elseif ($view == "manage_Users") {
-        $user->manageUser($view);
-    } elseif ($view == "payment") {
+        $user->manageUser();
+    }elseif($view == "historique"){
+        $factures->historique();
+
+
+    }elseif ($view == "payment") {
         $user->render($view);
     } else {
         $user->render('404');
