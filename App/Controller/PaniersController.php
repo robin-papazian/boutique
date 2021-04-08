@@ -37,7 +37,7 @@
                         header('Location: index.php');
                     }
                 }
-                elseif(isset($_POST['paiment']) && !empty($_POST['paiment']))
+                elseif(isset($_POST['paiement']) && !empty($_POST['paiement']))
                 {
                     $user = $_SESSION['id'];
                     $total_price = htmlspecialchars($_POST['prix']);
