@@ -4,7 +4,7 @@
   </div>
   <ul class="list-group list-group-flush">
     <?php foreach($commander as $date) :?>
-    <li class="list-group-item"><a href=''><?= $date['factures_date']?></a></li>
+    <li class="list-group-item"><a href='index.php?view=orders&detail=<?=$date['factures_id']?>'><?= $date['factures_date']?></a></li>
     <?php endforeach ;?>
   </ul>
 </div>

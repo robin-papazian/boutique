@@ -44,7 +44,8 @@ if (isset($_GET['view'])) {
         $user->manageUser();
     }elseif($view == "historique"){
         $factures->historique();
-
+    }elseif($view == "orders"){
+        $orders->orders();
 
     }elseif ($view == "payment") {
         $user->render($view);

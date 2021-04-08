@@ -75,6 +75,12 @@
             return $i;
         }
 
+        public function orders()
+        {
+            $orders = new PaniersModel;
+            $this->render('orders',['orders' => $orders]);
+        }
+
 
 
     }
