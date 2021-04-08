@@ -30,6 +30,13 @@ class ProductsController extends Controller
         $this->render('item',['product' => $product]);
     }
 
+    public function orders()
+    {
+        $orders = new ProductsModel;
+        $this->render('orders',['orders' => $orders]);
+    }
+
+
     public function manageProduct()
     {
         $products = $this->model;
