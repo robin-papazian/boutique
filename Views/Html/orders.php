@@ -6,9 +6,6 @@ if (isset($_GET['detail']))
     
     $order = $orders->listBy("INNER JOIN paniers ON products.products_id = paniers.paniers_product WHERE paniers_ref = $ref");
 
-    // echo '<pre>';
-    // var_dump($order);
-    // echo '</pre>';
     $total = 0;
 }
 

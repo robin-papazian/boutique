@@ -18,10 +18,19 @@
 
         public function historique()
         {
-            $user = $_SESSION['id'];
-            $commander = $this->model->listBy("WHERE factures_user = $user");
-            $this->render('historique',['commander'=>$commander]);
+            if(!isset($_SESSION['login']))
+            {           
+                header('Location: index.php?view=connexion');
+            }
+            else
+            {
+                $user = $_SESSION['id'];
+                $commander = $this->model->listBy("WHERE factures_user = $user");
+                $this->render('historique',['commander'=>$commander]);
 
+
+            }
+            
 
         }
 

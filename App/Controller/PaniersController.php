@@ -18,17 +18,24 @@
 
         public function panier()
         {
-            if(isset($_SESSION['panier']) && !empty($_SESSION['panier']))
+            $ids = implode(',',array_keys($_SESSION['panier']));
+            if(isset($ids) && !empty($ids))
             {
-                $ids = implode(',',array_keys($_SESSION['panier']));
                 $products = new ProductsModel;
                 $panier = $products->listBy("WHERE products_id IN ($ids)");
     
-                if(isset($_POST['delete']))
+                if(isset($_POST['delete']) && !empty($ids))
                 {
                     unset($_SESSION['panier'][$_POST['product']]);
-                    $ids = implode(',',array_keys($_SESSION['panier']));
-                    $panier = $products->listBy("WHERE products_id IN ($ids)");
+                    if(empty($ids))
+                    {
+                        $ids = implode(',',array_keys($_SESSION['panier']));
+                        $panier = $products->listBy("WHERE products_id IN ($ids)");
+                    }
+                    else
+                    {
+                        header('Location: index.php');
+                    }
                 }
                 elseif(isset($_POST['paiment']) && !empty($_POST['paiment']))
                 {
