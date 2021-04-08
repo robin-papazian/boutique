@@ -48,8 +48,8 @@ if (isset($_GET['view'])) {
         $factures->historique();
     }elseif($view == "orders"){
         $products->orders();
-
-    }elseif ($view == "payment") {
+    }
+    elseif ($view == "deconection") {
         $user->render($view);
     } else {
         $user->render('404');

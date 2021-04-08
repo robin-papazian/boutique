@@ -48,6 +48,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                             <?php if (isset($_SESSION['login'])) : ?>
                                 <a class="dropdown-item text-light" href="index.php?view=account">Profil</a>
                                 <a class="dropdown-item text-light" href="index.php?view=historique">Historique d'achat</a>
+                                <a class="dropdown-item text-light" href="index.php?view=deconection">Déconnecter</a>
                             <?php else : ?>
                                 <a class="dropdown-item text-light" href="index.php?view=connexion">Connexion</a>
                                 <a class="dropdown-item text-light" href="index.php?view=inscription">Inscription</a>
