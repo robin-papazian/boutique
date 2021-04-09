@@ -43,7 +43,7 @@ if (!isset($_SESSION['login'])) {
                         </form>
                     </td>
             </tr>
-                <?php endforeach; ?>
+        <?php endforeach; ?>
         <tr>
             <td></td>
             <td></td>
@@ -93,7 +93,7 @@ if (!isset($_SESSION['login'])) {
                                             <input type="text" class="form-control" name="card_cvc" value="101" data-stripe='cvc'>
                                         </label>
                                         <label for='prix'>Prix
-                                            <input type="text" class="form-control" name="prix" value="<?= $gran_total ?>" data-stripe='prix'>
+                                            <input readonly="readonly" type="text" class="form-control" name="prix" value="<?= $gran_total ?>" data-stripe='prix'>
                                         </label>
                                         <input class="btn btn-success" type='submit' name='paiement' value='Confirmer' id='confirmation_payment'>
                                     </form>

@@ -41,11 +41,6 @@ if (isset($_GET['product'])) {
 <?php
 if (isset($_POST['addtocart'])) {
     $_SESSION['panier'][$_POST['produit']] = $_POST['nbrproduit'];
-
-    echo '<pre>';
-    var_dump($_SESSION['panier']);
-
-    echo '</pre>';
 }
 
 

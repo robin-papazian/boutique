@@ -53,3 +53,21 @@
         </a>
 
     </div>
+    <div class="d-flex row justify-content-center">
+        <?php
+
+        foreach ($result as $tab) {
+        ?>
+            <div class='card bg-dark col-sm-3 m-3 mb-5' style='width: 18rem;'>
+                <img src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures", $tab['products_name']) ?>' class='card-img-top' alt='product jpg'>
+                <div class='card-body'>
+                    <h5 class='card-title text-light'><?= $tab['products_name'] ?></h5>
+                    <p><img src="Views/Public/Pictures/new.png" alt="new"></p>
+                    <a class="text-light" href="index.php?view=item&product=<?= $tab['products_id'] ?>">Voir le produit</a>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+</div>

@@ -1,14 +1,21 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     
 }
 .bg-image{
     background-image: url("../Pictures/orchid.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+}
+.bg-image-2{
+    background-image: url("../Pictures/orchid.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
+    background-attachment: fixed;
 }
 
 #carouselProduct {

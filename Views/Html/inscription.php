@@ -1,4 +1,4 @@
-<div class="bg-image">
+<div class="bg-image-2">
     <div class="d-flex justify-content-center">
         <form method="POST" action="index.php?view=inscription">
             <div class="card bg-dark text-light" style=" width: 18rem;">
@@ -27,9 +27,3 @@
         </form>
     </div>
 </div>
-<?php
-echo '<pre>';
-var_dump($data);
-echo '</pre>';
-
-?>
