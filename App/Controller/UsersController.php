@@ -131,6 +131,11 @@ class UsersController extends Controller
         elseif(isset($_POST['submit']) && $_POST['submit'] == 'Update')
         {
             $data = autoprepare($_POST);
+            if(in_array($_POST['users_password'],$data['execute']))
+            {
+                $data['execute']['users_password'] = password_hash($data['execute']['users_password'],PASSWORD_BCRYPT);
+
+            }
             $this->model->manageAccount($data['set'],$_SESSION['update_user'],$data['execute']);
             $users = $this->model->listBy();
 

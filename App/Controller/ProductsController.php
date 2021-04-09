@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Controller\Controller;
 use App\Model\ProductsModel;
 use App\Model\CategoriesModel;
-use App\Model\OrdersModel;
+
 
 require_once('App/Libraries/Autoprepare.php');
 
