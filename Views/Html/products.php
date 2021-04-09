@@ -22,6 +22,5 @@ if (isset($_GET['product_categorie'])) {
         }
         ?>
     </div>
-
 <?php
 } ?>

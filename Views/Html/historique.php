@@ -1,4 +1,4 @@
-<div class="bg-image">
+<div class="bg-image-2">
     <div class='d-flex justify-content-center'>
         <div class="card bg-secondary text-light m-5" style="width: 18rem;">
             <div class="card-header">

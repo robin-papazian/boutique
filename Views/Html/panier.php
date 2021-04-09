@@ -25,7 +25,7 @@ if (!isset($_SESSION['login'])) {
             ?>
             <tr>
                 <?php foreach ($panier as $product) : ?>
-                    <th scope="row"><img style="width: 20%;" class="card-img-top img-fluid" src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures/", $product['products_name']) ?>'></th>
+                    <th scope="row"><img style="width: 70%;" class="card-img-top img-fluid" src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures/", $product['products_name']) ?>'></th>
                     <td><?= $product['products_name'] ?></td>
                     <td><?= $product['products_description'] ?></td>
                     <td><?= $product['products_price'] ?>.00€</td>
