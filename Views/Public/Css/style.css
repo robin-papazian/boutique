@@ -14,6 +14,26 @@ body {
   margin: 100px auto;
 }
 
+.im {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.im-bg {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/*Line height*/
+
+.lh-medium {
+  line-height: 1.5rem;
+}
+
+.lh-first {
+  line-height: 3rem;
+}
+
 /*Index*/
 
 header {
@@ -187,4 +207,42 @@ h2 {
   text-align: center;
   line-height: 100px;
   height: 100px;
+}
+
+/*Product*/
+.container-product {
+  border: solid black;
+  width: 70%;
+  height: 60%;
+  display: flex;
+}
+
+.container-product img {
+  border: solid black;
+  width: 400px;
+  height: 400px;
+}
+
+.box-product {
+  border: solid red;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-product {
+  background: var(--second-color);
+  display: inline-block;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px;
+  border-radius: 20px 20px 20px 20px;
+  margin-left: 20px;
+}
+
+.btn-nb {
+  width: 15%;
+  border: solid var(--second-color) 1px;
 }

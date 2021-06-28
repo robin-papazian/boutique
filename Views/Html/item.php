@@ -9,7 +9,31 @@ if (isset($_GET['product'])) {
         $item = $product->byName($name);
     }
 ?>
+    <div class="container-product margin-auto">
+        <div style="margin:auto; border:solid green;">
+            <img src="Views/Public/Pictures/aspirateur.jpg" alt="" class="margin-auto">
+        </div>
+        <div class="box-product ">
+            <div class="im lh-first" style="border: solid blue;">
+                <span>Catgeorie</span>
+                <h3>Nom du produit</h3>
+            </div>
 
+            <span class="im">50,00 &euro; </span>
+
+            <form action="">
+
+                <!-- en flex -->
+                <input type="number" name="" id="" class="btn-nb">
+                <input type="submit" name="" id="" class="btn-product" value="ajouter">
+            </form>
+            <div class="im-bg">
+                <h4>Description</h4>
+                <p class="im lh-medium">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam quos quisquam reiciendis voluptatem, animi nihil provident dolores dicta laborum vel. Voluptate earum eos quibusdam quam, et illo voluptates numquam culpa?</p>
+            </div>
+
+        </div>
+    </div>
     <div class="d-flex justify-content-around">
         <?php
         foreach ($item as $product) { ?>
