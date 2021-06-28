@@ -1,73 +1,64 @@
-<div class="bg-image">
-    <p class="d-flex justify-content-center text-light">
-        <strong>Des appareilles menager concu pour durer,</strong></br>
-        Pour une maison plus saine ...
-
-    </p>
-
-    <h1 class="d-flex justify-content-center text-light">Nos Gammes</h1>
-
-    <div id="carouselProduct" class="carousel slide shadow-lg p-3 mb-5 bg-dark rounded" data-ride="carousel" data-interval="3000">
-
-        <ol class="carousel-indicators">
-            <li data-target="#carouselProduct" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselProduct" data-slide-to="1"></li>
-            <li data-target="#carouselProduct" data-slide-to="2"></li>
-        </ol>
+<div class="container-index">
 
 
-        <div class="carousel-inner">
+    <h2>Nos Gammes</h2>
 
-            <?php
-
-            function carous($data)
-            {
-                foreach ($data as $key => $categorie) {
-
-                    $item = "<div class='carousel-item active'>";
-                    $item .= "<a href='index.php?view=products&product_categorie=" . $categorie['categories_id'] . "'><img class='d-block' src='Views/Public/Pictures/" . mydir("Views/Public/Pictures", $categorie['categories_name']) . "'></a></div>";
-                    break;
-                }
-                foreach ($data as $key => $categorie) {
-
-                    $item .= "<div class='carousel-item'>";
-                    $item .= "<a href='index.php?view=products&product_categorie=" . $categorie['categories_id'] . "'><img class='d-block' src='Views/Public/Pictures/" . mydir("Views/Public/Pictures", $categorie['categories_name']) . "'></a></div>";
-                }
-                return $item;
-            }
-
-
-            ?>
-
-            <?= carous($data) ?>
-
-        </div>
-
-        <a href="#carouselProduct" class="carousel-control-prev" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="ture"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a href="#carouselProduct" class="carousel-control-next" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-
-    </div>
-    <div class="d-flex row justify-content-center">
+    <!-- GAMMES -->
+    <div class="container-categorie">
         <?php
-
-        foreach ($result as $tab) {
-        ?>
-            <div class='card bg-dark col-sm-3 m-3 mb-5' style='width: 18rem;'>
-                <img src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures", $tab['products_name']) ?>' class='card-img-top' alt='product jpg'>
-                <div class='card-body'>
-                    <h5 class='card-title text-light'><?= $tab['products_name'] ?></h5>
-                    <p><img src="Views/Public/Pictures/new.png" alt="new"></p>
-                    <a class="text-light" href="index.php?view=item&product=<?= $tab['products_id'] ?>">Voir le produit</a>
-                </div>
-            </div>
-        <?php
+        foreach ($data as $categorie) {
+            $box = "<div class='box-categorie'>";
+            $box .= "<a href='index.php?view=products&product_categorie=" . $categorie['categories_id'] . "'>" . "<img src='Views/Public/Pictures/" . mydir("Views/Public/Pictures", $categorie['categories_name']) . "'></a></div>";
+            echo $box;
         }
         ?>
     </div>
+
+
+    <h2>Nos services</h2>
+    <div class="container margin-auto">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-service text-center">
+                    <i class="fa fa-home"></i>
+                    <h3>Compagny</h3>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, itaque sint? Sed atque rem molestias amet eaque tempore dolores eius.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-service text-center">
+                    <i class="fab fa-servicestack"></i>
+                    <h3>Compagny</h3>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, itaque sint? Sed atque rem molestias amet eaque tempore dolores eius.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-service text-center">
+                    <i class="fa fa-home"></i>
+                    <h3>Compagny</h3>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, itaque sint? Sed atque rem molestias amet eaque tempore dolores eius.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Nos nouveauté</h2>
+
+    <div class="container-categorie">
+        <?php
+        foreach ($result as $products) {
+            $box = "<div class='box-categorie'>";
+            $box .= "<a href='index.php?view=item&product=" . $products['products_id'] . "'>" . "<img src='Views/Public/Pictures/" . mydir("Views/Public/Pictures", $products['products_name']) . "'></a></div>";
+            echo $box;
+        }
+        ?>
+    </div>
+
+
 </div>
