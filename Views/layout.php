@@ -55,9 +55,11 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                                 <a class="dropdown-item " href="index.php?view=account">Profil</a>
                                 <a class="dropdown-item " href="index.php?view=historique">Historique d'achat</a>
                                 <a class="dropdown-item " href="index.php?view=deconection">Déconnecter</a>
+                                <a class="dropdown-item" href="index.php?view=panier">Panier <span><?= $orders->itemSelected() ?><i class="bi bi-basket"></i></span></a>
                             <?php else : ?>
                                 <a class="dropdown-item " href="index.php?view=connexion">Connexion</a>
                                 <a class="dropdown-item " href="index.php?view=inscription">Inscription</a>
+                                <a class="dropdown-item" href="index.php?view=panier">Panier <span><?= $orders->itemSelected() ?><i class="bi bi-basket"></i></span></a>
                             <?php endif; ?>
                             <?= $admin ?>
                         </div>
