@@ -2,11 +2,11 @@
 $products = new App\Controller\ProductsController;
 $orders = new App\Controller\PaniersController;
 if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
-    $link = '<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    $admin = '<div class="dropdown-divider"></div><a class="dropdown-item btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Dashbord
                 </a>';
 } else {
-    $link = '<a class="nav-link text-light" href="mailto:pierre.malardier@laplateforme.io"><i class="bi bi-envelope-fill"> Contact</i></a>';
+    $admin = '';
 } ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,72 +19,67 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
     <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
-
+    <script src="https://kit.fontawesome.com/9ddb75d515.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Views/Public/Css/style.css" type="text/css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-            <div class="collapse navbar-collapse d-flex" id="navbarToggleExternalContent">
-                <ul class="navbar-nav mr-auto justify-content-around " style=' width: 100%;'>
-                    <li class="nav-item active">
-                        <a class="nav-link text-light" href="index.php?view=index"><i class="bi bi-house-door-fill"> Tout Pour La Maison</i></a>
-                    </li>
+        <div class="single-service text-center">
+            <i class="fa fa-home"></i>
+            <h3>Tout Pour La Maison</h3>
+            <hr>
+            <p>Des appareilles menager concu pour durer,
+                Pour une maison plus saine ...</p>
 
+        </div>
+        <nav class="navbar navbar-expand-lg  ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color:#fff; font-size:28px;"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto" style="text-align:center">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-person-circle"> Mon Compte</i>
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ESPACE
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php if (isset($_SESSION['login'])) : ?>
-                                <a class="dropdown-item text-light" href="index.php?view=account">Profil</a>
-                                <a class="dropdown-item text-light" href="index.php?view=historique">Historique d'achat</a>
-                                <a class="dropdown-item text-light" href="index.php?view=deconection">Déconnecter</a>
+                                <a class="dropdown-item " href="index.php?view=account">Profil</a>
+                                <a class="dropdown-item " href="index.php?view=historique">Historique d'achat</a>
+                                <a class="dropdown-item " href="index.php?view=deconection">Déconnecter</a>
                             <?php else : ?>
-                                <a class="dropdown-item text-light" href="index.php?view=connexion">Connexion</a>
-                                <a class="dropdown-item text-light" href="index.php?view=inscription">Inscription</a>
+                                <a class="dropdown-item " href="index.php?view=connexion">Connexion</a>
+                                <a class="dropdown-item " href="index.php?view=inscription">Inscription</a>
                             <?php endif; ?>
+                            <?= $admin ?>
                         </div>
                     </li>
-                    <li class="nav-item text-light">
-                        <?= $link ?>
-                    </li>
-                    <form class="form-inline my-2 my-lg-0" method='get' action='#'>
-                        <input type='hidden' name='view' value='item'>
-                        <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" list='products' name='product'>
-                        <datalist id="products">
-                            <?= $products->autocompletion() ?>
 
-                        </datalist>
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
-                    </form>
-                    <li class="nav-item active"><a class="nav-link text-light" href="index.php?view=panier"><span><?= $orders->itemSelected() ?></span> <i class="bi bi-basket"> Panier</i></a></li>
                 </ul>
-
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
-        </nav>
-        <div class="collapse" id="collapseExample">
-            <nav class="nav">
-                <a class="nav-link active" href="index.php?view=manage_Categorie">Categories</a>
-                <a class="nav-link" href="index.php?view=manage_Products">Products</a>
-                <a class="nav-link" href="index.php?view=manage_Users">Users</a>
-            </nav>
-        </div>
-
-
+            <div class="collapse" id="collapseExample">
+                <nav class="nav">
+                    <a class="nav-link active" href="index.php?view=manage_Categorie">Categories</a>
+                    <a class="nav-link" href="index.php?view=manage_Products">Products</a>
+                    <a class="nav-link" href="index.php?view=manage_Users">Users</a>
+                </nav>
+            </div>
         </nav>
     </header>
     <?= $PageContent ?>
-    <footer class="footer bg-secondary d-flex justify-content-center fixed-bottom">
+    <footer class="footer bg-secondary d-flex justify-content-center ">
         <p class="text-light ">Copyright © 2021 | Pierro | Robino</p>
     </footer>
 
