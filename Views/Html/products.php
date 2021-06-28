@@ -24,3 +24,21 @@ if (isset($_GET['product_categorie'])) {
     </div>
 <?php
 } ?>
+
+<section class="container-card">
+
+    <div class="card">
+        <img src='Views/Public/Pictures/<?= mydir("Views/Public/Pictures", $description['products_name']) ?>' class="card-image">
+        <div class="card-text">
+            <span class="price">
+
+                <?= $description['products_price'] ?>
+
+                &euro;</span>
+            <h2><?= $description['products_name'] ?></h2>
+            <!-- <p>DEZCRIPTION</p> -->
+        </div>
+        <a href="index.php?view=item&product=<?= $description['products_id'] ?>" class="btn-card">VOIR LE PRODUIT</a>
+    </div>
+
+</section>
