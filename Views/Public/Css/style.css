@@ -211,20 +211,19 @@ h2 {
 
 /*Product*/
 .container-product {
-  border: solid black;
   width: 70%;
   height: 60%;
   display: flex;
+  box-shadow: -2px -2px 8px rgba(233, 237, 201, 1),
+    -2px -2px 12px rgba(233, 237, 201, 0.5);
 }
 
 .container-product img {
-  border: solid black;
   width: 400px;
   height: 400px;
 }
 
 .box-product {
-  border: solid red;
   padding: 20px;
   display: flex;
   flex-direction: column;
