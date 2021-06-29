@@ -22,7 +22,7 @@ if (isset($_GET['product_categorie'])) {
 
                     &euro;</span>
                 <h2><?= $description['products_name'] ?></h2>
-                <!-- <p>DEZCRIPTION</p> -->
+                <!-- <p>DESCRIPTION</p> -->
             </div>
             <a href="index.php?view=item&product=<?= $description['products_id'] ?>" class="btn-card">VOIR LE PRODUIT</a>
         </div>

@@ -9,9 +9,10 @@ if (isset($_GET['detail'])) {
 }
 
 ?>
-<div class="bg-image-2">
+<h2>Détail de la commande</h2>
+<div>
     <div class='d-flex justify-content-center'>
-        <div class="card m-5" style="width: 18rem;">
+        <div class="margin-auto" style="width: 18rem;">
             <div class='d-flex'>
                 <div>
                     <div class="card-header">
