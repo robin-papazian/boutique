@@ -81,8 +81,37 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
         </nav>
     </header>
     <?= $PageContent ?>
-    <footer class="footer bg-secondary d-flex justify-content-center ">
-        <p class="text-light ">Copyright © 2021 | Pierro | Robino</p>
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="b-row">
+                <div class="footer-col">
+                    <h4>Tout Pour la Maison</h4>
+                    <ul>
+                        <li><a href="#">à propos</a></li>
+                        <li><a href="#">nos services</a></li>
+                        <li><a href="#">données personnel</a></li>
+                        <li><a href="#">affiliation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>aide</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">expédition</a></li>
+                        <li><a href="#">Politique de retour</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Réseaux sociaux</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 
 

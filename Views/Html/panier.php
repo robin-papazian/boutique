@@ -1,4 +1,4 @@
-<h5 class="d-flex justify-content-center">Panier</h5>
+<h2>Panier</h2>
 
 <?php
 if (!isset($_SESSION['login'])) {
@@ -7,11 +7,13 @@ if (!isset($_SESSION['login'])) {
 
 ?>
 
+<!-- Panier -->
+
 <div class="d-flex m-5">
-    <table class="table bg-dark text-light">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
+    <table class=" table ">
+        <thead class=" text-light">
+            <tr style="background: tomato;">
+                <th scope="col"></th>
                 <th scope="col">Nom du produit</th>
                 <th scope="col">Description</th>
                 <th scope="col">Prix</th>
@@ -19,7 +21,7 @@ if (!isset($_SESSION['login'])) {
                 <th scope="col">Prix total</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-dark">
             <?php
             $gran_total = 0;
             ?>
@@ -36,10 +38,10 @@ if (!isset($_SESSION['login'])) {
                         $gran_total += $total;
                         echo $total;
                         ?>.00€</td>
-                    <td>
+                    <td style="border: none;">
                         <form method='post'>
                             <input type='hidden' name='product' value='<?= $product['products_id'] ?>'>
-                            <input class='btn btn-danger' type="submit" name="delete" value="Retirer du panier">
+                            <input class='btn btn-danger' type="submit" name="delete" value="Supprimer">
                         </form>
                     </td>
             </tr>
@@ -59,7 +61,7 @@ if (!isset($_SESSION['login'])) {
             <td></td>
             <td></td>
             <td><?= $gran_total ?>.00€</td>
-            <td>
+            <td style="border: none;">
                 <form method="post">
 
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#commander">
@@ -111,4 +113,41 @@ if (!isset($_SESSION['login'])) {
 
         </tr>
     </table>
+
+
+</div>
+
+<!-- Services -->
+
+<h2>Nos services</h2>
+<div class="container margin-auto">
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="single-service text-center">
+                <i class="fa fa-home"></i>
+                <h3>Compagny</h3>
+                <hr>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, itaque sint? Sed atque rem molestias amet eaque tempore dolores eius.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="single-service text-center">
+                <i class="fab fa-servicestack"></i>
+                <h3>Compagny</h3>
+                <hr>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, itaque sint? Sed atque rem molestias amet eaque tempore dolores eius.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="single-service text-center">
+                <i class="fa fa-home"></i>
+                <h3>Compagny</h3>
+                <hr>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, itaque sint? Sed atque rem molestias amet eaque tempore dolores eius.
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
