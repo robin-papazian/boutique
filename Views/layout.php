@@ -58,7 +58,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                                 <a class="dropdown-item" href="index.php?view=panier">Panier <span><?= $orders->itemSelected() ?><i class="bi bi-basket"></i></span></a>
                             <?php else : ?>
                                 <a class="dropdown-item " href="index.php?view=connexion">Connexion</a>
-                                <a class="dropdown-item " href="index.php?view=inscription">Inscription</a>
+                                <button class="dropdown-item" id="modal-inscription">Inscription</button>
                                 <a class="dropdown-item" href="index.php?view=panier">Panier <span><?= $orders->itemSelected() ?><i class="bi bi-basket"></i></span></a>
                             <?php endif; ?>
                             <?= $admin ?>
@@ -79,6 +79,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                 </nav>
             </div>
         </nav>
+
     </header>
     <?= $PageContent ?>
     <footer class="footer">
@@ -114,9 +115,40 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
         </div>
     </footer>
 
+    <div id="robinSimpleModal" class="robin-modal">
+        <div class="modal-content">
+            <div class="modalHeader">
+                <span class="closeBtn">&times;</span>
+                <h3>Inscription</h3>
+
+            </div>
+            <form class="modalBody" method="POST" action="index.php?view=inscription">
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col"> <label for='users_name' class="form-control-label text-muted"></label> <input type="text" name="users_name" placeholder="Prénom" class="form-control" required> </div>
+                        <div class="col"> <label for='users_familly_name' class="form-control-label text-muted"></label> <input type="text" name="users_familly_name" placeholder="Nom" class="form-control" required> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"> <label for='users_login' class="form-control-label text-muted"></label> <input type="text" name="users_login" placeholder="Login" class="form-control" required> </div>
+                        <div class="col"> <label for='users_password' class="form-control-label text-muted"></label> <input type="password" name="users_password" placeholder="Mot de passe" class="form-control" required> </div>
+                    </div>
+                    <div class="form-group"> <label for='users_email' class="form-control-label text-muted"></label> <input type="mail" name="users_email" placeholder="Email" class="form-control" required> </div>
+                    <div class="form-group"> <label for='users_street' class="form-control-label text-muted"></label> <input type="text" name="users_street" placeholder="Rue" class="form-control" required> </div>
+                    <div class="row">
+                        <div class="col"> <label for='users_post_code' class="form-control-label text-muted"></label> <input type="number" name="users_post_code" placeholder="Code Postale" class="form-control" required> </div>
+                        <div class="col"> <label for='users_town' class="form-control-label text-muted"></label> <input type="text" name="users_town" placeholder="Ville" class="form-control" required> </div>
+                    </div>
+                    <div class="d-flex justify-content-center am"><input value=" S'inscrire" type='submit' name='submit' class="btn-product"></div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <!-- <script type="text/javascript" src="Views/Public/Js/scripts.js"></script> -->
-    <script type='text/javascript' src="Views/Public/Js/testscript.js"></script>
+    <script type="text/javascript" src="Views/Public/Js/scripts.js"></script>
+
 
 </body>
