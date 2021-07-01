@@ -44,12 +44,11 @@ if (isset($_GET['view'])) {
         $products->manageProduct();
     } elseif ($view == "manage_Users") {
         $user->manageUser();
-    }elseif($view == "historique"){
+    } elseif ($view == "historique") {
         $factures->historique();
-    }elseif($view == "orders"){
+    } elseif ($view == "orders") {
         $products->orders();
-    }
-    elseif ($view == "deconection") {
+    } elseif ($view == "deconection") {
         $user->render($view);
     } else {
         $user->render('404');

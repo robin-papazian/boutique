@@ -1,6 +1,11 @@
 <?php
+$users = new App\Controller\UsersController;
 $products = new App\Controller\ProductsController;
 $orders = new App\Controller\PaniersController;
+
+
+
+
 if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
     $admin = '<div class="dropdown-divider"></div><a class="dropdown-item btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Dashbord
@@ -122,11 +127,11 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                 <h3>Inscription</h3>
 
             </div>
-            <form class="modalBody" method="POST" action="index.php?view=inscription">
+            <form class="modalBody" method="POST" id='rrrr'>
 
                 <div class="card-body">
                     <div class="row">
-                        <div class="col"> <label for='users_name' class="form-control-label text-muted"></label> <input type="text" name="users_name" placeholder="Prénom" class="form-control" required> </div>
+                        <div class="col"> <label for='users_name' class="form-control-label text-muted"></label> <input type="text" name="users_name" id='users_name' placeholder="Prénom" class="form-control" required> </div>
                         <div class="col"> <label for='users_familly_name' class="form-control-label text-muted"></label> <input type="text" name="users_familly_name" placeholder="Nom" class="form-control" required> </div>
                     </div>
                     <div class="row">
@@ -139,7 +144,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                         <div class="col"> <label for='users_post_code' class="form-control-label text-muted"></label> <input type="number" name="users_post_code" placeholder="Code Postale" class="form-control" required> </div>
                         <div class="col"> <label for='users_town' class="form-control-label text-muted"></label> <input type="text" name="users_town" placeholder="Ville" class="form-control" required> </div>
                     </div>
-                    <div class="d-flex justify-content-center am"><input value=" S'inscrire" type='submit' name='submit' class="btn-product"></div>
+                    <div class="d-flex justify-content-center am"><input value=" S'inscrire" name='submit' class="btn-product" onclick="testb()"></div>
                 </div>
 
             </form>
@@ -152,3 +157,13 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
 
 
 </body>
+
+<?php
+
+if (isset($_POST['submit']) && $_POST['submit'] === "S'inscrire") {
+    // $users->inscriptions($_POST);
+    echo 'oui';
+}
+
+
+?>

@@ -20,4 +20,23 @@ function closeModal(){
    
 }
 
+function testb(){
+    console.log('123');
+    var $inputs = $('#rrrr :input');
+
+    // An array of just the ids...
+    var ids = {};
+    var x = 0;
+    var myTab = [];
+    $inputs.each(function (index)
+    {
+        // For debugging purposes...
+        alert($(this).attr('name') + ' : ' + $(this).val());
+
+        ids[$(this).attr('name')] = $(this).val;
+        myTab[$(this).attr('name')] = $(this).val();
+    });
+    console.log(myTab); 
+}
+
 
