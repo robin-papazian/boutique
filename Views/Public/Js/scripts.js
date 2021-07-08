@@ -17,26 +17,35 @@ function openModal(){
 
 function closeModal(){
     modal.style.display = 'none';
-   
+
 }
 
-function testb(){
-    console.log('123');
-    var $inputs = $('#rrrr :input');
+//Form elements
+const formRegister = document.getElementById('register');
 
-    // An array of just the ids...
-    var ids = {};
-    var x = 0;
-    var myTab = [];
-    $inputs.each(function (index)
-    {
-        // For debugging purposes...
-        alert($(this).attr('name') + ' : ' + $(this).val());
+//Form event
 
-        ids[$(this).attr('name')] = $(this).val;
-        myTab[$(this).attr('name')] = $(this).val();
-    });
-    console.log(myTab); 
+formRegister.addEventListener('click', makeRegister);
+
+function makeRegister(e){
+    e.preventDefault();
+
+    const form = document.querySelectorAll("#formI input");
+    const data = new FormData();
+    for (let i = 0; i < form.length; i++) {
+        data.append(form[i].getAttribute('name'), form[i].value);
+    }
+
+    const xhr = new XMLHttpRequest;
+    xhr.open('POST','InscriptionApi.php',true);
+
+    xhr.onload = function(){
+        console.log(this.responseText);
+    };
+
+    xhr.send(data);
+
+
 }
 
 

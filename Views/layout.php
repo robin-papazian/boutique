@@ -127,7 +127,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                 <h3>Inscription</h3>
 
             </div>
-            <form class="modalBody" method="POST" id='rrrr'>
+            <form class="modalBody" id='formI'>
 
                 <div class="card-body">
                     <div class="row">
@@ -144,7 +144,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                         <div class="col"> <label for='users_post_code' class="form-control-label text-muted"></label> <input type="number" name="users_post_code" placeholder="Code Postale" class="form-control" required> </div>
                         <div class="col"> <label for='users_town' class="form-control-label text-muted"></label> <input type="text" name="users_town" placeholder="Ville" class="form-control" required> </div>
                     </div>
-                    <div class="d-flex justify-content-center am"><input value=" S'inscrire" name='submit' class="btn-product" onclick="testb()"></div>
+                    <div class="d-flex justify-content-center am"><button name='submit' class="btn-product" id='register'>S'inscrire</button></div>
                 </div>
 
             </form>
@@ -160,10 +160,6 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
 
 <?php
 
-if (isset($_POST['submit']) && $_POST['submit'] === "S'inscrire") {
-    // $users->inscriptions($_POST);
-    echo 'oui';
-}
 
 
 ?>

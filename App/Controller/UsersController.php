@@ -8,6 +8,7 @@ use App\Model\UsersModel;
 
 require_once('App/Libraries/Autoprepare.php');
 
+
 class UsersController extends Controller
 {
 
@@ -37,9 +38,9 @@ class UsersController extends Controller
 
     public function inscriptions(array $array)
     {
-        $data = '';
 
-        $data = autoprepare($_POST);
+
+        $data = autoprepare($array);
 
         extract($data['execute']);
         $user = $this->model->inDb($users_login);

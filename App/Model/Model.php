@@ -25,13 +25,5 @@ use App\Core\Core;
         public function deleteBy($param='',$execute=[])
         {
             $this->stickIn("DELETE FROM {$this->table} $param",$execute);
-
-
-
         }
-       
-
     }
-
-
-?>
