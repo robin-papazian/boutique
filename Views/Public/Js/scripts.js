@@ -1,12 +1,13 @@
-// Modal elements
+//INSCRIPTION
 
+// Modal elements 
 const modal = document.getElementById('robinSimpleModal');
 
 const modalBtn = document.getElementById('modal-inscription');
 
 const closeBtn = document.getElementsByClassName('closeBtn')[0];
 
-//Modal event
+//Modal event 
 modalBtn.addEventListener('click', openModal);
 
 closeBtn.addEventListener('click', closeModal);
@@ -17,7 +18,6 @@ function openModal(){
 
 function closeModal(){
     modal.style.display = 'none';
-
 }
 
 //Form elements
@@ -49,3 +49,20 @@ function makeRegister(e){
 }
 
 
+//Connexion
+
+const modalC = document.getElementById('ModalConnexion');
+const modalBtnC = document.getElementById('modal-connexion');
+const closeCon = document.getElementById('closeCo');
+
+//Modal event 
+modalBtnC.addEventListener('click', openConnect);
+closeCon.addEventListener('click',closeCo);
+
+function openConnect(){
+   modalC.style.display = 'block';
+}
+
+function closeCo(){
+    modalC.style.display = 'none';
+}

@@ -17,37 +17,14 @@ class UsersController extends Controller
         $this->model = new UsersModel;
     }
 
-
-    public function inscription()
+    public function inscription(array $array)
     {
-        $data = '';
-        if (isset($_POST['submit'])) {
-            $data = autoprepare($_POST);
-            extract($data['execute']);
-            $user = $this->model->inDb($users_login);
-
-            if (!$user) {
-                $data['execute']['users_password'] = password_hash($data['execute']['users_password'], PASSWORD_BCRYPT);
-
-                $this->model->insertBy($data['colonnes'], $data['prepare'], $data['execute']);
-            }
-        }
-
-        $this->render('inscription', ['data' => $data]);
-    }
-
-    public function inscriptions(array $array)
-    {
-
-
         $data = autoprepare($array);
-
         extract($data['execute']);
         $user = $this->model->inDb($users_login);
 
         if (!$user) {
             $data['execute']['users_password'] = password_hash($data['execute']['users_password'], PASSWORD_BCRYPT);
-
             $this->model->insertBy($data['colonnes'], $data['prepare'], $data['execute']);
         }
     }
