@@ -57,6 +57,7 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php if (isset($_SESSION['login'])) : ?>
+                                <button class="dropdown-item" id="modal-profil">Profil</button>
                                 <a class="dropdown-item " href="index.php?view=account">Profil</a>
                                 <a class="dropdown-item " href="index.php?view=historique">Historique d'achat</a>
                                 <a class="dropdown-item " href="index.php?view=deconection">Déconnecter</a>
@@ -125,8 +126,8 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
             <div class="modalHeader">
                 <span class="closeBtn">&times;</span>
                 <h3>Inscription</h3>
-
             </div>
+            <span id="message-register"></span>
             <form class="modalBody" id='formI'>
 
                 <div class="card-body">
@@ -157,13 +158,16 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                 <span class="closeBtn" id='closeCo'>&times;</span>
                 <h3>Connexion</h3>
             </div>
+            <span id="danger-login"></span>
             <form class="modalBody" id='formC'>
                 <div class="card-body">
                     <div class="row">
                         <div class="col"> <label for='users_login' class="form-control-label text-muted"></label> <input type="text" name="users_login" placeholder="Login" class="form-control" required> </div>
-                        <div class="col"> <label for='users_password' class="form-control-label text-muted"></label> <input type="password" name="users_password" placeholder="Mot de passe" class="form-control" required> </div>
                     </div>
-                    <div class="d-flex justify-content-center am"><button name='submit' class="btn-product" id='connection'>Connexion</button></div>
+                    <div class="row">
+                        <div class="col"> <label for='users_password' class="form-control-label text-muted"></label> <input type="password" name="users_password" placeholder="Mot de passe" class="form-control" required></div>
+                    </div>
+                    <div class="d-flex justify-content-center am"><button name='submit' class="btn-product" id='login'>Connexion</button></div>
                 </div>
             </form>
         </div>

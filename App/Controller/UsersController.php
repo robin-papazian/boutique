@@ -26,8 +26,33 @@ class UsersController extends Controller
         if (!$user) {
             $data['execute']['users_password'] = password_hash($data['execute']['users_password'], PASSWORD_BCRYPT);
             $this->model->insertBy($data['colonnes'], $data['prepare'], $data['execute']);
+            echo '1';
+        } else {
+            echo '2';
         }
     }
+
+    public function connexions(array $array)
+    {
+        $data = autoprepare($array);
+        extract($data['execute']);
+        $user = $this->model->inDb($users_login);
+        if ($user) {
+            if (password_verify($data['execute']['users_password'], $user[0]['users_password'])) {
+                $_SESSION['id'] = $user[0]['users_id'];
+                $_SESSION['login'] = $user[0]['users_login'];
+                $_SESSION['droit'] = $user[0]['users_droit'];
+                $_SESSION['prenom'] = $user[0]['users_name'];
+                $_SESSION['nom'] = $user[0]['users_familly_name'];
+                $_SESSION['email'] = $user[0]['users_email'];
+            } else {
+                echo '1';
+            }
+        } else {
+            echo '1';
+        }
+    }
+
 
     public function connexion()
     {

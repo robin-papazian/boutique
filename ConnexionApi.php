@@ -12,5 +12,5 @@ spl_autoload_register('autoload');
 
 if (isset($_POST)) {
     $user = new App\Controller\UsersController;
-    $user->inscription($_POST);
+    $user->connexions($_POST);
 }

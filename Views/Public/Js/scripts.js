@@ -1,6 +1,8 @@
 //INSCRIPTION
 
 // Modal elements 
+
+
 const modal = document.getElementById('robinSimpleModal');
 
 const modalBtn = document.getElementById('modal-inscription');
@@ -34,12 +36,28 @@ function makeRegister(e){
     const data = new FormData();
     for (let i = 0; i < form.length; i++) {
         data.append(form[i].getAttribute('name'), form[i].value);
+        form[i].value = '';
     }
 
     const xhr = new XMLHttpRequest;
     xhr.open('POST','InscriptionApi.php',true);
 
     xhr.onload = function(){
+        let message = document.getElementById('message-register');
+        if (this.responseText === '1'){
+            message.innerHTML = 'Merci pour votre confiance';
+            setTimeout(function(){
+                message.innerHTML = '';
+                closeModal(); 
+            },2000);
+        }else if (this.responseText === '2'){
+            message.innerHTML = 'Inscription impossible';
+            setTimeout(function(){
+                message.innerHTML = '';
+                closeModal(); 
+            },2000);
+
+        }
         console.log(this.responseText);
     };
 
@@ -65,4 +83,43 @@ function openConnect(){
 
 function closeCo(){
     modalC.style.display = 'none';
+}
+
+const formLogin = document.getElementById('login');
+
+//Form event
+
+formLogin.addEventListener('click', makeLogin);
+
+function makeLogin(e){
+    e.preventDefault();
+
+    const formC = document.querySelectorAll("#formC input");
+    const user = new FormData();
+    for (let i = 0; i < formC.length; i++) {
+        user.append(formC[i].getAttribute('name'), formC[i].value);
+        formC[i].value = '';
+    }
+
+    const xhr = new XMLHttpRequest;
+    xhr.open('POST','ConnexionApi.php',true);
+
+    xhr.onload = function(){
+        if(this.responseText === ''){
+            closeCo();
+            document.location.reload();
+
+        }else if(this.responseText === '1'){
+            let error = document.getElementById('danger-login');
+            error.innerHTML = 'Connexion impossible';
+            setTimeout(function(){
+                error.innerHTML = '';
+                closeCo(); 
+            },2000);
+        }
+       
+    };
+    xhr.send(user);
+
+
 }
