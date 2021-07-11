@@ -32,7 +32,7 @@ class UsersController extends Controller
         }
     }
 
-    public function connexions(array $array)
+    public function connexion(array $array)
     {
         $data = autoprepare($array);
         extract($data['execute']);
@@ -53,35 +53,16 @@ class UsersController extends Controller
         }
     }
 
-
-    public function connexion()
+    public function accounts()
     {
-        $message = '';
-        if (isset($_POST['submit'])) {
-            $data = autoprepare($_POST);
-            extract($data['execute']);
-            $user = $this->model->inDb($users_login);
-            if ($user) {
-                if (password_verify($data['execute']['users_password'], $user[0]['users_password'])) {
-                    $_SESSION['id'] = $user[0]['users_id'];
-                    $_SESSION['login'] = $user[0]['users_login'];
-                    $_SESSION['droit'] = $user[0]['users_droit'];
-                    $_SESSION['prenom'] = $user[0]['users_name'];
-                    $_SESSION['nom'] = $user[0]['users_familly_name'];
-                    $_SESSION['email'] = $user[0]['users_email'];
-                    if ($_SESSION['droit'] == 1) {
-                        header('Location:index.php?view=account');
-                    } else {
-                        header('Location:index.php?view=index');
-                    }
-                } else {
-                    $message = 'Mauvaise Identifiant';
-                }
-            } else {
-                $message = 'Utilisateur Inconnue';
-            }
+        $id = $_SESSION['id'];
+
+        $data = autoprepare($_POST);
+        if (in_array($_POST['users_password'], $data['execute'])) {
+            $data['execute']['users_password'] = password_hash($data['execute']['users_password'], PASSWORD_BCRYPT);
         }
-        $this->render('connexion', ['message' => $message]);
+
+        $this->model->manageAccount($data['set'], $id, $data['execute']);
     }
 
     public function account()

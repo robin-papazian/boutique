@@ -69,9 +69,9 @@ function makeRegister(e){
 
 //Connexion
 
-const modalC = document.getElementById('ModalConnexion');
-const modalBtnC = document.getElementById('modal-connexion');
-const closeCon = document.getElementById('closeCo');
+const modalC = document.getElementById('ModalConnexion'); //1sr div modal
+const modalBtnC = document.getElementById('modal-connexion'); //header
+const closeCon = document.getElementById('closeCo'); // * modal
 
 //Modal event 
 modalBtnC.addEventListener('click', openConnect);
@@ -120,6 +120,43 @@ function makeLogin(e){
        
     };
     xhr.send(user);
+
+
+}
+
+//Profil
+
+
+function openProfil(){
+    let i = document.getElementById('ModalProfil');
+    i.style.display = 'block';
+}
+
+function closeProfil(){
+    let i = document.getElementById('ModalProfil');
+    i.style.display = 'none';
+}
+
+const formProfil = document.getElementById('updateProfil');
+
+//Form event
+
+function stop(e){
+    e.preventDefault();
+}
+
+function updateProfil(e){
+    e.preventDefault();
+    const formP = document.querySelectorAll("#formProfil input");
+    const update = new FormData();
+    for (let i = 0; i < formP.length; i++) {
+        update.append(formP[i].getAttribute('name'), formP[i].value);
+        
+    }
+
+    const xhr = new XMLHttpRequest;
+    xhr.open('POST','UpdateApi.php',true);
+    xhr.send(update);
 
 
 }
