@@ -72,10 +72,11 @@ if (isset($_SESSION['droit']) && $_SESSION['droit'] == '42') {
                     </li>
 
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <div class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchBar">
+                    <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                </div>
+                <div id="searchList"></div>
             </div>
             <div class="collapse" id="collapseExample">
                 <nav class="nav">

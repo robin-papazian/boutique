@@ -160,3 +160,38 @@ function updateProfil(e){
 
 
 }
+
+//Search Bar
+
+function searchState(){
+   
+    const input = search.value;
+    if (input.length > 0){
+
+        const value = new FormData();
+        value.append('input',input);
+
+        const xhr = new XMLHttpRequest;
+        xhr.open('POST','SearchApi.php',true);
+    
+        xhr.onload = function(){
+            if(this.responseText){
+                let states = JSON.parse(this.responseText);
+                console.log(states);
+            }
+        };
+        
+        xhr.send(value);
+    }
+}
+
+function outputHtml(){
+    
+}
+
+const search = document.getElementById("searchBar");
+
+const searchList = document.getElementById('searchList');
+
+//param = search.value
+search.addEventListener('input', searchState)

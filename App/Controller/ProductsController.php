@@ -11,29 +11,29 @@ require_once('App/Libraries/Autoprepare.php');
 
 class ProductsController extends Controller
 {
-    
+
 
     public function __construct()
     {
-        $this->model = new ProductsModel; 
+        $this->model = new ProductsModel;
     }
 
     public function product()
     {
         $product = new ProductsModel;
-        $this->render('products',['product' => $product]);
+        $this->render('products', ['product' => $product]);
     }
 
     public function item()
     {
         $product = new ProductsModel;
-        $this->render('item',['product' => $product]);
+        $this->render('item', ['product' => $product]);
     }
 
     public function orders()
     {
         $orders = new ProductsModel;
-        $this->render('orders',['orders' => $orders]);
+        $this->render('orders', ['orders' => $orders]);
     }
 
 
@@ -41,27 +41,26 @@ class ProductsController extends Controller
     {
         $products = $this->model;
         $categorie = new CategoriesModel;
-        $this->render('manage_Products',['products' => $products,'categorie'=>$categorie]);
-
+        $this->render('manage_Products', ['products' => $products, 'categorie' => $categorie]);
     }
 
     public function autocompletion()
     {
         $arrays = $this->model->listBy();
         $list = "";
-        
-        foreach($arrays as $product )
-        {
+
+        foreach ($arrays as $product) {
             $nameItem = $product['products_name'];
             $idItem = $product['products_id'];
-            $list .= "<option value='$nameItem'>$nameItem</option>" ;
-            
+            $list .= "<option value='$nameItem'>$nameItem</option>";
         }
         return $list;
     }
 
+    public function autocompletions(string $string)
+    {
+        $product = $this->model->listBy("JOIN `categories` ON products_categorie = categories_id WHERE products_name LIKE '$string%'");
 
-
+        return $product;
+    }
 }
-
-?>
